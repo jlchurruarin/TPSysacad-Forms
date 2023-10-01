@@ -31,20 +31,13 @@
             tabControl1 = new TabControl();
             tabEstudiantes = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
-            tabProfesores = new TabPage();
-            tabAdministradores = new TabPage();
-            tabMaterias = new TabPage();
-            tabCursos = new TabPage();
             lblBuscarEstudiante = new Label();
             txbBuscarEstudiante = new TextBox();
             btnAgregarEstudiante = new Button();
             btnEditarEstudiante = new Button();
             btnEliminarEstudiante = new Button();
             lsbEstudiantes = new ListBox();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            tabPage1 = new TabPage();
+            tabProfesores = new TabPage();
             tableLayoutPanel3 = new TableLayoutPanel();
             label2 = new Label();
             textBox2 = new TextBox();
@@ -52,6 +45,7 @@
             button2 = new Button();
             button3 = new Button();
             listBox1 = new ListBox();
+            tabAdministradores = new TabPage();
             tableLayoutPanel4 = new TableLayoutPanel();
             label3 = new Label();
             textBox3 = new TextBox();
@@ -59,6 +53,7 @@
             button5 = new Button();
             button6 = new Button();
             listBox2 = new ListBox();
+            tabMaterias = new TabPage();
             tableLayoutPanel5 = new TableLayoutPanel();
             label4 = new Label();
             textBox4 = new TextBox();
@@ -66,6 +61,7 @@
             button8 = new Button();
             button9 = new Button();
             listBox3 = new ListBox();
+            tabCursos = new TabPage();
             tableLayoutPanel6 = new TableLayoutPanel();
             label5 = new Label();
             textBox5 = new TextBox();
@@ -73,18 +69,22 @@
             button11 = new Button();
             button12 = new Button();
             listBox4 = new ListBox();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            tabPage1 = new TabPage();
             tabControl1.SuspendLayout();
             tabEstudiantes.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tabProfesores.SuspendLayout();
-            tabAdministradores.SuspendLayout();
-            tabMaterias.SuspendLayout();
-            tabCursos.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
+            tabAdministradores.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
+            tabMaterias.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
+            tabCursos.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -136,47 +136,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.Size = new Size(713, 551);
             tableLayoutPanel1.TabIndex = 0;
-            // 
-            // tabProfesores
-            // 
-            tabProfesores.Controls.Add(tableLayoutPanel3);
-            tabProfesores.Location = new Point(4, 24);
-            tabProfesores.Name = "tabProfesores";
-            tabProfesores.Padding = new Padding(3);
-            tabProfesores.Size = new Size(725, 563);
-            tabProfesores.TabIndex = 2;
-            tabProfesores.Text = "Profesores";
-            tabProfesores.UseVisualStyleBackColor = true;
-            // 
-            // tabAdministradores
-            // 
-            tabAdministradores.Controls.Add(tableLayoutPanel4);
-            tabAdministradores.Location = new Point(4, 24);
-            tabAdministradores.Name = "tabAdministradores";
-            tabAdministradores.Size = new Size(725, 563);
-            tabAdministradores.TabIndex = 3;
-            tabAdministradores.Text = "Administradores";
-            tabAdministradores.UseVisualStyleBackColor = true;
-            // 
-            // tabMaterias
-            // 
-            tabMaterias.Controls.Add(tableLayoutPanel5);
-            tabMaterias.Location = new Point(4, 24);
-            tabMaterias.Name = "tabMaterias";
-            tabMaterias.Size = new Size(725, 563);
-            tabMaterias.TabIndex = 4;
-            tabMaterias.Text = "Materias";
-            tabMaterias.UseVisualStyleBackColor = true;
-            // 
-            // tabCursos
-            // 
-            tabCursos.Controls.Add(tableLayoutPanel6);
-            tabCursos.Location = new Point(4, 24);
-            tabCursos.Name = "tabCursos";
-            tabCursos.Size = new Size(725, 563);
-            tabCursos.TabIndex = 5;
-            tabCursos.Text = "Cursos";
-            tabCursos.UseVisualStyleBackColor = true;
             // 
             // lblBuscarEstudiante
             // 
@@ -237,43 +196,16 @@
             lsbEstudiantes.Size = new Size(507, 484);
             lsbEstudiantes.TabIndex = 5;
             // 
-            // tableLayoutPanel2
+            // tabProfesores
             // 
-            tableLayoutPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel2.ColumnCount = 3;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel2.Controls.Add(label1, 0, 0);
-            tableLayoutPanel2.Location = new Point(0, 0);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.Size = new Size(200, 100);
-            tableLayoutPanel2.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(3, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(103, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Buscar Estudiante:";
-            // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Location = new Point(3, 18);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(194, 23);
-            textBox1.TabIndex = 1;
-            // 
-            // tabPage1
-            // 
-            tabPage1.Location = new Point(0, 0);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(200, 100);
-            tabPage1.TabIndex = 0;
+            tabProfesores.Controls.Add(tableLayoutPanel3);
+            tabProfesores.Location = new Point(4, 24);
+            tabProfesores.Name = "tabProfesores";
+            tabProfesores.Padding = new Padding(3);
+            tabProfesores.Size = new Size(725, 563);
+            tabProfesores.TabIndex = 2;
+            tabProfesores.Text = "Profesores";
+            tabProfesores.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3
             // 
@@ -359,6 +291,16 @@
             listBox1.Size = new Size(507, 484);
             listBox1.TabIndex = 5;
             // 
+            // tabAdministradores
+            // 
+            tabAdministradores.Controls.Add(tableLayoutPanel4);
+            tabAdministradores.Location = new Point(4, 24);
+            tabAdministradores.Name = "tabAdministradores";
+            tabAdministradores.Size = new Size(725, 563);
+            tabAdministradores.TabIndex = 3;
+            tabAdministradores.Text = "Administradores";
+            tabAdministradores.UseVisualStyleBackColor = true;
+            // 
             // tableLayoutPanel4
             // 
             tableLayoutPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -442,6 +384,16 @@
             tableLayoutPanel4.SetRowSpan(listBox2, 4);
             listBox2.Size = new Size(507, 484);
             listBox2.TabIndex = 5;
+            // 
+            // tabMaterias
+            // 
+            tabMaterias.Controls.Add(tableLayoutPanel5);
+            tabMaterias.Location = new Point(4, 24);
+            tabMaterias.Name = "tabMaterias";
+            tabMaterias.Size = new Size(725, 563);
+            tabMaterias.TabIndex = 4;
+            tabMaterias.Text = "Materias";
+            tabMaterias.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
             // 
@@ -527,6 +479,16 @@
             listBox3.Size = new Size(507, 484);
             listBox3.TabIndex = 5;
             // 
+            // tabCursos
+            // 
+            tabCursos.Controls.Add(tableLayoutPanel6);
+            tabCursos.Location = new Point(4, 24);
+            tabCursos.Name = "tabCursos";
+            tabCursos.Size = new Size(725, 563);
+            tabCursos.TabIndex = 5;
+            tabCursos.Text = "Cursos";
+            tabCursos.UseVisualStyleBackColor = true;
+            // 
             // tableLayoutPanel6
             // 
             tableLayoutPanel6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -611,6 +573,44 @@
             listBox4.Size = new Size(507, 484);
             listBox4.TabIndex = 5;
             // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel2.ColumnCount = 3;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+            tableLayoutPanel2.Controls.Add(label1, 0, 0);
+            tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.Size = new Size(200, 100);
+            tableLayoutPanel2.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(3, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(103, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Buscar Estudiante:";
+            // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Location = new Point(3, 18);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(194, 23);
+            textBox1.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Location = new Point(0, 0);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new Size(200, 100);
+            tabPage1.TabIndex = 0;
+            // 
             // formMenuAdministrador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -624,19 +624,19 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tabProfesores.ResumeLayout(false);
-            tabAdministradores.ResumeLayout(false);
-            tabMaterias.ResumeLayout(false);
-            tabCursos.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
+            tabAdministradores.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
+            tabMaterias.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
+            tabCursos.ResumeLayout(false);
             tableLayoutPanel6.ResumeLayout(false);
             tableLayoutPanel6.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
             ResumeLayout(false);
         }
 
