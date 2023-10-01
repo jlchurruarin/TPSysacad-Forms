@@ -101,6 +101,7 @@
             btnCancelar.TabIndex = 2;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // tacEstudiante
             // 
@@ -479,6 +480,7 @@
             btnGuardar.TabIndex = 1;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // formABMEstudiante
             // 
@@ -489,6 +491,7 @@
             MinimumSize = new Size(740, 516);
             Name = "formABMEstudiante";
             Text = "formEstudiante";
+            Load += formABMEstudiante_Load;
             tlpEstudiante.ResumeLayout(false);
             tacEstudiante.ResumeLayout(false);
             tabDatosPersonales.ResumeLayout(false);
