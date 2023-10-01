@@ -185,6 +185,7 @@
             btnEliminarEstudiante.TabIndex = 4;
             btnEliminarEstudiante.Text = "Eliminar Seleccionado";
             btnEliminarEstudiante.UseVisualStyleBackColor = true;
+            btnEliminarEstudiante.Click += btnEliminarEstudiante_Click;
             // 
             // lsbEstudiantes
             // 
@@ -622,6 +623,7 @@
             Name = "formMenuAdministrador";
             Text = "formMenuAdministrador";
             FormClosed += formMenuAdministrador_FormClosed;
+            Load += formMenuAdministrador_Load;
             tabControl1.ResumeLayout(false);
             tabEstudiantes.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);

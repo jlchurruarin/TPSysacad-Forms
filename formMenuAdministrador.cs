@@ -41,13 +41,50 @@ namespace TPSysacad___Forms
                 {
                     _ = _baseDeDatos - estudiante;
                 }
+
+                ActualizarListaEstudiantes();
+
             }
 
         }
 
         private void btnEditarEstudiante_Click(object sender, EventArgs e)
         {
+            if (lsbEstudiantes.SelectedIndex == -1) { MessageBox.Show("Selecione un estudiante a editar", "Error"); return; }
 
+            Estudiante estudianteSeleccionado = _baseDeDatos.ListaEstudiantes[lsbEstudiantes.SelectedIndex];
+            formABMEstudiante formABMEstudiante = new formABMEstudiante(this, estudianteSeleccionado);
+            formABMEstudiante.ShowDialog();
+            ActualizarListaEstudiantes();
+        }
+
+        private void btnEliminarEstudiante_Click(object sender, EventArgs e)
+        {
+            if (lsbEstudiantes.SelectedIndex == -1) { MessageBox.Show("Selecione un estudiante a eliminar", "Error"); return; }
+
+            if (_baseDeDatos - _baseDeDatos.ListaEstudiantes[lsbEstudiantes.SelectedIndex])
+            {
+                ActualizarListaEstudiantes();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar el estudiante", "Error");
+            }
+        }
+
+        private void formMenuAdministrador_Load(object sender, EventArgs e)
+        {
+            ActualizarListaEstudiantes();
+        }
+
+
+        private void ActualizarListaEstudiantes()
+        {
+            lsbEstudiantes.Items.Clear();
+            foreach (Estudiante estudiante in _baseDeDatos.ListaEstudiantes)
+            {
+                lsbEstudiantes.Items.Add($"{estudiante.Legajo}: {estudiante.Apellido}, {estudiante.Nombre}");
+            }
         }
     }
 }
