@@ -77,6 +77,14 @@ namespace TPSysacad___Forms
             ActualizarListaEstudiantes();
         }
 
+        private void ActualizarListaProfesores()
+        {
+            lsbProfesores.Items.Clear();
+            foreach (Profesor profesor in _baseDeDatos.ListaProfesores)
+            {
+                lsbProfesores.Items.Add($"{profesor.Apellido}, {profesor.Nombre}");
+            }
+        }
 
         private void ActualizarListaEstudiantes()
         {
@@ -84,6 +92,24 @@ namespace TPSysacad___Forms
             foreach (Estudiante estudiante in _baseDeDatos.ListaEstudiantes)
             {
                 lsbEstudiantes.Items.Add($"{estudiante.Legajo}: {estudiante.Apellido}, {estudiante.Nombre}");
+            }
+        }
+
+        private void btnAgregarProfesor_Click(object sender, EventArgs e)
+        {
+            Profesor profesor = new Profesor();
+            if (_baseDeDatos + profesor)
+            {
+                //formABMProfesor formABMProfesor = new formABMProfesor(this, profesor);
+                //DialogResult ProfesorDialogResult = formABMProfesor.ShowDialog();
+
+                //if (ProfesorDialogResult == DialogResult.Abort)
+                //{
+                //    _ = _baseDeDatos - profesor;
+                //}
+
+                ActualizarListaProfesores();
+
             }
         }
     }

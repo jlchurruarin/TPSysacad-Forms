@@ -41,10 +41,10 @@
             tableLayoutPanel3 = new TableLayoutPanel();
             label2 = new Label();
             textBox2 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            listBox1 = new ListBox();
+            btnAgregarProfesor = new Button();
+            btnEditarProfesor = new Button();
+            btnEliminarProfesor = new Button();
+            lsbProfesores = new ListBox();
             tabAdministradores = new TabPage();
             tableLayoutPanel4 = new TableLayoutPanel();
             label3 = new Label();
@@ -219,10 +219,10 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel3.Controls.Add(label2, 0, 0);
             tableLayoutPanel3.Controls.Add(textBox2, 0, 1);
-            tableLayoutPanel3.Controls.Add(button1, 2, 2);
-            tableLayoutPanel3.Controls.Add(button2, 2, 3);
-            tableLayoutPanel3.Controls.Add(button3, 2, 4);
-            tableLayoutPanel3.Controls.Add(listBox1, 0, 2);
+            tableLayoutPanel3.Controls.Add(btnAgregarProfesor, 2, 2);
+            tableLayoutPanel3.Controls.Add(btnEditarProfesor, 2, 3);
+            tableLayoutPanel3.Controls.Add(btnEliminarProfesor, 2, 4);
+            tableLayoutPanel3.Controls.Add(lsbProfesores, 0, 2);
             tableLayoutPanel3.Location = new Point(6, 6);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 6;
@@ -252,47 +252,48 @@
             textBox2.Size = new Size(194, 23);
             textBox2.TabIndex = 1;
             // 
-            // button1
+            // btnAgregarProfesor
             // 
-            button1.Anchor = AnchorStyles.None;
-            button1.Location = new Point(546, 53);
-            button1.Name = "button1";
-            button1.Size = new Size(133, 34);
-            button1.TabIndex = 2;
-            button1.Text = "Agregar Estudiante";
-            button1.UseVisualStyleBackColor = true;
+            btnAgregarProfesor.Anchor = AnchorStyles.None;
+            btnAgregarProfesor.Location = new Point(546, 53);
+            btnAgregarProfesor.Name = "btnAgregarProfesor";
+            btnAgregarProfesor.Size = new Size(133, 34);
+            btnAgregarProfesor.TabIndex = 2;
+            btnAgregarProfesor.Text = "Agregar Profesor";
+            btnAgregarProfesor.UseVisualStyleBackColor = true;
+            btnAgregarProfesor.Click += btnAgregarProfesor_Click;
             // 
-            // button2
+            // btnEditarProfesor
             // 
-            button2.Anchor = AnchorStyles.None;
-            button2.Location = new Point(546, 93);
-            button2.Name = "button2";
-            button2.Size = new Size(133, 34);
-            button2.TabIndex = 3;
-            button2.Text = "Editar Seleccionado";
-            button2.UseVisualStyleBackColor = true;
+            btnEditarProfesor.Anchor = AnchorStyles.None;
+            btnEditarProfesor.Location = new Point(546, 93);
+            btnEditarProfesor.Name = "btnEditarProfesor";
+            btnEditarProfesor.Size = new Size(133, 34);
+            btnEditarProfesor.TabIndex = 3;
+            btnEditarProfesor.Text = "Editar Seleccionado";
+            btnEditarProfesor.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnEliminarProfesor
             // 
-            button3.Anchor = AnchorStyles.None;
-            button3.Location = new Point(546, 133);
-            button3.Name = "button3";
-            button3.Size = new Size(133, 34);
-            button3.TabIndex = 4;
-            button3.Text = "Eliminar Seleccionado";
-            button3.UseVisualStyleBackColor = true;
+            btnEliminarProfesor.Anchor = AnchorStyles.None;
+            btnEliminarProfesor.Location = new Point(546, 133);
+            btnEliminarProfesor.Name = "btnEliminarProfesor";
+            btnEliminarProfesor.Size = new Size(133, 34);
+            btnEliminarProfesor.TabIndex = 4;
+            btnEliminarProfesor.Text = "Eliminar Seleccionado";
+            btnEliminarProfesor.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // lsbProfesores
             // 
-            listBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel3.SetColumnSpan(listBox1, 2);
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(3, 53);
-            listBox1.Name = "listBox1";
-            tableLayoutPanel3.SetRowSpan(listBox1, 4);
-            listBox1.Size = new Size(507, 484);
-            listBox1.TabIndex = 5;
+            lsbProfesores.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel3.SetColumnSpan(lsbProfesores, 2);
+            lsbProfesores.FormattingEnabled = true;
+            lsbProfesores.ItemHeight = 15;
+            lsbProfesores.Location = new Point(3, 53);
+            lsbProfesores.Name = "lsbProfesores";
+            tableLayoutPanel3.SetRowSpan(lsbProfesores, 4);
+            lsbProfesores.Size = new Size(507, 484);
+            lsbProfesores.TabIndex = 5;
             // 
             // tabAdministradores
             // 
@@ -663,10 +664,10 @@
         private TableLayoutPanel tableLayoutPanel3;
         private Label label2;
         private TextBox textBox2;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private ListBox listBox1;
+        private Button btnAgregarProfesor;
+        private Button btnEditarProfesor;
+        private Button btnEliminarProfesor;
+        private ListBox lsbProfesores;
         private TableLayoutPanel tableLayoutPanel4;
         private Label label3;
         private TextBox textBox3;
