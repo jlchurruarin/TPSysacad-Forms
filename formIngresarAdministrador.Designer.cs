@@ -129,6 +129,7 @@
             Controls.Add(tableLayoutPanel1);
             Name = "formIngresarAdministrador";
             Text = "formIngresarAdministrador";
+            FormClosed += formIngresarAdministrador_FormClosed;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);

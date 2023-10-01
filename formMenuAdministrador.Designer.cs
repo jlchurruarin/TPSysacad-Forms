@@ -163,6 +163,7 @@
             btnAgregarEstudiante.TabIndex = 2;
             btnAgregarEstudiante.Text = "Agregar Estudiante";
             btnAgregarEstudiante.UseVisualStyleBackColor = true;
+            btnAgregarEstudiante.Click += btnAgregarEstudiante_Click;
             // 
             // btnEditarEstudiante
             // 
@@ -173,6 +174,7 @@
             btnEditarEstudiante.TabIndex = 3;
             btnEditarEstudiante.Text = "Editar Seleccionado";
             btnEditarEstudiante.UseVisualStyleBackColor = true;
+            btnEditarEstudiante.Click += btnEditarEstudiante_Click;
             // 
             // btnEliminarEstudiante
             // 
@@ -619,6 +621,7 @@
             Controls.Add(tabControl1);
             Name = "formMenuAdministrador";
             Text = "formMenuAdministrador";
+            FormClosed += formMenuAdministrador_FormClosed;
             tabControl1.ResumeLayout(false);
             tabEstudiantes.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);

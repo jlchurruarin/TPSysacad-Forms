@@ -14,8 +14,7 @@ namespace TPSysacad___Forms
     public partial class formABMEstudiante : Form
     {
         private Form _formAnterior;
-        private Estudiante? _estudiante;
-        private BaseDeDatos? _baseDeDatos;
+        private Estudiante _estudiante;
 
         private formABMEstudiante(Form formAnterior)
         {
@@ -26,11 +25,6 @@ namespace TPSysacad___Forms
         public formABMEstudiante(Form formAnterior, Estudiante estudiante) : this(formAnterior)
         {
             _estudiante = estudiante;
-        }
-
-        public formABMEstudiante(Form formAnterior, BaseDeDatos baseDeDatos) : this(formAnterior)
-        {
-            _baseDeDatos = baseDeDatos;
         }
 
         private void formABMEstudiante_Load(object sender, EventArgs e)
@@ -51,32 +45,51 @@ namespace TPSysacad___Forms
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             _formAnterior.Show();
+            this.DialogResult = DialogResult.Abort;
             this.Close();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (_baseDeDatos is not null)
+            try
             {
-                Estudiante estudiante = new Estudiante();
-                if ((_baseDeDatos + estudiante) == false)
-                {
-                    MessageBox.Show("Error al agregar el estudiante");
-                }
+                ValidarEstudiante();
+                GuardarEstudiante();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            if (_estudiante is not null)
+            catch (Exception ex)
             {
-                _estudiante.Nombre = txbNombre.Text;
-                _estudiante.Apellido = txbApellido.Text;
-                _estudiante.Dni = int.Parse(txbDNI.Text);
-                _estudiante.Legajo = int.Parse(txbLegajo.Text);
-                _estudiante.NumeroTelefono = int.Parse(txbNumeroDeTelefono.Text);
-                _estudiante.Direccion = txbDireccion.Text;
-                _estudiante.CorreoElectronico = txbCorreoElectronico.Text;
-                _estudiante.Contraseña = txbContrasenia.Text;
-                _estudiante.CambioDeContraseñaObligatorio = chkCambioContraseñaObligatorio.Checked;
+                MessageBox.Show(ex.Message);
             }
 
         }
+
+        private void ValidarEstudiante()
+        {
+            if (string.IsNullOrEmpty(txbNombre.Text)) { throw new Exception("Nombre no puede estar vacio"); }
+            if (string.IsNullOrEmpty(txbApellido.Text)) { throw new Exception("Apellido no puede estar vacio"); }
+            if (string.IsNullOrEmpty(txbDNI.Text)) { throw new Exception("DNI no puede estar vacio"); }
+            if (string.IsNullOrEmpty(txbLegajo.Text)) { throw new Exception("Legajo no puede estar vacio"); }
+            if (string.IsNullOrEmpty(txbNumeroDeTelefono.Text)) { throw new Exception("Numero De Telefono no puede estar vacio"); }
+            if (string.IsNullOrEmpty(txbDireccion.Text)) { throw new Exception("Dirección no puede estar vacio"); }
+            if (string.IsNullOrEmpty(txbCorreoElectronico.Text)) { throw new Exception("Correo Electronico no puede estar vacio"); }
+            if (string.IsNullOrEmpty(txbContrasenia.Text)) { throw new Exception("Contraseña no puede estar vacio"); }
+
+        }
+
+        private void GuardarEstudiante()
+        {
+            _estudiante.Nombre = txbNombre.Text;
+            _estudiante.Apellido = txbApellido.Text;
+            _estudiante.Dni = int.Parse(txbDNI.Text);
+            _estudiante.Legajo = int.Parse(txbLegajo.Text);
+            _estudiante.NumeroTelefono = int.Parse(txbNumeroDeTelefono.Text);
+            _estudiante.Direccion = txbDireccion.Text;
+            _estudiante.CorreoElectronico = txbCorreoElectronico.Text;
+            _estudiante.Contraseña = txbContrasenia.Text;
+            _estudiante.CambioDeContraseñaObligatorio = chkCambioContraseñaObligatorio.Checked;
+        }
+
     }
 }
