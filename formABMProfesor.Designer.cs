@@ -37,10 +37,10 @@
             txbNombre = new TextBox();
             lblApellido = new Label();
             lblDNI = new Label();
-            lblCorreoElectronico = new Label();
-            lblContrasenia = new Label();
             txbApellido = new TextBox();
             txbDNI = new TextBox();
+            lblCorreoElectronico = new Label();
+            lblContrasenia = new Label();
             txbCorreoElectronico = new TextBox();
             txbContrasenia = new TextBox();
             chkCambioContraseñaObligatorio = new CheckBox();
@@ -184,6 +184,22 @@
             lblDNI.Text = "CUIT";
             lblDNI.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // txbApellido
+            // 
+            txbApellido.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txbApellido.Location = new Point(153, 43);
+            txbApellido.Name = "txbApellido";
+            txbApellido.Size = new Size(521, 23);
+            txbApellido.TabIndex = 9;
+            // 
+            // txbDNI
+            // 
+            txbDNI.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txbDNI.Location = new Point(153, 83);
+            txbDNI.Name = "txbDNI";
+            txbDNI.Size = new Size(521, 23);
+            txbDNI.TabIndex = 10;
+            // 
             // lblCorreoElectronico
             // 
             lblCorreoElectronico.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -205,22 +221,6 @@
             lblContrasenia.TabIndex = 8;
             lblContrasenia.Text = "Contraseña:";
             lblContrasenia.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // txbApellido
-            // 
-            txbApellido.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txbApellido.Location = new Point(153, 43);
-            txbApellido.Name = "txbApellido";
-            txbApellido.Size = new Size(521, 23);
-            txbApellido.TabIndex = 9;
-            // 
-            // txbDNI
-            // 
-            txbDNI.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txbDNI.Location = new Point(153, 83);
-            txbDNI.Name = "txbDNI";
-            txbDNI.Size = new Size(521, 23);
-            txbDNI.TabIndex = 10;
             // 
             // txbCorreoElectronico
             // 
