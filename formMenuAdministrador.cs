@@ -26,6 +26,7 @@ namespace TPSysacad___Forms
 
         private void formMenuAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Sistema.GuardarJson(_baseDeDatos);
             _formAnterior.Show();
         }
 

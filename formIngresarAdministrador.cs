@@ -44,7 +44,7 @@ namespace TPSysacad___Forms
 
         private void formIngresarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _formAnterior.Show();
+            btnSalir_Click(sender, e);
         }
     }
 }
