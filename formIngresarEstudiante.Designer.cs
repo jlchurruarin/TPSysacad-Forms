@@ -96,7 +96,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 65F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 65F));
-            tableLayoutPanel1.Size = new Size(300, 250);
+            tableLayoutPanel1.Size = new Size(300, 251);
             tableLayoutPanel1.TabIndex = 4;
             // 
             // btnIngresar
@@ -125,8 +125,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(323, 273);
+            ClientSize = new Size(323, 275);
             Controls.Add(tableLayoutPanel1);
+            MaximumSize = new Size(339, 314);
             MinimumSize = new Size(339, 312);
             Name = "formIngresarEstudiante";
             Text = "formLogin";

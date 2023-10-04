@@ -125,8 +125,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(321, 275);
+            ClientSize = new Size(323, 275);
             Controls.Add(tableLayoutPanel1);
+            MinimumSize = new Size(339, 314);
             Name = "formIngresarProfesor";
             Text = "Ingreso de Profesores";
             tableLayoutPanel1.ResumeLayout(false);

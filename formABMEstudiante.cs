@@ -38,7 +38,6 @@ namespace TPSysacad___Forms
             txbNumeroDeTelefono.Text = _estudiante.NumeroTelefono.ToString();
             txbDireccion.Text = _estudiante.Direccion;
             txbCorreoElectronico.Text = _estudiante.CorreoElectronico;
-            txbContrasenia.Text = _estudiante.Contraseña;
             chkCambioContraseñaObligatorio.Checked = _estudiante.CambioDeContraseñaObligatorio;
         }
 
@@ -74,7 +73,6 @@ namespace TPSysacad___Forms
             if (string.IsNullOrEmpty(txbNumeroDeTelefono.Text)) { throw new Exception("Numero De Telefono no puede estar vacio"); }
             if (string.IsNullOrEmpty(txbDireccion.Text)) { throw new Exception("Dirección no puede estar vacio"); }
             if (string.IsNullOrEmpty(txbCorreoElectronico.Text)) { throw new Exception("Correo Electronico no puede estar vacio"); }
-            if (string.IsNullOrEmpty(txbContrasenia.Text)) { throw new Exception("Contraseña no puede estar vacio"); }
 
         }
 
@@ -87,7 +85,6 @@ namespace TPSysacad___Forms
             _estudiante.NumeroTelefono = int.Parse(txbNumeroDeTelefono.Text);
             _estudiante.Direccion = txbDireccion.Text;
             _estudiante.CorreoElectronico = txbCorreoElectronico.Text;
-            _estudiante.Contraseña = txbContrasenia.Text;
             _estudiante.CambioDeContraseñaObligatorio = chkCambioContraseñaObligatorio.Checked;
         }
 

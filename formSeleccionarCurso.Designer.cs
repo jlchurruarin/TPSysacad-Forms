@@ -116,6 +116,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(425, 442);
             Controls.Add(tlpCurso);
+            MinimumSize = new Size(441, 481);
             Name = "formSeleccionarCurso";
             Text = "formSeleccionarCurso";
             tlpCurso.ResumeLayout(false);

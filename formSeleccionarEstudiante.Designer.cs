@@ -31,8 +31,8 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             lblBuscarEstudiante = new Label();
             txbBuscarEstudiante = new TextBox();
-            btnAgregarEstudiante = new Button();
             lsbEstudiantes = new ListBox();
+            btnAgregarEstudiante = new Button();
             btnCancelar = new Button();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -58,7 +58,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(412, 426);
+            tableLayoutPanel1.Size = new Size(401, 418);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // lblBuscarEstudiante
@@ -78,16 +78,6 @@
             txbBuscarEstudiante.Size = new Size(194, 23);
             txbBuscarEstudiante.TabIndex = 1;
             // 
-            // btnAgregarEstudiante
-            // 
-            btnAgregarEstudiante.Anchor = AnchorStyles.None;
-            btnAgregarEstudiante.Location = new Point(269, 53);
-            btnAgregarEstudiante.Name = "btnAgregarEstudiante";
-            btnAgregarEstudiante.Size = new Size(133, 34);
-            btnAgregarEstudiante.TabIndex = 2;
-            btnAgregarEstudiante.Text = "Agregar Estudiante";
-            btnAgregarEstudiante.UseVisualStyleBackColor = true;
-            // 
             // lsbEstudiantes
             // 
             lsbEstudiantes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -97,13 +87,23 @@
             lsbEstudiantes.Location = new Point(3, 53);
             lsbEstudiantes.Name = "lsbEstudiantes";
             tableLayoutPanel1.SetRowSpan(lsbEstudiantes, 4);
-            lsbEstudiantes.Size = new Size(253, 484);
+            lsbEstudiantes.Size = new Size(242, 364);
             lsbEstudiantes.TabIndex = 5;
+            // 
+            // btnAgregarEstudiante
+            // 
+            btnAgregarEstudiante.Anchor = AnchorStyles.None;
+            btnAgregarEstudiante.Location = new Point(258, 53);
+            btnAgregarEstudiante.Name = "btnAgregarEstudiante";
+            btnAgregarEstudiante.Size = new Size(133, 34);
+            btnAgregarEstudiante.TabIndex = 2;
+            btnAgregarEstudiante.Text = "Agregar Estudiante";
+            btnAgregarEstudiante.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.None;
-            btnCancelar.Location = new Point(269, 93);
+            btnCancelar.Location = new Point(258, 93);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(133, 34);
             btnCancelar.TabIndex = 6;
@@ -114,8 +114,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(436, 450);
+            ClientSize = new Size(425, 442);
             Controls.Add(tableLayoutPanel1);
+            MinimumSize = new Size(441, 481);
             Name = "formSeleccionarEstudiante";
             Text = "formSeleccionarEstudiante";
             tableLayoutPanel1.ResumeLayout(false);

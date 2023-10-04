@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             tlpCurso = new TableLayoutPanel();
-            lblBuscarEstudiante = new Label();
+            lblBuscarMateria = new Label();
             txbBuscarMateria = new TextBox();
             lsbMateria = new ListBox();
             btnAgregarMateria = new Button();
@@ -44,7 +44,7 @@
             tlpCurso.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tlpCurso.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tlpCurso.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 153F));
-            tlpCurso.Controls.Add(lblBuscarEstudiante, 0, 0);
+            tlpCurso.Controls.Add(lblBuscarMateria, 0, 0);
             tlpCurso.Controls.Add(txbBuscarMateria, 0, 1);
             tlpCurso.Controls.Add(lsbMateria, 0, 2);
             tlpCurso.Controls.Add(btnAgregarMateria, 2, 2);
@@ -58,17 +58,17 @@
             tlpCurso.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tlpCurso.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tlpCurso.RowStyles.Add(new RowStyle());
-            tlpCurso.Size = new Size(391, 413);
+            tlpCurso.Size = new Size(401, 418);
             tlpCurso.TabIndex = 3;
             // 
-            // lblBuscarEstudiante
+            // lblBuscarMateria
             // 
-            lblBuscarEstudiante.AutoSize = true;
-            lblBuscarEstudiante.Location = new Point(3, 0);
-            lblBuscarEstudiante.Name = "lblBuscarEstudiante";
-            lblBuscarEstudiante.Size = new Size(88, 15);
-            lblBuscarEstudiante.TabIndex = 0;
-            lblBuscarEstudiante.Text = "Buscar Materia:";
+            lblBuscarMateria.AutoSize = true;
+            lblBuscarMateria.Location = new Point(3, 0);
+            lblBuscarMateria.Name = "lblBuscarMateria";
+            lblBuscarMateria.Size = new Size(88, 15);
+            lblBuscarMateria.TabIndex = 0;
+            lblBuscarMateria.Text = "Buscar Materia:";
             // 
             // txbBuscarMateria
             // 
@@ -87,13 +87,13 @@
             lsbMateria.Location = new Point(3, 53);
             lsbMateria.Name = "lsbMateria";
             tlpCurso.SetRowSpan(lsbMateria, 4);
-            lsbMateria.Size = new Size(232, 364);
+            lsbMateria.Size = new Size(242, 349);
             lsbMateria.TabIndex = 5;
             // 
             // btnAgregarMateria
             // 
             btnAgregarMateria.Anchor = AnchorStyles.None;
-            btnAgregarMateria.Location = new Point(248, 53);
+            btnAgregarMateria.Location = new Point(258, 53);
             btnAgregarMateria.Name = "btnAgregarMateria";
             btnAgregarMateria.Size = new Size(133, 34);
             btnAgregarMateria.TabIndex = 2;
@@ -103,7 +103,7 @@
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.None;
-            btnCancelar.Location = new Point(248, 93);
+            btnCancelar.Location = new Point(258, 93);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(133, 34);
             btnCancelar.TabIndex = 6;
@@ -114,8 +114,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(415, 437);
+            ClientSize = new Size(425, 442);
             Controls.Add(tlpCurso);
+            MinimumSize = new Size(441, 481);
             Name = "formSeleccionarMateria";
             Text = "formSeleccionarMateria";
             tlpCurso.ResumeLayout(false);
@@ -126,7 +127,7 @@
         #endregion
 
         private TableLayoutPanel tlpCurso;
-        private Label lblBuscarEstudiante;
+        private Label lblBuscarMateria;
         private TextBox txbBuscarMateria;
         private ListBox lsbMateria;
         private Button btnAgregarMateria;

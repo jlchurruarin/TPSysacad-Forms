@@ -59,7 +59,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 65F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 65F));
-            tableLayoutPanel1.Size = new Size(302, 276);
+            tableLayoutPanel1.Size = new Size(300, 251);
             tableLayoutPanel1.TabIndex = 5;
             // 
             // lblCorreoElectronico
@@ -113,7 +113,7 @@
             // btnSalir
             // 
             btnSalir.Anchor = AnchorStyles.None;
-            btnSalir.Location = new Point(113, 219);
+            btnSalir.Location = new Point(113, 206);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(75, 23);
             btnSalir.TabIndex = 5;
@@ -125,8 +125,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(326, 300);
+            ClientSize = new Size(323, 275);
             Controls.Add(tableLayoutPanel1);
+            MinimumSize = new Size(339, 314);
             Name = "formIngresarAdministrador";
             Text = "formIngresarAdministrador";
             FormClosed += formIngresarAdministrador_FormClosed;
