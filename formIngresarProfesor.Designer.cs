@@ -130,6 +130,7 @@
             MinimumSize = new Size(339, 314);
             Name = "formIngresarProfesor";
             Text = "Ingreso de Profesores";
+            FormClosed += formIngresarProfesor_FormClosed;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
+            btnAutoCompletar = new Button();
             lblCorreoElectronico = new Label();
             label1 = new Label();
             txbContraseña = new TextBox();
@@ -43,6 +44,7 @@
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.Controls.Add(btnAutoCompletar, 0, 6);
             tableLayoutPanel1.Controls.Add(lblCorreoElectronico, 0, 0);
             tableLayoutPanel1.Controls.Add(label1, 0, 2);
             tableLayoutPanel1.Controls.Add(txbContraseña, 0, 3);
@@ -52,15 +54,28 @@
             tableLayoutPanel1.Location = new Point(12, 12);
             tableLayoutPanel1.MinimumSize = new Size(300, 250);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 6;
+            tableLayoutPanel1.RowCount = 7;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 65F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 65F));
-            tableLayoutPanel1.Size = new Size(300, 251);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(301, 310);
             tableLayoutPanel1.TabIndex = 5;
+            // 
+            // btnAutoCompletar
+            // 
+            btnAutoCompletar.Anchor = AnchorStyles.None;
+            btnAutoCompletar.Location = new Point(97, 268);
+            btnAutoCompletar.Name = "btnAutoCompletar";
+            btnAutoCompletar.Size = new Size(108, 23);
+            btnAutoCompletar.TabIndex = 6;
+            btnAutoCompletar.Text = "Auto Completar";
+            btnAutoCompletar.UseVisualStyleBackColor = true;
+            btnAutoCompletar.Click += btnAutoCompletar_Click;
             // 
             // lblCorreoElectronico
             // 
@@ -125,7 +140,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(323, 275);
+            ClientSize = new Size(324, 334);
             Controls.Add(tableLayoutPanel1);
             MinimumSize = new Size(339, 314);
             Name = "formIngresarAdministrador";
@@ -145,5 +160,6 @@
         private TextBox txbCorreoElectronico;
         private Button btnIngresar;
         private Button btnSalir;
+        private Button btnAutoCompletar;
     }
 }

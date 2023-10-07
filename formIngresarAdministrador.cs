@@ -39,12 +39,17 @@ namespace TPSysacad___Forms
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
-            _formAnterior.Show();
         }
 
         private void formIngresarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
-            btnSalir_Click(sender, e);
+            _formAnterior.Show();
+        }
+
+        private void btnAutoCompletar_Click(object sender, EventArgs e)
+        {
+            txbCorreoElectronico.Text = "Admin@admin.com";
+            txbContraseña.Text = "1234";
         }
     }
 }

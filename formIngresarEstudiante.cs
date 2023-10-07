@@ -41,8 +41,11 @@ namespace TPSysacad___Forms
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void formIngresarEstudiante_FormClosed(object sender, FormClosedEventArgs e)
+        {
             _formAnterior.Show();
-            Sistema.GuardarJson(_baseDeDatos);
         }
     }
 }

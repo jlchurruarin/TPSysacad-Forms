@@ -40,6 +40,10 @@ namespace TPSysacad___Forms
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void formIngresarProfesor_FormClosed(object sender, FormClosedEventArgs e)
+        {
             _formAnterior.Show();
         }
     }

@@ -131,6 +131,7 @@
             MinimumSize = new Size(339, 312);
             Name = "formIngresarEstudiante";
             Text = "formLogin";
+            FormClosed += formIngresarEstudiante_FormClosed;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
