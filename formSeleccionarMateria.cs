@@ -12,8 +12,11 @@ namespace TPSysacad___Forms
 {
     public partial class formSeleccionarMateria : Form
     {
-        public formSeleccionarMateria()
+        private string _idMateria;
+
+        public formSeleccionarMateria(ref string idMateria)
         {
+            _idMateria = idMateria;
             InitializeComponent();
         }
     }
