@@ -42,7 +42,7 @@ namespace TPSysacad___Forms
             Estudiante estudiante = new Estudiante();
             if (_baseDeDatos + estudiante)
             {
-                formABMEstudiante formABMEstudiante = new formABMEstudiante(this, estudiante, _baseDeDatos);
+                formABMEstudiante formABMEstudiante = new formABMEstudiante(estudiante, _baseDeDatos);
                 DialogResult estudianteDialogResult = formABMEstudiante.ShowDialog();
 
                 if (estudianteDialogResult == DialogResult.Abort)
@@ -61,7 +61,7 @@ namespace TPSysacad___Forms
             if (lsbEstudiantes.SelectedIndex == -1) { MessageBox.Show("Selecione un estudiante a editar", "Error"); return; }
 
             Estudiante estudianteSeleccionado = _baseDeDatos.ListaEstudiantes[lsbEstudiantes.SelectedIndex];
-            formABMEstudiante formABMEstudiante = new formABMEstudiante(this, estudianteSeleccionado, _baseDeDatos);
+            formABMEstudiante formABMEstudiante = new formABMEstudiante(estudianteSeleccionado, _baseDeDatos);
             formABMEstudiante.ShowDialog();
             ActualizarListaEstudiantes();
         }
@@ -85,7 +85,7 @@ namespace TPSysacad___Forms
             Profesor profesor = new Profesor();
             if (_baseDeDatos + profesor)
             {
-                formABMProfesor formABMProfesor = new formABMProfesor(this, profesor, _baseDeDatos);
+                formABMProfesor formABMProfesor = new formABMProfesor(profesor, _baseDeDatos);
                 DialogResult ProfesorDialogResult = formABMProfesor.ShowDialog();
 
                 if (ProfesorDialogResult == DialogResult.Abort)
@@ -103,7 +103,7 @@ namespace TPSysacad___Forms
             if (lsbProfesores.SelectedIndex == -1) { MessageBox.Show("Selecione un profesor a editar", "Error"); return; }
 
             Profesor profesorSelecionado = _baseDeDatos.ListaProfesores[lsbProfesores.SelectedIndex];
-            formABMProfesor formABMProfesor = new formABMProfesor(this, profesorSelecionado, _baseDeDatos);
+            formABMProfesor formABMProfesor = new formABMProfesor(profesorSelecionado, _baseDeDatos);
             formABMProfesor.ShowDialog();
             ActualizarListaEstudiantes();
         }
@@ -124,15 +124,15 @@ namespace TPSysacad___Forms
 
         private void btnAgregarAdministrador_Click(object sender, EventArgs e)
         {
-            Administrador Administrador = new Administrador();
-            if (_baseDeDatos + Administrador)
+            Administrador administrador = new Administrador();
+            if (_baseDeDatos + administrador)
             {
-                formABMAdministrador formABMProfesor = new formABMAdministrador(this, Administrador, _baseDeDatos);
-                DialogResult AdministradorDialogResult = formABMProfesor.ShowDialog();
+                formABMAdministrador formABMProfesor = new formABMAdministrador(this, administrador);
+                DialogResult administradorDialogResult = formABMProfesor.ShowDialog();
 
-                if (AdministradorDialogResult == DialogResult.Abort)
+                if (administradorDialogResult == DialogResult.Abort)
                 {
-                    _ = _baseDeDatos - Administrador;
+                    _ = _baseDeDatos - administrador;
                 }
 
                 ActualizarListaAdministradores();
@@ -145,7 +145,7 @@ namespace TPSysacad___Forms
             if (lsbAdministradores.SelectedIndex == -1) { MessageBox.Show("Selecione un administrador a editar", "Error"); return; }
 
             Administrador administradorSeleccionado = _baseDeDatos.ListaAdministradores[lsbAdministradores.SelectedIndex];
-            formABMAdministrador formABMAdministrador = new formABMAdministrador(this, administradorSeleccionado, _baseDeDatos);
+            formABMAdministrador formABMAdministrador = new formABMAdministrador(this, administradorSeleccionado);
             formABMAdministrador.ShowDialog();
             ActualizarListaAdministradores();
         }
@@ -166,7 +166,20 @@ namespace TPSysacad___Forms
 
         private void btnAgregarMateria_Click(object sender, EventArgs e)
         {
+            Materia materia = new Materia();
+            if (_baseDeDatos + materia)
+            {
+                formABMMateria formABMMateria = new formABMMateria(materia, _baseDeDatos);
+                DialogResult materiaDialogResult = formABMMateria.ShowDialog();
 
+                if (materiaDialogResult == DialogResult.Abort)
+                {
+                    _ = _baseDeDatos - materia;
+                }
+
+                ActualizarListaMaterias();
+
+            }
         }
 
         private void btnEditarMateria_Click(object sender, EventArgs e)
@@ -181,7 +194,20 @@ namespace TPSysacad___Forms
 
         private void btnAgregarCurso_Click(object sender, EventArgs e)
         {
+            Curso curso = new Curso();
+            if (_baseDeDatos + curso)
+            {
+                formABMCurso formABMCurso = new formABMCurso(curso, _baseDeDatos);
+                DialogResult cursoDialogResult = formABMCurso.ShowDialog();
 
+                if (cursoDialogResult == DialogResult.Abort)
+                {
+                    _ = _baseDeDatos - curso;
+                }
+
+                ActualizarListaCursos();
+
+            }
         }
 
         private void btnEditarCurso_Click(object sender, EventArgs e)
@@ -217,7 +243,7 @@ namespace TPSysacad___Forms
             lsbAdministradores.Items.Clear();
             foreach (Administrador administrador in _baseDeDatos.ListaAdministradores)
             {
-                lsbEstudiantes.Items.Add(administrador.ToString());
+                lsbAdministradores.Items.Add(administrador.ToString());
             }
         }
 
@@ -233,8 +259,8 @@ namespace TPSysacad___Forms
         private void ActualizarListaCursos()
         {
             lsbCursos.Items.Clear();
-            foreach (Curso curso in _baseDeDatos.ListaCursos) 
-            { 
+            foreach (Curso curso in _baseDeDatos.ListaCursos)
+            {
                 lsbCursos.Items.Add(curso.ToString());
             }
         }

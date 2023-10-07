@@ -13,14 +13,12 @@ namespace TPSysacad___Forms
 {
     public partial class formABMEstudiante : Form
     {
-        private Form _formAnterior;
         private Estudiante _estudiante;
         private BaseDeDatos _baseDeDatos;
 
-        public formABMEstudiante(Form formAnterior, Estudiante estudiante, BaseDeDatos baseDeDatos)
+        public formABMEstudiante(Estudiante estudiante, BaseDeDatos baseDeDatos)
         {
             _estudiante = estudiante;
-            _formAnterior = formAnterior;
             _baseDeDatos = baseDeDatos;
             InitializeComponent();
         }
@@ -34,7 +32,6 @@ namespace TPSysacad___Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            _formAnterior.Show();
             this.DialogResult = DialogResult.Abort;
             this.Close();
         }
@@ -93,6 +90,7 @@ namespace TPSysacad___Forms
 
         private void CargarListaCursosInscriptos()
         {
+            lsbCursosInscriptos.Items.Clear();
             List<Curso> listaCursosInscriptos = _baseDeDatos.BuscarCursosInscriptos(_estudiante);
             foreach (Curso cursoInscripto in listaCursosInscriptos)
             {

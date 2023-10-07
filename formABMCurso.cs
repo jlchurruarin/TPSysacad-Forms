@@ -13,13 +13,11 @@ namespace TPSysacad___Forms
 {
     public partial class formABMCurso : Form
     {
-        private Form _formAnterior;
         private Curso _curso;
         private BaseDeDatos _baseDeDatos;
 
-        public formABMCurso(Form formAnterior, Curso curso, BaseDeDatos baseDeDatos)
+        public formABMCurso(Curso curso, BaseDeDatos baseDeDatos)
         {
-            _formAnterior = formAnterior;
             _curso = curso;
             _baseDeDatos = baseDeDatos;
             InitializeComponent();
@@ -51,6 +49,11 @@ namespace TPSysacad___Forms
         }
 
         private void CargarListaEstudiantesEnEspera()
+        {
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
 
         }

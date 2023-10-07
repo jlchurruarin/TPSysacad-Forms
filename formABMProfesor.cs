@@ -14,13 +14,11 @@ namespace TPSysacad___Forms
 {
     public partial class formABMProfesor : Form
     {
-        private Form _formAnterior;
         private Profesor _profesor;
         private BaseDeDatos _baseDeDatos;
 
-        public formABMProfesor(Form formAnterior, Profesor profesor, BaseDeDatos baseDeDatos)
+        public formABMProfesor(Profesor profesor, BaseDeDatos baseDeDatos)
         {
-            _formAnterior = formAnterior;
             _profesor = profesor;
             _baseDeDatos = baseDeDatos;
             InitializeComponent();
@@ -89,7 +87,6 @@ namespace TPSysacad___Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            _formAnterior.Show();
             this.DialogResult = DialogResult.Abort;
             this.Close();
         }
