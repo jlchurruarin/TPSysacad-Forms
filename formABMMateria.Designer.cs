@@ -79,6 +79,7 @@
             btnCancelar.TabIndex = 2;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnGuardar
             // 
@@ -207,6 +208,7 @@
             btnEliminarMateria.TabIndex = 5;
             btnEliminarMateria.Text = "Eliminar Materia";
             btnEliminarMateria.UseVisualStyleBackColor = true;
+            btnEliminarMateria.Click += btnEliminarMateria_Click;
             // 
             // btnAgregarMateria
             // 
@@ -217,6 +219,7 @@
             btnAgregarMateria.TabIndex = 3;
             btnAgregarMateria.Text = "Agregar Materia";
             btnAgregarMateria.UseVisualStyleBackColor = true;
+            btnAgregarMateria.Click += btnAgregarMateria_Click;
             // 
             // lsbMateriasRequeridas
             // 
