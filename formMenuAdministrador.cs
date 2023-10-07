@@ -24,6 +24,13 @@ namespace TPSysacad___Forms
             InitializeComponent();
         }
 
+        private void formMenuAdministrador_Load(object sender, EventArgs e)
+        {
+            ActualizarListaEstudiantes();
+            ActualizarListaProfesores();
+            ActualizarListaAdministradores();
+        }
+
         private void formMenuAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
             Sistema.GuardarJson(_baseDeDatos);
@@ -73,30 +80,6 @@ namespace TPSysacad___Forms
             }
         }
 
-        private void formMenuAdministrador_Load(object sender, EventArgs e)
-        {
-            ActualizarListaEstudiantes();
-            ActualizarListaProfesores();
-        }
-
-        private void ActualizarListaProfesores()
-        {
-            lsbProfesores.Items.Clear();
-            foreach (Profesor profesor in _baseDeDatos.ListaProfesores)
-            {
-                lsbProfesores.Items.Add($"{profesor.Apellido}, {profesor.Nombre}");
-            }
-        }
-
-        private void ActualizarListaEstudiantes()
-        {
-            lsbEstudiantes.Items.Clear();
-            foreach (Estudiante estudiante in _baseDeDatos.ListaEstudiantes)
-            {
-                lsbEstudiantes.Items.Add($"{estudiante.Legajo}: {estudiante.Apellido}, {estudiante.Nombre}");
-            }
-        }
-
         private void btnAgregarProfesor_Click(object sender, EventArgs e)
         {
             Profesor profesor = new Profesor();
@@ -114,5 +97,148 @@ namespace TPSysacad___Forms
 
             }
         }
+
+        private void btnEditarProfesor_Click(object sender, EventArgs e)
+        {
+            if (lsbProfesores.SelectedIndex == -1) { MessageBox.Show("Selecione un profesor a editar", "Error"); return; }
+
+            Profesor profesorSelecionado = _baseDeDatos.ListaProfesores[lsbProfesores.SelectedIndex];
+            formABMProfesor formABMProfesor = new formABMProfesor(this, profesorSelecionado, _baseDeDatos);
+            formABMProfesor.ShowDialog();
+            ActualizarListaEstudiantes();
+        }
+
+        private void btnEliminarProfesor_Click(object sender, EventArgs e)
+        {
+            if (lsbProfesores.SelectedIndex == -1) { MessageBox.Show("Selecione un estudiante a eliminar", "Error"); return; }
+
+            if (_baseDeDatos - _baseDeDatos.ListaProfesores[lsbProfesores.SelectedIndex])
+            {
+                ActualizarListaProfesores();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar el estudiante", "Error");
+            }
+        }
+
+        private void btnAgregarAdministrador_Click(object sender, EventArgs e)
+        {
+            Administrador Administrador = new Administrador();
+            if (_baseDeDatos + Administrador)
+            {
+                formABMAdministrador formABMProfesor = new formABMAdministrador(this, Administrador, _baseDeDatos);
+                DialogResult AdministradorDialogResult = formABMProfesor.ShowDialog();
+
+                if (AdministradorDialogResult == DialogResult.Abort)
+                {
+                    _ = _baseDeDatos - Administrador;
+                }
+
+                ActualizarListaAdministradores();
+
+            }
+        }
+
+        private void btnEditarAdministrador_Click(object sender, EventArgs e)
+        {
+            if (lsbAdministradores.SelectedIndex == -1) { MessageBox.Show("Selecione un administrador a editar", "Error"); return; }
+
+            Administrador administradorSeleccionado = _baseDeDatos.ListaAdministradores[lsbAdministradores.SelectedIndex];
+            formABMAdministrador formABMAdministrador = new formABMAdministrador(this, administradorSeleccionado, _baseDeDatos);
+            formABMAdministrador.ShowDialog();
+            ActualizarListaAdministradores();
+        }
+
+        private void btnEliminarAdministrador_Click(object sender, EventArgs e)
+        {
+            if (lsbAdministradores.SelectedIndex == -1) { MessageBox.Show("Selecione un administrador a eliminar", "Error"); return; }
+
+            if (_baseDeDatos - _baseDeDatos.ListaAdministradores[lsbAdministradores.SelectedIndex])
+            {
+                ActualizarListaAdministradores();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar el administrador", "Error");
+            }
+        }
+
+        private void btnAgregarMateria_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditarMateria_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminarMateria_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarCurso_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditarCurso_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminarCurso_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ActualizarListaProfesores()
+        {
+            lsbProfesores.Items.Clear();
+            foreach (Profesor profesor in _baseDeDatos.ListaProfesores)
+            {
+                lsbProfesores.Items.Add(profesor.ToString());
+            }
+        }
+
+        private void ActualizarListaEstudiantes()
+        {
+            lsbEstudiantes.Items.Clear();
+            foreach (Estudiante estudiante in _baseDeDatos.ListaEstudiantes)
+            {
+                lsbEstudiantes.Items.Add(estudiante.ToString());
+            }
+        }
+
+        private void ActualizarListaAdministradores()
+        {
+            lsbAdministradores.Items.Clear();
+            foreach (Administrador administrador in _baseDeDatos.ListaAdministradores)
+            {
+                lsbEstudiantes.Items.Add(administrador.ToString());
+            }
+        }
+
+        private void ActualizarListaMaterias()
+        {
+            lsbMaterias.Items.Clear();
+            foreach (Materia materia in _baseDeDatos.ListaMaterias)
+            {
+                lsbMaterias.Items.Add(materia.ToString());
+            }
+        }
+
+        private void ActualizarListaCursos()
+        {
+            lsbCursos.Items.Clear();
+            foreach (Curso curso in _baseDeDatos.ListaCursos) 
+            { 
+                lsbCursos.Items.Add(curso.ToString());
+            }
+        }
+
+
     }
 }

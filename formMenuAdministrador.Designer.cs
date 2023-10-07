@@ -50,8 +50,8 @@
             label3 = new Label();
             txbBuscarAdministrador = new TextBox();
             btnAgregarAdministrador = new Button();
-            button5 = new Button();
-            button6 = new Button();
+            btnEditarAdministrador = new Button();
+            btnEliminarAdministrador = new Button();
             lsbAdministradores = new ListBox();
             tabMaterias = new TabPage();
             tableLayoutPanel5 = new TableLayoutPanel();
@@ -66,8 +66,8 @@
             lblBuscarCurso = new Label();
             txbBuscarCurso = new TextBox();
             btnAgregarCurso = new Button();
-            button11 = new Button();
-            button12 = new Button();
+            btnEditarCurso = new Button();
+            btnEliminarCurso = new Button();
             lsbCursos = new ListBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             label1 = new Label();
@@ -272,6 +272,7 @@
             btnEditarProfesor.TabIndex = 3;
             btnEditarProfesor.Text = "Editar Seleccionado";
             btnEditarProfesor.UseVisualStyleBackColor = true;
+            btnEditarProfesor.Click += btnEditarProfesor_Click;
             // 
             // btnEliminarProfesor
             // 
@@ -282,6 +283,7 @@
             btnEliminarProfesor.TabIndex = 4;
             btnEliminarProfesor.Text = "Eliminar Seleccionado";
             btnEliminarProfesor.UseVisualStyleBackColor = true;
+            btnEliminarProfesor.Click += btnEliminarProfesor_Click;
             // 
             // lsbProfesores
             // 
@@ -315,8 +317,8 @@
             tableLayoutPanel4.Controls.Add(label3, 0, 0);
             tableLayoutPanel4.Controls.Add(txbBuscarAdministrador, 0, 1);
             tableLayoutPanel4.Controls.Add(btnAgregarAdministrador, 2, 2);
-            tableLayoutPanel4.Controls.Add(button5, 2, 3);
-            tableLayoutPanel4.Controls.Add(button6, 2, 4);
+            tableLayoutPanel4.Controls.Add(btnEditarAdministrador, 2, 3);
+            tableLayoutPanel4.Controls.Add(btnEliminarAdministrador, 2, 4);
             tableLayoutPanel4.Controls.Add(lsbAdministradores, 0, 2);
             tableLayoutPanel4.Location = new Point(6, 6);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -356,26 +358,29 @@
             btnAgregarAdministrador.TabIndex = 2;
             btnAgregarAdministrador.Text = "Agregar Administrador";
             btnAgregarAdministrador.UseVisualStyleBackColor = true;
+            btnAgregarAdministrador.Click += btnAgregarAdministrador_Click;
             // 
-            // button5
+            // btnEditarAdministrador
             // 
-            button5.Anchor = AnchorStyles.None;
-            button5.Location = new Point(538, 93);
-            button5.Name = "button5";
-            button5.Size = new Size(149, 34);
-            button5.TabIndex = 3;
-            button5.Text = "Editar Seleccionado";
-            button5.UseVisualStyleBackColor = true;
+            btnEditarAdministrador.Anchor = AnchorStyles.None;
+            btnEditarAdministrador.Location = new Point(538, 93);
+            btnEditarAdministrador.Name = "btnEditarAdministrador";
+            btnEditarAdministrador.Size = new Size(149, 34);
+            btnEditarAdministrador.TabIndex = 3;
+            btnEditarAdministrador.Text = "Editar Seleccionado";
+            btnEditarAdministrador.UseVisualStyleBackColor = true;
+            btnEditarAdministrador.Click += btnEditarAdministrador_Click;
             // 
-            // button6
+            // btnEliminarAdministrador
             // 
-            button6.Anchor = AnchorStyles.None;
-            button6.Location = new Point(538, 133);
-            button6.Name = "button6";
-            button6.Size = new Size(149, 34);
-            button6.TabIndex = 4;
-            button6.Text = "Eliminar Seleccionado";
-            button6.UseVisualStyleBackColor = true;
+            btnEliminarAdministrador.Anchor = AnchorStyles.None;
+            btnEliminarAdministrador.Location = new Point(538, 133);
+            btnEliminarAdministrador.Name = "btnEliminarAdministrador";
+            btnEliminarAdministrador.Size = new Size(149, 34);
+            btnEliminarAdministrador.TabIndex = 4;
+            btnEliminarAdministrador.Text = "Eliminar Seleccionado";
+            btnEliminarAdministrador.UseVisualStyleBackColor = true;
+            btnEliminarAdministrador.Click += btnEliminarAdministrador_Click;
             // 
             // lsbAdministradores
             // 
@@ -450,6 +455,7 @@
             btnAgregarMateria.TabIndex = 2;
             btnAgregarMateria.Text = "Agregar Materia";
             btnAgregarMateria.UseVisualStyleBackColor = true;
+            btnAgregarMateria.Click += btnAgregarMateria_Click;
             // 
             // btnEditarMateria
             // 
@@ -460,6 +466,7 @@
             btnEditarMateria.TabIndex = 3;
             btnEditarMateria.Text = "Editar Seleccionada";
             btnEditarMateria.UseVisualStyleBackColor = true;
+            btnEditarMateria.Click += btnEditarMateria_Click;
             // 
             // btnEliminarMateria
             // 
@@ -470,6 +477,7 @@
             btnEliminarMateria.TabIndex = 4;
             btnEliminarMateria.Text = "Eliminar Seleccionada";
             btnEliminarMateria.UseVisualStyleBackColor = true;
+            btnEliminarMateria.Click += btnEliminarMateria_Click;
             // 
             // lsbMaterias
             // 
@@ -503,8 +511,8 @@
             tableLayoutPanel6.Controls.Add(lblBuscarCurso, 0, 0);
             tableLayoutPanel6.Controls.Add(txbBuscarCurso, 0, 1);
             tableLayoutPanel6.Controls.Add(btnAgregarCurso, 2, 2);
-            tableLayoutPanel6.Controls.Add(button11, 2, 3);
-            tableLayoutPanel6.Controls.Add(button12, 2, 4);
+            tableLayoutPanel6.Controls.Add(btnEditarCurso, 2, 3);
+            tableLayoutPanel6.Controls.Add(btnEliminarCurso, 2, 4);
             tableLayoutPanel6.Controls.Add(lsbCursos, 0, 2);
             tableLayoutPanel6.Location = new Point(6, 6);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -544,26 +552,29 @@
             btnAgregarCurso.TabIndex = 2;
             btnAgregarCurso.Text = "Agregar Curso";
             btnAgregarCurso.UseVisualStyleBackColor = true;
+            btnAgregarCurso.Click += btnAgregarCurso_Click;
             // 
-            // button11
+            // btnEditarCurso
             // 
-            button11.Anchor = AnchorStyles.None;
-            button11.Location = new Point(546, 93);
-            button11.Name = "button11";
-            button11.Size = new Size(133, 34);
-            button11.TabIndex = 3;
-            button11.Text = "Editar Seleccionado";
-            button11.UseVisualStyleBackColor = true;
+            btnEditarCurso.Anchor = AnchorStyles.None;
+            btnEditarCurso.Location = new Point(546, 93);
+            btnEditarCurso.Name = "btnEditarCurso";
+            btnEditarCurso.Size = new Size(133, 34);
+            btnEditarCurso.TabIndex = 3;
+            btnEditarCurso.Text = "Editar Seleccionado";
+            btnEditarCurso.UseVisualStyleBackColor = true;
+            btnEditarCurso.Click += btnEditarCurso_Click;
             // 
-            // button12
+            // btnEliminarCurso
             // 
-            button12.Anchor = AnchorStyles.None;
-            button12.Location = new Point(546, 133);
-            button12.Name = "button12";
-            button12.Size = new Size(133, 34);
-            button12.TabIndex = 4;
-            button12.Text = "Eliminar Seleccionado";
-            button12.UseVisualStyleBackColor = true;
+            btnEliminarCurso.Anchor = AnchorStyles.None;
+            btnEliminarCurso.Location = new Point(546, 133);
+            btnEliminarCurso.Name = "btnEliminarCurso";
+            btnEliminarCurso.Size = new Size(133, 34);
+            btnEliminarCurso.TabIndex = 4;
+            btnEliminarCurso.Text = "Eliminar Seleccionado";
+            btnEliminarCurso.UseVisualStyleBackColor = true;
+            btnEliminarCurso.Click += btnEliminarCurso_Click;
             // 
             // lsbCursos
             // 
@@ -672,8 +683,8 @@
         private Label label3;
         private TextBox txbBuscarAdministrador;
         private Button btnAgregarAdministrador;
-        private Button button5;
-        private Button button6;
+        private Button btnEditarAdministrador;
+        private Button btnEliminarAdministrador;
         private ListBox lsbAdministradores;
         private TableLayoutPanel tableLayoutPanel5;
         private Label lblBuscarMateria;
@@ -686,8 +697,8 @@
         private Label lblBuscarCurso;
         private TextBox txbBuscarCurso;
         private Button btnAgregarCurso;
-        private Button button11;
-        private Button button12;
+        private Button btnEditarCurso;
+        private Button btnEliminarCurso;
         private ListBox lsbCursos;
         private TableLayoutPanel tableLayoutPanel2;
         private Label label1;
