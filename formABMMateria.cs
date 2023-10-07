@@ -42,6 +42,7 @@ namespace TPSysacad___Forms
 
         private void ActualizarListaMateriasRequeridas()
         {
+            lsbMateriasRequeridas.Items.Clear();
             foreach (string idMateria in _materia.ListaIdMateriasRequeridas)
             {
                 Materia? materia = _baseDeDatos.BuscarMateriaPorID(idMateria);
