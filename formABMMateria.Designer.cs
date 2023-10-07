@@ -34,15 +34,15 @@
             tabMateria = new TabControl();
             tabDetalles = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
+            txbDescripcion = new TextBox();
             lblNombre = new Label();
             lblDescripcion = new Label();
             txbNombre = new TextBox();
-            txbDescripcion = new TextBox();
             tabMateriasRequeridas = new TabPage();
             tableLayoutPanel2 = new TableLayoutPanel();
+            btnEliminarMateria = new Button();
             btnAgregarMateria = new Button();
             lsbMateriasRequeridas = new ListBox();
-            btnEliminarMateria = new Button();
             tlpEstudiante.SuspendLayout();
             tabMateria.SuspendLayout();
             tabDetalles.SuspendLayout();
@@ -89,6 +89,7 @@
             btnGuardar.TabIndex = 1;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // tabMateria
             // 
@@ -131,6 +132,15 @@
             tableLayoutPanel1.Size = new Size(417, 394);
             tableLayoutPanel1.TabIndex = 0;
             // 
+            // txbDescripcion
+            // 
+            txbDescripcion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txbDescripcion.Location = new Point(153, 33);
+            txbDescripcion.Multiline = true;
+            txbDescripcion.Name = "txbDescripcion";
+            txbDescripcion.Size = new Size(261, 358);
+            txbDescripcion.TabIndex = 3;
+            // 
             // lblNombre
             // 
             lblNombre.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -161,15 +171,6 @@
             txbNombre.Size = new Size(261, 23);
             txbNombre.TabIndex = 2;
             // 
-            // txbDescripcion
-            // 
-            txbDescripcion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txbDescripcion.Location = new Point(153, 33);
-            txbDescripcion.Multiline = true;
-            txbDescripcion.Name = "txbDescripcion";
-            txbDescripcion.Size = new Size(261, 358);
-            txbDescripcion.TabIndex = 3;
-            // 
             // tabMateriasRequeridas
             // 
             tabMateriasRequeridas.Controls.Add(tableLayoutPanel2);
@@ -197,6 +198,16 @@
             tableLayoutPanel2.Size = new Size(423, 400);
             tableLayoutPanel2.TabIndex = 0;
             // 
+            // btnEliminarMateria
+            // 
+            btnEliminarMateria.Anchor = AnchorStyles.None;
+            btnEliminarMateria.Location = new Point(263, 360);
+            btnEliminarMateria.Name = "btnEliminarMateria";
+            btnEliminarMateria.Size = new Size(108, 23);
+            btnEliminarMateria.TabIndex = 5;
+            btnEliminarMateria.Text = "Eliminar Materia";
+            btnEliminarMateria.UseVisualStyleBackColor = true;
+            // 
             // btnAgregarMateria
             // 
             btnAgregarMateria.Anchor = AnchorStyles.None;
@@ -218,16 +229,6 @@
             lsbMateriasRequeridas.Size = new Size(417, 334);
             lsbMateriasRequeridas.TabIndex = 4;
             // 
-            // btnEliminarMateria
-            // 
-            btnEliminarMateria.Anchor = AnchorStyles.None;
-            btnEliminarMateria.Location = new Point(263, 360);
-            btnEliminarMateria.Name = "btnEliminarMateria";
-            btnEliminarMateria.Size = new Size(108, 23);
-            btnEliminarMateria.TabIndex = 5;
-            btnEliminarMateria.Text = "Eliminar Materia";
-            btnEliminarMateria.UseVisualStyleBackColor = true;
-            // 
             // formABMMateria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -236,6 +237,7 @@
             Controls.Add(tlpEstudiante);
             Name = "formABMMateria";
             Text = "formABMMateria";
+            Load += formABMMateria_Load;
             tlpEstudiante.ResumeLayout(false);
             tabMateria.ResumeLayout(false);
             tabDetalles.ResumeLayout(false);
