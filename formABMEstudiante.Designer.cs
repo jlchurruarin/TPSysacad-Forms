@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             tlpEstudiante = new TableLayoutPanel();
+            btnResetearContrasenia = new Button();
             btnCancelar = new Button();
             tacEstudiante = new TabControl();
             tabDatosPersonales = new TabPage();
@@ -48,6 +49,7 @@
             txbDireccion = new TextBox();
             txbCorreoElectronico = new TextBox();
             chkCambioContraseñaObligatorio = new CheckBox();
+            label1 = new Label();
             tabCursosInscriptos = new TabPage();
             tlpCursosInscriptos = new TableLayoutPanel();
             lsbCursosInscriptos = new ListBox();
@@ -60,8 +62,6 @@
             lsbPagos = new ListBox();
             btnEditarPago = new Button();
             btnGuardar = new Button();
-            btnResetearContrasenia = new Button();
-            label1 = new Label();
             tlpEstudiante.SuspendLayout();
             tacEstudiante.SuspendLayout();
             tabDatosPersonales.SuspendLayout();
@@ -91,6 +91,16 @@
             tlpEstudiante.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tlpEstudiante.Size = new Size(605, 375);
             tlpEstudiante.TabIndex = 0;
+            // 
+            // btnResetearContrasenia
+            // 
+            btnResetearContrasenia.Anchor = AnchorStyles.None;
+            btnResetearContrasenia.Location = new Point(486, 266);
+            btnResetearContrasenia.Name = "btnResetearContrasenia";
+            btnResetearContrasenia.Size = new Size(87, 42);
+            btnResetearContrasenia.TabIndex = 17;
+            btnResetearContrasenia.Text = "Reestablecer contraseña";
+            btnResetearContrasenia.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
@@ -307,13 +317,24 @@
             chkCambioContraseñaObligatorio.TabIndex = 16;
             chkCambioContraseñaObligatorio.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Location = new Point(3, 210);
+            label1.Name = "label1";
+            label1.Size = new Size(144, 30);
+            label1.TabIndex = 18;
+            label1.Text = "Cambio de contraseña obligatorio";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // tabCursosInscriptos
             // 
             tabCursosInscriptos.Controls.Add(tlpCursosInscriptos);
             tabCursosInscriptos.Location = new Point(4, 24);
             tabCursosInscriptos.Name = "tabCursosInscriptos";
             tabCursosInscriptos.Padding = new Padding(3);
-            tabCursosInscriptos.Size = new Size(536, 419);
+            tabCursosInscriptos.Size = new Size(441, 341);
             tabCursosInscriptos.TabIndex = 1;
             tabCursosInscriptos.Text = "Cursos Inscriptos";
             tabCursosInscriptos.UseVisualStyleBackColor = true;
@@ -372,7 +393,7 @@
             tabPagos.Controls.Add(tableLayoutPanel1);
             tabPagos.Location = new Point(4, 24);
             tabPagos.Name = "tabPagos";
-            tabPagos.Size = new Size(536, 419);
+            tabPagos.Size = new Size(441, 341);
             tabPagos.TabIndex = 2;
             tabPagos.Text = "Pagos";
             tabPagos.UseVisualStyleBackColor = true;
@@ -447,27 +468,6 @@
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
-            // 
-            // btnResetearContrasenia
-            // 
-            btnResetearContrasenia.Anchor = AnchorStyles.None;
-            btnResetearContrasenia.Location = new Point(486, 266);
-            btnResetearContrasenia.Name = "btnResetearContrasenia";
-            btnResetearContrasenia.Size = new Size(87, 42);
-            btnResetearContrasenia.TabIndex = 17;
-            btnResetearContrasenia.Text = "Reestablecer contraseña";
-            btnResetearContrasenia.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Location = new Point(3, 210);
-            label1.Name = "label1";
-            label1.Size = new Size(144, 30);
-            label1.TabIndex = 18;
-            label1.Text = "Cambio de contraseña obligatorio";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // formABMEstudiante
             // 

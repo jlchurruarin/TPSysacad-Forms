@@ -15,30 +15,21 @@ namespace TPSysacad___Forms
     {
         private Form _formAnterior;
         private Estudiante _estudiante;
+        private BaseDeDatos _baseDeDatos;
 
-        private formABMEstudiante(Form formAnterior)
-        {
-            _formAnterior = formAnterior;
-            InitializeComponent();
-        }
-
-        public formABMEstudiante(Form formAnterior, Estudiante estudiante) : this(formAnterior)
+        public formABMEstudiante(Form formAnterior, Estudiante estudiante, BaseDeDatos baseDeDatos)
         {
             _estudiante = estudiante;
+            _formAnterior = formAnterior;
+            _baseDeDatos = baseDeDatos;
+            InitializeComponent();
         }
 
         private void formABMEstudiante_Load(object sender, EventArgs e)
         {
             if (_estudiante is null) { return; }
 
-            txbNombre.Text = _estudiante.Nombre;
-            txbApellido.Text = _estudiante.Apellido;
-            txbDNI.Text = _estudiante.Dni.ToString();
-            txbLegajo.Text = _estudiante.Legajo.ToString();
-            txbNumeroDeTelefono.Text = _estudiante.NumeroTelefono.ToString();
-            txbDireccion.Text = _estudiante.Direccion;
-            txbCorreoElectronico.Text = _estudiante.CorreoElectronico;
-            chkCambioContraseñaObligatorio.Checked = _estudiante.CambioDeContraseñaObligatorio;
+            CargarDatosDelEstudiante();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -61,7 +52,6 @@ namespace TPSysacad___Forms
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void ValidarEstudiante()
@@ -76,6 +66,19 @@ namespace TPSysacad___Forms
 
         }
 
+        private void CargarDatosDelEstudiante()
+        {
+            txbNombre.Text = _estudiante.Nombre;
+            txbApellido.Text = _estudiante.Apellido;
+            txbDNI.Text = _estudiante.Dni.ToString();
+            txbLegajo.Text = _estudiante.Legajo.ToString();
+            txbNumeroDeTelefono.Text = _estudiante.NumeroTelefono.ToString();
+            txbDireccion.Text = _estudiante.Direccion;
+            txbCorreoElectronico.Text = _estudiante.CorreoElectronico;
+            chkCambioContraseñaObligatorio.Checked = _estudiante.CambioDeContraseñaObligatorio;
+            CargarListaCursosInscriptos();
+        }
+
         private void GuardarEstudiante()
         {
             _estudiante.Nombre = txbNombre.Text;
@@ -88,5 +91,13 @@ namespace TPSysacad___Forms
             _estudiante.CambioDeContraseñaObligatorio = chkCambioContraseñaObligatorio.Checked;
         }
 
+        private void CargarListaCursosInscriptos()
+        {
+            List<Curso> listaCursosInscriptos = _baseDeDatos.BuscarCursosInscriptos(_estudiante);
+            foreach (Curso cursoInscripto in listaCursosInscriptos)
+            {
+                lsbCursosInscriptos.Items.Add($"{cursoInscripto.Nombre} - {cursoInscripto.Descripcion}");
+            }
+        }
     }
 }
