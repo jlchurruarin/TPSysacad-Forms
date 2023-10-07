@@ -40,7 +40,7 @@
             tabProfesores = new TabPage();
             tableLayoutPanel3 = new TableLayoutPanel();
             label2 = new Label();
-            textBox2 = new TextBox();
+            txbBuscarProfesor = new TextBox();
             btnAgregarProfesor = new Button();
             btnEditarProfesor = new Button();
             btnEliminarProfesor = new Button();
@@ -48,27 +48,27 @@
             tabAdministradores = new TabPage();
             tableLayoutPanel4 = new TableLayoutPanel();
             label3 = new Label();
-            textBox3 = new TextBox();
-            button4 = new Button();
+            txbBuscarAdministrador = new TextBox();
+            btnAgregarAdministrador = new Button();
             button5 = new Button();
             button6 = new Button();
-            listBox2 = new ListBox();
+            lsbAdministradores = new ListBox();
             tabMaterias = new TabPage();
             tableLayoutPanel5 = new TableLayoutPanel();
-            label4 = new Label();
-            textBox4 = new TextBox();
-            button7 = new Button();
-            button8 = new Button();
-            button9 = new Button();
-            listBox3 = new ListBox();
+            lblBuscarMateria = new Label();
+            txbBuscarMateria = new TextBox();
+            btnAgregarMateria = new Button();
+            btnEditarMateria = new Button();
+            btnEliminarMateria = new Button();
+            lsbMaterias = new ListBox();
             tabCursos = new TabPage();
             tableLayoutPanel6 = new TableLayoutPanel();
-            label5 = new Label();
-            textBox5 = new TextBox();
-            button10 = new Button();
+            lblBuscarCurso = new Label();
+            txbBuscarCurso = new TextBox();
+            btnAgregarCurso = new Button();
             button11 = new Button();
             button12 = new Button();
-            listBox4 = new ListBox();
+            lsbCursos = new ListBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             label1 = new Label();
             textBox1 = new TextBox();
@@ -218,7 +218,7 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel3.Controls.Add(label2, 0, 0);
-            tableLayoutPanel3.Controls.Add(textBox2, 0, 1);
+            tableLayoutPanel3.Controls.Add(txbBuscarProfesor, 0, 1);
             tableLayoutPanel3.Controls.Add(btnAgregarProfesor, 2, 2);
             tableLayoutPanel3.Controls.Add(btnEditarProfesor, 2, 3);
             tableLayoutPanel3.Controls.Add(btnEliminarProfesor, 2, 4);
@@ -244,13 +244,13 @@
             label2.TabIndex = 0;
             label2.Text = "Buscar Estudiante:";
             // 
-            // textBox2
+            // txbBuscarProfesor
             // 
-            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox2.Location = new Point(3, 28);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(194, 23);
-            textBox2.TabIndex = 1;
+            txbBuscarProfesor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txbBuscarProfesor.Location = new Point(3, 28);
+            txbBuscarProfesor.Name = "txbBuscarProfesor";
+            txbBuscarProfesor.Size = new Size(194, 23);
+            txbBuscarProfesor.TabIndex = 1;
             // 
             // btnAgregarProfesor
             // 
@@ -313,11 +313,11 @@
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel4.Controls.Add(label3, 0, 0);
-            tableLayoutPanel4.Controls.Add(textBox3, 0, 1);
-            tableLayoutPanel4.Controls.Add(button4, 2, 2);
+            tableLayoutPanel4.Controls.Add(txbBuscarAdministrador, 0, 1);
+            tableLayoutPanel4.Controls.Add(btnAgregarAdministrador, 2, 2);
             tableLayoutPanel4.Controls.Add(button5, 2, 3);
             tableLayoutPanel4.Controls.Add(button6, 2, 4);
-            tableLayoutPanel4.Controls.Add(listBox2, 0, 2);
+            tableLayoutPanel4.Controls.Add(lsbAdministradores, 0, 2);
             tableLayoutPanel4.Location = new Point(6, 6);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 6;
@@ -335,34 +335,34 @@
             label3.AutoSize = true;
             label3.Location = new Point(3, 0);
             label3.Name = "label3";
-            label3.Size = new Size(103, 15);
+            label3.Size = new Size(124, 15);
             label3.TabIndex = 0;
-            label3.Text = "Buscar Estudiante:";
+            label3.Text = "Buscar Administrador:";
             // 
-            // textBox3
+            // txbBuscarAdministrador
             // 
-            textBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox3.Location = new Point(3, 28);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(194, 23);
-            textBox3.TabIndex = 1;
+            txbBuscarAdministrador.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txbBuscarAdministrador.Location = new Point(3, 28);
+            txbBuscarAdministrador.Name = "txbBuscarAdministrador";
+            txbBuscarAdministrador.Size = new Size(194, 23);
+            txbBuscarAdministrador.TabIndex = 1;
             // 
-            // button4
+            // btnAgregarAdministrador
             // 
-            button4.Anchor = AnchorStyles.None;
-            button4.Location = new Point(546, 53);
-            button4.Name = "button4";
-            button4.Size = new Size(133, 34);
-            button4.TabIndex = 2;
-            button4.Text = "Agregar Estudiante";
-            button4.UseVisualStyleBackColor = true;
+            btnAgregarAdministrador.Anchor = AnchorStyles.None;
+            btnAgregarAdministrador.Location = new Point(538, 53);
+            btnAgregarAdministrador.Name = "btnAgregarAdministrador";
+            btnAgregarAdministrador.Size = new Size(149, 34);
+            btnAgregarAdministrador.TabIndex = 2;
+            btnAgregarAdministrador.Text = "Agregar Administrador";
+            btnAgregarAdministrador.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
             button5.Anchor = AnchorStyles.None;
-            button5.Location = new Point(546, 93);
+            button5.Location = new Point(538, 93);
             button5.Name = "button5";
-            button5.Size = new Size(133, 34);
+            button5.Size = new Size(149, 34);
             button5.TabIndex = 3;
             button5.Text = "Editar Seleccionado";
             button5.UseVisualStyleBackColor = true;
@@ -370,24 +370,24 @@
             // button6
             // 
             button6.Anchor = AnchorStyles.None;
-            button6.Location = new Point(546, 133);
+            button6.Location = new Point(538, 133);
             button6.Name = "button6";
-            button6.Size = new Size(133, 34);
+            button6.Size = new Size(149, 34);
             button6.TabIndex = 4;
             button6.Text = "Eliminar Seleccionado";
             button6.UseVisualStyleBackColor = true;
             // 
-            // listBox2
+            // lsbAdministradores
             // 
-            listBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel4.SetColumnSpan(listBox2, 2);
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(3, 53);
-            listBox2.Name = "listBox2";
-            tableLayoutPanel4.SetRowSpan(listBox2, 4);
-            listBox2.Size = new Size(507, 484);
-            listBox2.TabIndex = 5;
+            lsbAdministradores.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel4.SetColumnSpan(lsbAdministradores, 2);
+            lsbAdministradores.FormattingEnabled = true;
+            lsbAdministradores.ItemHeight = 15;
+            lsbAdministradores.Location = new Point(3, 53);
+            lsbAdministradores.Name = "lsbAdministradores";
+            tableLayoutPanel4.SetRowSpan(lsbAdministradores, 4);
+            lsbAdministradores.Size = new Size(507, 484);
+            lsbAdministradores.TabIndex = 5;
             // 
             // tabMaterias
             // 
@@ -406,12 +406,12 @@
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel5.Controls.Add(label4, 0, 0);
-            tableLayoutPanel5.Controls.Add(textBox4, 0, 1);
-            tableLayoutPanel5.Controls.Add(button7, 2, 2);
-            tableLayoutPanel5.Controls.Add(button8, 2, 3);
-            tableLayoutPanel5.Controls.Add(button9, 2, 4);
-            tableLayoutPanel5.Controls.Add(listBox3, 0, 2);
+            tableLayoutPanel5.Controls.Add(lblBuscarMateria, 0, 0);
+            tableLayoutPanel5.Controls.Add(txbBuscarMateria, 0, 1);
+            tableLayoutPanel5.Controls.Add(btnAgregarMateria, 2, 2);
+            tableLayoutPanel5.Controls.Add(btnEditarMateria, 2, 3);
+            tableLayoutPanel5.Controls.Add(btnEliminarMateria, 2, 4);
+            tableLayoutPanel5.Controls.Add(lsbMaterias, 0, 2);
             tableLayoutPanel5.Location = new Point(6, 6);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 6;
@@ -424,64 +424,64 @@
             tableLayoutPanel5.Size = new Size(713, 551);
             tableLayoutPanel5.TabIndex = 1;
             // 
-            // label4
+            // lblBuscarMateria
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(3, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(103, 15);
-            label4.TabIndex = 0;
-            label4.Text = "Buscar Estudiante:";
+            lblBuscarMateria.AutoSize = true;
+            lblBuscarMateria.Location = new Point(3, 0);
+            lblBuscarMateria.Name = "lblBuscarMateria";
+            lblBuscarMateria.Size = new Size(88, 15);
+            lblBuscarMateria.TabIndex = 0;
+            lblBuscarMateria.Text = "Buscar Materia:";
             // 
-            // textBox4
+            // txbBuscarMateria
             // 
-            textBox4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox4.Location = new Point(3, 28);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(194, 23);
-            textBox4.TabIndex = 1;
+            txbBuscarMateria.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txbBuscarMateria.Location = new Point(3, 28);
+            txbBuscarMateria.Name = "txbBuscarMateria";
+            txbBuscarMateria.Size = new Size(194, 23);
+            txbBuscarMateria.TabIndex = 1;
             // 
-            // button7
+            // btnAgregarMateria
             // 
-            button7.Anchor = AnchorStyles.None;
-            button7.Location = new Point(546, 53);
-            button7.Name = "button7";
-            button7.Size = new Size(133, 34);
-            button7.TabIndex = 2;
-            button7.Text = "Agregar Estudiante";
-            button7.UseVisualStyleBackColor = true;
+            btnAgregarMateria.Anchor = AnchorStyles.None;
+            btnAgregarMateria.Location = new Point(546, 53);
+            btnAgregarMateria.Name = "btnAgregarMateria";
+            btnAgregarMateria.Size = new Size(133, 34);
+            btnAgregarMateria.TabIndex = 2;
+            btnAgregarMateria.Text = "Agregar Materia";
+            btnAgregarMateria.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // btnEditarMateria
             // 
-            button8.Anchor = AnchorStyles.None;
-            button8.Location = new Point(546, 93);
-            button8.Name = "button8";
-            button8.Size = new Size(133, 34);
-            button8.TabIndex = 3;
-            button8.Text = "Editar Seleccionado";
-            button8.UseVisualStyleBackColor = true;
+            btnEditarMateria.Anchor = AnchorStyles.None;
+            btnEditarMateria.Location = new Point(546, 93);
+            btnEditarMateria.Name = "btnEditarMateria";
+            btnEditarMateria.Size = new Size(133, 34);
+            btnEditarMateria.TabIndex = 3;
+            btnEditarMateria.Text = "Editar Seleccionada";
+            btnEditarMateria.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // btnEliminarMateria
             // 
-            button9.Anchor = AnchorStyles.None;
-            button9.Location = new Point(546, 133);
-            button9.Name = "button9";
-            button9.Size = new Size(133, 34);
-            button9.TabIndex = 4;
-            button9.Text = "Eliminar Seleccionado";
-            button9.UseVisualStyleBackColor = true;
+            btnEliminarMateria.Anchor = AnchorStyles.None;
+            btnEliminarMateria.Location = new Point(546, 133);
+            btnEliminarMateria.Name = "btnEliminarMateria";
+            btnEliminarMateria.Size = new Size(133, 34);
+            btnEliminarMateria.TabIndex = 4;
+            btnEliminarMateria.Text = "Eliminar Seleccionada";
+            btnEliminarMateria.UseVisualStyleBackColor = true;
             // 
-            // listBox3
+            // lsbMaterias
             // 
-            listBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel5.SetColumnSpan(listBox3, 2);
-            listBox3.FormattingEnabled = true;
-            listBox3.ItemHeight = 15;
-            listBox3.Location = new Point(3, 53);
-            listBox3.Name = "listBox3";
-            tableLayoutPanel5.SetRowSpan(listBox3, 4);
-            listBox3.Size = new Size(507, 484);
-            listBox3.TabIndex = 5;
+            lsbMaterias.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel5.SetColumnSpan(lsbMaterias, 2);
+            lsbMaterias.FormattingEnabled = true;
+            lsbMaterias.ItemHeight = 15;
+            lsbMaterias.Location = new Point(3, 53);
+            lsbMaterias.Name = "lsbMaterias";
+            tableLayoutPanel5.SetRowSpan(lsbMaterias, 4);
+            lsbMaterias.Size = new Size(507, 484);
+            lsbMaterias.TabIndex = 5;
             // 
             // tabCursos
             // 
@@ -500,12 +500,12 @@
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel6.Controls.Add(label5, 0, 0);
-            tableLayoutPanel6.Controls.Add(textBox5, 0, 1);
-            tableLayoutPanel6.Controls.Add(button10, 2, 2);
+            tableLayoutPanel6.Controls.Add(lblBuscarCurso, 0, 0);
+            tableLayoutPanel6.Controls.Add(txbBuscarCurso, 0, 1);
+            tableLayoutPanel6.Controls.Add(btnAgregarCurso, 2, 2);
             tableLayoutPanel6.Controls.Add(button11, 2, 3);
             tableLayoutPanel6.Controls.Add(button12, 2, 4);
-            tableLayoutPanel6.Controls.Add(listBox4, 0, 2);
+            tableLayoutPanel6.Controls.Add(lsbCursos, 0, 2);
             tableLayoutPanel6.Location = new Point(6, 6);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 6;
@@ -518,32 +518,32 @@
             tableLayoutPanel6.Size = new Size(713, 551);
             tableLayoutPanel6.TabIndex = 1;
             // 
-            // label5
+            // lblBuscarCurso
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(3, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(103, 15);
-            label5.TabIndex = 0;
-            label5.Text = "Buscar Estudiante:";
+            lblBuscarCurso.AutoSize = true;
+            lblBuscarCurso.Location = new Point(3, 0);
+            lblBuscarCurso.Name = "lblBuscarCurso";
+            lblBuscarCurso.Size = new Size(79, 15);
+            lblBuscarCurso.TabIndex = 0;
+            lblBuscarCurso.Text = "Buscar Curso:";
             // 
-            // textBox5
+            // txbBuscarCurso
             // 
-            textBox5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox5.Location = new Point(3, 28);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(194, 23);
-            textBox5.TabIndex = 1;
+            txbBuscarCurso.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txbBuscarCurso.Location = new Point(3, 28);
+            txbBuscarCurso.Name = "txbBuscarCurso";
+            txbBuscarCurso.Size = new Size(194, 23);
+            txbBuscarCurso.TabIndex = 1;
             // 
-            // button10
+            // btnAgregarCurso
             // 
-            button10.Anchor = AnchorStyles.None;
-            button10.Location = new Point(546, 53);
-            button10.Name = "button10";
-            button10.Size = new Size(133, 34);
-            button10.TabIndex = 2;
-            button10.Text = "Agregar Estudiante";
-            button10.UseVisualStyleBackColor = true;
+            btnAgregarCurso.Anchor = AnchorStyles.None;
+            btnAgregarCurso.Location = new Point(546, 53);
+            btnAgregarCurso.Name = "btnAgregarCurso";
+            btnAgregarCurso.Size = new Size(133, 34);
+            btnAgregarCurso.TabIndex = 2;
+            btnAgregarCurso.Text = "Agregar Curso";
+            btnAgregarCurso.UseVisualStyleBackColor = true;
             // 
             // button11
             // 
@@ -565,17 +565,17 @@
             button12.Text = "Eliminar Seleccionado";
             button12.UseVisualStyleBackColor = true;
             // 
-            // listBox4
+            // lsbCursos
             // 
-            listBox4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel6.SetColumnSpan(listBox4, 2);
-            listBox4.FormattingEnabled = true;
-            listBox4.ItemHeight = 15;
-            listBox4.Location = new Point(3, 53);
-            listBox4.Name = "listBox4";
-            tableLayoutPanel6.SetRowSpan(listBox4, 4);
-            listBox4.Size = new Size(507, 484);
-            listBox4.TabIndex = 5;
+            lsbCursos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel6.SetColumnSpan(lsbCursos, 2);
+            lsbCursos.FormattingEnabled = true;
+            lsbCursos.ItemHeight = 15;
+            lsbCursos.Location = new Point(3, 53);
+            lsbCursos.Name = "lsbCursos";
+            tableLayoutPanel6.SetRowSpan(lsbCursos, 4);
+            lsbCursos.Size = new Size(507, 484);
+            lsbCursos.TabIndex = 5;
             // 
             // tableLayoutPanel2
             // 
@@ -663,32 +663,32 @@
         private ListBox lsbEstudiantes;
         private TableLayoutPanel tableLayoutPanel3;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox txbBuscarProfesor;
         private Button btnAgregarProfesor;
         private Button btnEditarProfesor;
         private Button btnEliminarProfesor;
         private ListBox lsbProfesores;
         private TableLayoutPanel tableLayoutPanel4;
         private Label label3;
-        private TextBox textBox3;
-        private Button button4;
+        private TextBox txbBuscarAdministrador;
+        private Button btnAgregarAdministrador;
         private Button button5;
         private Button button6;
-        private ListBox listBox2;
+        private ListBox lsbAdministradores;
         private TableLayoutPanel tableLayoutPanel5;
-        private Label label4;
-        private TextBox textBox4;
-        private Button button7;
-        private Button button8;
-        private Button button9;
-        private ListBox listBox3;
+        private Label lblBuscarMateria;
+        private TextBox txbBuscarMateria;
+        private Button btnAgregarMateria;
+        private Button btnEditarMateria;
+        private Button btnEliminarMateria;
+        private ListBox lsbMaterias;
         private TableLayoutPanel tableLayoutPanel6;
-        private Label label5;
-        private TextBox textBox5;
-        private Button button10;
+        private Label lblBuscarCurso;
+        private TextBox txbBuscarCurso;
+        private Button btnAgregarCurso;
         private Button button11;
         private Button button12;
-        private ListBox listBox4;
+        private ListBox lsbCursos;
         private TableLayoutPanel tableLayoutPanel2;
         private Label label1;
         private TextBox textBox1;

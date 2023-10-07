@@ -35,7 +35,7 @@ namespace TPSysacad___Forms
             Estudiante estudiante = new Estudiante();
             if (_baseDeDatos + estudiante)
             {
-                formABMEstudiante formABMEstudiante = new formABMEstudiante(this, estudiante);
+                formABMEstudiante formABMEstudiante = new formABMEstudiante(this, estudiante, _baseDeDatos);
                 DialogResult estudianteDialogResult = formABMEstudiante.ShowDialog();
 
                 if (estudianteDialogResult == DialogResult.Abort)
@@ -54,7 +54,7 @@ namespace TPSysacad___Forms
             if (lsbEstudiantes.SelectedIndex == -1) { MessageBox.Show("Selecione un estudiante a editar", "Error"); return; }
 
             Estudiante estudianteSeleccionado = _baseDeDatos.ListaEstudiantes[lsbEstudiantes.SelectedIndex];
-            formABMEstudiante formABMEstudiante = new formABMEstudiante(this, estudianteSeleccionado);
+            formABMEstudiante formABMEstudiante = new formABMEstudiante(this, estudianteSeleccionado, _baseDeDatos);
             formABMEstudiante.ShowDialog();
             ActualizarListaEstudiantes();
         }
@@ -76,6 +76,7 @@ namespace TPSysacad___Forms
         private void formMenuAdministrador_Load(object sender, EventArgs e)
         {
             ActualizarListaEstudiantes();
+            ActualizarListaProfesores();
         }
 
         private void ActualizarListaProfesores()
@@ -101,13 +102,13 @@ namespace TPSysacad___Forms
             Profesor profesor = new Profesor();
             if (_baseDeDatos + profesor)
             {
-                //formABMProfesor formABMProfesor = new formABMProfesor(this, profesor);
-                //DialogResult ProfesorDialogResult = formABMProfesor.ShowDialog();
+                formABMProfesor formABMProfesor = new formABMProfesor(this, profesor, _baseDeDatos);
+                DialogResult ProfesorDialogResult = formABMProfesor.ShowDialog();
 
-                //if (ProfesorDialogResult == DialogResult.Abort)
-                //{
-                //    _ = _baseDeDatos - profesor;
-                //}
+                if (ProfesorDialogResult == DialogResult.Abort)
+                {
+                    _ = _baseDeDatos - profesor;
+                }
 
                 ActualizarListaProfesores();
 
