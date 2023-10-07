@@ -497,6 +497,7 @@
             Controls.Add(tlpEstudiante);
             Name = "formABMCurso";
             Text = "formABMCurso";
+            FormClosing += formABMCurso_FormClosing;
             Load += formABMCurso_Load;
             tlpEstudiante.ResumeLayout(false);
             tabCurso.ResumeLayout(false);

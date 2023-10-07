@@ -99,6 +99,7 @@
             btnAgregarMateria.TabIndex = 2;
             btnAgregarMateria.Text = "Agregar Materia";
             btnAgregarMateria.UseVisualStyleBackColor = true;
+            btnAgregarMateria.Click += btnAgregarMateria_Click;
             // 
             // btnCancelar
             // 
@@ -109,6 +110,7 @@
             btnCancelar.TabIndex = 6;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // formSeleccionarMateria
             // 
@@ -119,6 +121,8 @@
             MinimumSize = new Size(441, 481);
             Name = "formSeleccionarMateria";
             Text = "formSeleccionarMateria";
+            FormClosing += formSeleccionarMateria_FormClosing;
+            Load += formSeleccionarMateria_Load;
             tlpCurso.ResumeLayout(false);
             tlpCurso.PerformLayout();
             ResumeLayout(false);

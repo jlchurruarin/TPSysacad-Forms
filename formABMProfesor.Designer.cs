@@ -328,6 +328,7 @@
             MinimumSize = new Size(645, 438);
             Name = "formABMProfesor";
             Text = "formABMProfesor";
+            FormClosing += formABMProfesor_FormClosing;
             Load += formABMProfesor_Load;
             tlpEstudiante.ResumeLayout(false);
             tacEstudiante.ResumeLayout(false);

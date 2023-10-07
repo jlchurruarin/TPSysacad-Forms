@@ -97,5 +97,13 @@ namespace TPSysacad___Forms
                 lsbCursosInscriptos.Items.Add($"{cursoInscripto.Nombre} - {cursoInscripto.Descripcion}");
             }
         }
+
+        private void formABMEstudiante_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                this.DialogResult = DialogResult.Abort;
+            }
+        }
     }
 }

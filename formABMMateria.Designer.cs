@@ -240,6 +240,7 @@
             Controls.Add(tlpEstudiante);
             Name = "formABMMateria";
             Text = "formABMMateria";
+            FormClosing += formABMMateria_FormClosing;
             Load += formABMMateria_Load;
             tlpEstudiante.ResumeLayout(false);
             tabMateria.ResumeLayout(false);

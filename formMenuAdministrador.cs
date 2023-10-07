@@ -29,6 +29,8 @@ namespace TPSysacad___Forms
             ActualizarListaEstudiantes();
             ActualizarListaProfesores();
             ActualizarListaAdministradores();
+            ActualizarListaMaterias();
+            ActualizarListaCursos();
         }
 
         private void formMenuAdministrador_FormClosed(object sender, FormClosedEventArgs e)
@@ -184,12 +186,26 @@ namespace TPSysacad___Forms
 
         private void btnEditarMateria_Click(object sender, EventArgs e)
         {
+            if (lsbMaterias.SelectedIndex == -1) { MessageBox.Show("Selecione una materia a editar", "Error"); return; }
 
+            Materia materiaSeleccionada = _baseDeDatos.ListaMaterias[lsbMaterias.SelectedIndex];
+            formABMMateria formABMMateria = new formABMMateria(materiaSeleccionada, _baseDeDatos);
+            formABMMateria.ShowDialog();
+            ActualizarListaMaterias();
         }
 
         private void btnEliminarMateria_Click(object sender, EventArgs e)
         {
+            if (lsbMaterias.SelectedIndex == -1) { MessageBox.Show("Selecione una materia a eliminar", "Error"); return; }
 
+            if (_baseDeDatos - _baseDeDatos.ListaMaterias[lsbMaterias.SelectedIndex])
+            {
+                ActualizarListaMaterias();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar la materia", "Error");
+            }
         }
 
         private void btnAgregarCurso_Click(object sender, EventArgs e)
@@ -212,12 +228,26 @@ namespace TPSysacad___Forms
 
         private void btnEditarCurso_Click(object sender, EventArgs e)
         {
+            if (lsbCursos.SelectedIndex == -1) { MessageBox.Show("Selecione una curso a editar", "Error"); return; }
 
+            Curso cursoSeleccionada = _baseDeDatos.ListaCursos[lsbCursos.SelectedIndex];
+            formABMCurso formABMCurso = new formABMCurso(cursoSeleccionada, _baseDeDatos);
+            formABMCurso.ShowDialog();
+            ActualizarListaCursos();
         }
 
         private void btnEliminarCurso_Click(object sender, EventArgs e)
         {
+            if (lsbCursos.SelectedIndex == -1) { MessageBox.Show("Selecione un curso a eliminar", "Error"); return; }
 
+            if (_baseDeDatos - _baseDeDatos.ListaCursos[lsbCursos.SelectedIndex])
+            {
+                ActualizarListaCursos();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar el curso", "Error");
+            }
         }
 
         private void ActualizarListaProfesores()

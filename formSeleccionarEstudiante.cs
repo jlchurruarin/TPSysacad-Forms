@@ -16,5 +16,13 @@ namespace TPSysacad___Forms
         {
             InitializeComponent();
         }
+
+        private void formSeleccionarEstudiante_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                this.DialogResult = DialogResult.Abort;
+            }
+        }
     }
 }

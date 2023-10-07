@@ -478,6 +478,7 @@
             MinimumSize = new Size(645, 438);
             Name = "formABMEstudiante";
             Text = "formEstudiante";
+            FormClosing += formABMEstudiante_FormClosing;
             Load += formABMEstudiante_Load;
             tlpEstudiante.ResumeLayout(false);
             tacEstudiante.ResumeLayout(false);

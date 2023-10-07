@@ -260,6 +260,7 @@
             Controls.Add(tlpEstudiante);
             Name = "formABMAdministrador";
             Text = "formABMAdministrador";
+            FormClosing += formABMAdministrador_FormClosing;
             Load += formABMAdministrador_Load;
             tlpEstudiante.ResumeLayout(false);
             tlpDatosAdministdrador.ResumeLayout(false);

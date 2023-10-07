@@ -90,6 +90,14 @@ namespace TPSysacad___Forms
             this.DialogResult = DialogResult.Abort;
             this.Close();
         }
+
+        private void formABMProfesor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                this.DialogResult = DialogResult.Abort;
+            }
+        }
     }
 }
 

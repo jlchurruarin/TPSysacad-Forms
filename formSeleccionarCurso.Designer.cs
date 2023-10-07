@@ -119,6 +119,7 @@
             MinimumSize = new Size(441, 481);
             Name = "formSeleccionarCurso";
             Text = "formSeleccionarCurso";
+            FormClosing += formSeleccionarCurso_FormClosing;
             tlpCurso.ResumeLayout(false);
             tlpCurso.PerformLayout();
             ResumeLayout(false);

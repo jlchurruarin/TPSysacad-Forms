@@ -68,18 +68,17 @@ namespace TPSysacad___Forms
 
         private void btnAgregarMateria_Click(object sender, EventArgs e)
         {
-            string idMateria = string.Empty;
-            formSeleccionarMateria formSeleccionarMateria = new formSeleccionarMateria(ref idMateria);
+            formSeleccionarMateria formSeleccionarMateria = new formSeleccionarMateria(_baseDeDatos);
             DialogResult materiaDialogResult = formSeleccionarMateria.ShowDialog();
             if (materiaDialogResult == DialogResult.OK)
             {
-                if (_materia.Id == idMateria) { MessageBox.Show("No se puede agregar como materia requerida la misma materia"); }
+                if (_materia.Id == formSeleccionarMateria.IdMateria) { MessageBox.Show("No se puede agregar como materia requerida la misma materia"); }
                 else
                 {
-                    if (_materia.ListaIdMateriasRequeridas.Contains(idMateria)) { MessageBox.Show("La materia ya se encuentra agregada"); }
+                    if (_materia.ListaIdMateriasRequeridas.Contains(formSeleccionarMateria.IdMateria)) { MessageBox.Show("La materia ya se encuentra agregada"); }
                     else
                     {
-                        MessageBox.Show("No se puede agregar como materia requerida la misma materia");
+                        _materia.ListaIdMateriasRequeridas.Add(formSeleccionarMateria.IdMateria);
                     }
                 }
             }
@@ -116,6 +115,14 @@ namespace TPSysacad___Forms
         {
             this.DialogResult = DialogResult.Abort;
             this.Close();
+        }
+
+        private void formABMMateria_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                this.DialogResult = DialogResult.Abort;
+            }
         }
     }
 }

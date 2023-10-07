@@ -119,6 +119,7 @@
             MinimumSize = new Size(441, 481);
             Name = "formSeleccionarEstudiante";
             Text = "formSeleccionarEstudiante";
+            FormClosing += formSeleccionarEstudiante_FormClosing;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
