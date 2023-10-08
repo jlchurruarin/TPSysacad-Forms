@@ -28,6 +28,8 @@ namespace TPSysacad___Forms
             if (_estudiante is null) { return; }
 
             CargarDatosDelEstudiante();
+            CargarListaDePagos();
+            CargarListaCursosInscriptos();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -48,6 +50,87 @@ namespace TPSysacad___Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnAgregarCurso_Click(object sender, EventArgs e)
+        {
+            formSeleccionarCurso formSeleccionarCurso = new formSeleccionarCurso(_baseDeDatos);
+            DialogResult dialogResultSeleccionarCurso = formSeleccionarCurso.ShowDialog();
+            if (dialogResultSeleccionarCurso == DialogResult.OK)
+            {
+                Inscripcion inscripcion = new Inscripcion(_estudiante, DateTime.Now);
+                try
+                {
+                    if (formSeleccionarCurso.Curso + inscripcion)
+                    {
+                        CargarListaCursosInscriptos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El estudiante ya está inscrito en dicho curso");
+                    }
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message, "Error");
+                }
+            }
+
+        }
+
+        private void btnEliminarCurso_Click(object sender, EventArgs e)
+        {
+            if (lsbCursosInscriptos.SelectedIndex == -1) { MessageBox.Show("Selecione un curso a eliminar", "Error"); return; }
+            Curso curso = _baseDeDatos.ListaCursos[lsbCursosInscriptos.SelectedIndex];
+            Inscripcion? inscripcion = curso.ListaDeInscripciones.Find(i => i.IdEstudiante == _estudiante.Id);
+
+            if (inscripcion is not null)
+            {
+                curso.ListaDeInscripciones.Remove(inscripcion);
+                CargarListaCursosInscriptos();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar el estudiante", "Error");
+            }
+        }
+
+        private void btnAgregarPago_Click(object sender, EventArgs e)
+        {
+            Pago pago = new Pago();
+            formABMPago formABMPago = new formABMPago(pago);
+            DialogResult dialogResultABMPago = formABMPago.ShowDialog();
+            if (dialogResultABMPago == DialogResult.OK)
+            {
+                _estudiante.ListaPagos.Add(pago);
+                CargarListaDePagos();
+            }
+        }
+
+        private void btnEditarPago_Click(object sender, EventArgs e)
+        {
+            if (lsbPagos.SelectedIndex == -1) { MessageBox.Show("Selecione un pago a editar", "Error"); return; }
+
+            Pago pagoSeleccionado = _estudiante.ListaPagos[lsbPagos.SelectedIndex];
+            formABMPago formABMPago = new formABMPago(pagoSeleccionado);
+            formABMPago.ShowDialog();
+            CargarListaDePagos();
+        }
+
+
+        private void btnEliminarPago_Click(object sender, EventArgs e)
+        {
+            if (lsbPagos.SelectedIndex == -1) { MessageBox.Show("Selecione un pago a eliminar", "Error"); return; }
+
+            Pago pagoSeleccionado = _estudiante.ListaPagos[lsbPagos.SelectedIndex];
+            if (_estudiante.ListaPagos.Remove(pagoSeleccionado))
+            {
+                CargarListaDePagos();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar el pago", "Error");
             }
         }
 
@@ -98,6 +181,14 @@ namespace TPSysacad___Forms
             }
         }
 
+        private void CargarListaDePagos()
+        {
+            lsbPagos.Items.Clear();
+            foreach (Pago pago in _estudiante.ListaPagos)
+            {
+                lsbPagos.Items.Add(pago.ToString());
+            }
+        }
         private void formABMEstudiante_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)

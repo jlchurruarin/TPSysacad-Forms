@@ -50,9 +50,9 @@
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 5;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 103F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 55F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 55F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 57F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 48F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Controls.Add(lblCargaHoraria, 0, 2);
             tableLayoutPanel1.Controls.Add(lblDia, 0, 0);
@@ -142,10 +142,10 @@
             // nudHora
             // 
             nudHora.Anchor = AnchorStyles.None;
-            nudHora.Location = new Point(111, 48);
+            nudHora.Location = new Point(106, 48);
             nudHora.Maximum = new decimal(new int[] { 23, 0, 0, 0 });
             nudHora.Name = "nudHora";
-            nudHora.Size = new Size(38, 23);
+            nudHora.Size = new Size(51, 23);
             nudHora.TabIndex = 14;
             nudHora.TextAlign = HorizontalAlignment.Right;
             // 
@@ -153,9 +153,9 @@
             // 
             lblDosPuntos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblDosPuntos.AutoSize = true;
-            lblDosPuntos.Location = new Point(161, 40);
+            lblDosPuntos.Location = new Point(163, 40);
             lblDosPuntos.Name = "lblDosPuntos";
-            lblDosPuntos.Size = new Size(9, 40);
+            lblDosPuntos.Size = new Size(14, 40);
             lblDosPuntos.TabIndex = 16;
             lblDosPuntos.Text = ":";
             lblDosPuntos.TextAlign = ContentAlignment.MiddleCenter;
@@ -164,10 +164,10 @@
             // 
             nudMinuto.Anchor = AnchorStyles.None;
             nudMinuto.Increment = new decimal(new int[] { 15, 0, 0, 0 });
-            nudMinuto.Location = new Point(182, 48);
+            nudMinuto.Location = new Point(183, 48);
             nudMinuto.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
             nudMinuto.Name = "nudMinuto";
-            nudMinuto.Size = new Size(36, 23);
+            nudMinuto.Size = new Size(42, 23);
             nudMinuto.TabIndex = 17;
             nudMinuto.TextAlign = HorizontalAlignment.Right;
             // 
