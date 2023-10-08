@@ -50,6 +50,8 @@
             txbCorreoElectronico = new TextBox();
             chkCambioContraseñaObligatorio = new CheckBox();
             label1 = new Label();
+            lblContraseñaProvisional = new Label();
+            txbContraseñaProvisional = new TextBox();
             tabCursosInscriptos = new TabPage();
             tlpCursosInscriptos = new TableLayoutPanel();
             lsbCursosInscriptos = new ListBox();
@@ -159,9 +161,11 @@
             tlpDatosPersonales.Controls.Add(txbCorreoElectronico, 1, 6);
             tlpDatosPersonales.Controls.Add(chkCambioContraseñaObligatorio, 1, 7);
             tlpDatosPersonales.Controls.Add(label1, 0, 7);
+            tlpDatosPersonales.Controls.Add(lblContraseñaProvisional, 0, 8);
+            tlpDatosPersonales.Controls.Add(txbContraseñaProvisional, 1, 8);
             tlpDatosPersonales.Location = new Point(6, 6);
             tlpDatosPersonales.Name = "tlpDatosPersonales";
-            tlpDatosPersonales.RowCount = 9;
+            tlpDatosPersonales.RowCount = 10;
             tlpDatosPersonales.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tlpDatosPersonales.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tlpDatosPersonales.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
@@ -171,6 +175,7 @@
             tlpDatosPersonales.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tlpDatosPersonales.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tlpDatosPersonales.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tlpDatosPersonales.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tlpDatosPersonales.Size = new Size(550, 489);
             tlpDatosPersonales.TabIndex = 0;
             // 
@@ -327,6 +332,25 @@
             label1.TabIndex = 18;
             label1.Text = "Cambio de contraseña obligatorio";
             label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblContraseñaProvisional
+            // 
+            lblContraseñaProvisional.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblContraseñaProvisional.AutoSize = true;
+            lblContraseñaProvisional.Location = new Point(3, 240);
+            lblContraseñaProvisional.Name = "lblContraseñaProvisional";
+            lblContraseñaProvisional.Size = new Size(144, 30);
+            lblContraseñaProvisional.TabIndex = 19;
+            lblContraseñaProvisional.Text = "Contraseña Provisional";
+            lblContraseñaProvisional.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txbContraseñaProvisional
+            // 
+            txbContraseñaProvisional.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txbContraseñaProvisional.Location = new Point(153, 243);
+            txbContraseñaProvisional.Name = "txbContraseñaProvisional";
+            txbContraseñaProvisional.Size = new Size(394, 23);
+            txbContraseñaProvisional.TabIndex = 20;
             // 
             // tabCursosInscriptos
             // 
@@ -533,5 +557,7 @@
         private Button btnEditarPago;
         private Button btnResetearContrasenia;
         private Label label1;
+        private Label lblContraseñaProvisional;
+        private TextBox txbContraseñaProvisional;
     }
 }

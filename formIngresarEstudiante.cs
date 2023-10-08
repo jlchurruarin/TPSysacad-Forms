@@ -40,9 +40,9 @@ namespace TPSysacad___Forms
                 }
                 else
                 {
-                    /*formMenuEstudiante formMenuEstudiante = new formMenuEstudiante(this, _baseDeDatos);
+                    formMenuEstudiante formMenuEstudiante = new formMenuEstudiante(this, estudiante, _baseDeDatos);
                     formMenuEstudiante.Show();
-                    this.Hide();*/
+                    this.Hide();
                 }
             }
         }

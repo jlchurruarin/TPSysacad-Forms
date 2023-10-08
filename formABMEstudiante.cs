@@ -25,7 +25,19 @@ namespace TPSysacad___Forms
 
         private void formABMEstudiante_Load(object sender, EventArgs e)
         {
-            if (_estudiante is null) { return; }
+            if (_estudiante.Legajo == 0)
+            {
+                //Habilitar contraseña provisional
+                lblContraseñaProvisional.Visible = true;
+                txbContraseñaProvisional.Visible = true;
+                btnResetearContrasenia.Visible = false;
+            }
+            else
+            {
+                lblContraseñaProvisional.Visible = false;
+                txbContraseñaProvisional.Visible = false;
+                btnResetearContrasenia.Visible = true;
+            }
 
             CargarDatosDelEstudiante();
             CargarListaDePagos();
@@ -55,7 +67,7 @@ namespace TPSysacad___Forms
 
         private void btnAgregarCurso_Click(object sender, EventArgs e)
         {
-            formSeleccionarCurso formSeleccionarCurso = new formSeleccionarCurso(_baseDeDatos);
+            formSeleccionarCurso formSeleccionarCurso = new formSeleccionarCurso(_estudiante, _baseDeDatos);
             DialogResult dialogResultSeleccionarCurso = formSeleccionarCurso.ShowDialog();
             if (dialogResultSeleccionarCurso == DialogResult.OK)
             {
@@ -161,6 +173,17 @@ namespace TPSysacad___Forms
 
         private void GuardarEstudiante()
         {
+            if (_estudiante.Legajo == 0)
+            {
+                _estudiante.Contraseña = Sistema.EncriptarTexto(txbContraseñaProvisional.Text);
+
+                DialogResult resultYesNo = MessageBox.Show("¿Desea enviar la contraseña al usuario generado?", "Envio de contraseña", MessageBoxButtons.YesNo);
+                if (resultYesNo == DialogResult.Yes)
+                {
+                    Correo.EnviarCorreo(txbCorreoElectronico.Text, "Generación de usuario", $"Se generó su usuario, contraseña provisional: {txbContraseñaProvisional.Text}");
+                }
+            }
+
             _estudiante.Nombre = txbNombre.Text;
             _estudiante.Apellido = txbApellido.Text;
             _estudiante.Dni = int.Parse(txbDNI.Text);

@@ -42,19 +42,18 @@ namespace TPSysacad___Forms
         private void btnAgregarEstudiante_Click(object sender, EventArgs e)
         {
             Estudiante estudiante = new Estudiante();
-            if (_baseDeDatos + estudiante)
+            formABMEstudiante formABMEstudiante = new formABMEstudiante(estudiante, _baseDeDatos);
+            DialogResult estudianteDialogResult = formABMEstudiante.ShowDialog();
+
+            if (estudianteDialogResult == DialogResult.OK)
             {
-                formABMEstudiante formABMEstudiante = new formABMEstudiante(estudiante, _baseDeDatos);
-                DialogResult estudianteDialogResult = formABMEstudiante.ShowDialog();
-
-                if (estudianteDialogResult == DialogResult.Abort)
+                if (_baseDeDatos + estudiante == false)
                 {
-                    _ = _baseDeDatos - estudiante;
+                    MessageBox.Show("Ya existe un estudiante con el legajo, correo o ID indicado");
                 }
-
-                ActualizarListaEstudiantes();
-
             }
+
+            ActualizarListaEstudiantes();
 
         }
 
@@ -85,19 +84,18 @@ namespace TPSysacad___Forms
         private void btnAgregarProfesor_Click(object sender, EventArgs e)
         {
             Profesor profesor = new Profesor();
-            if (_baseDeDatos + profesor)
+            formABMProfesor formABMProfesor = new formABMProfesor(profesor, _baseDeDatos);
+            DialogResult ProfesorDialogResult = formABMProfesor.ShowDialog();
+
+            if (ProfesorDialogResult == DialogResult.OK)
             {
-                formABMProfesor formABMProfesor = new formABMProfesor(profesor, _baseDeDatos);
-                DialogResult ProfesorDialogResult = formABMProfesor.ShowDialog();
-
-                if (ProfesorDialogResult == DialogResult.Abort)
+                if (_baseDeDatos + profesor == false)
                 {
-                    _ = _baseDeDatos - profesor;
+                    MessageBox.Show("Ya existe un profesor con el correo o ID indicado");
                 }
-
-                ActualizarListaProfesores();
-
             }
+
+            ActualizarListaProfesores();
         }
 
         private void btnEditarProfesor_Click(object sender, EventArgs e)
@@ -127,19 +125,18 @@ namespace TPSysacad___Forms
         private void btnAgregarAdministrador_Click(object sender, EventArgs e)
         {
             Administrador administrador = new Administrador();
-            if (_baseDeDatos + administrador)
+            formABMAdministrador formABMProfesor = new formABMAdministrador(this, administrador);
+            DialogResult administradorDialogResult = formABMProfesor.ShowDialog();
+
+            if (administradorDialogResult == DialogResult.OK)
             {
-                formABMAdministrador formABMProfesor = new formABMAdministrador(this, administrador);
-                DialogResult administradorDialogResult = formABMProfesor.ShowDialog();
-
-                if (administradorDialogResult == DialogResult.Abort)
+                if (_baseDeDatos + administrador == false)
                 {
-                    _ = _baseDeDatos - administrador;
+                    MessageBox.Show("Ya existe un administrador con el correo o ID indicado");
                 }
-
-                ActualizarListaAdministradores();
-
             }
+
+            ActualizarListaAdministradores();
         }
 
         private void btnEditarAdministrador_Click(object sender, EventArgs e)

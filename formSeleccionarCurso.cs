@@ -15,6 +15,7 @@ namespace TPSysacad___Forms
     {
 
         private Curso _curso;
+        private Estudiante _estudiante;
         private BaseDeDatos _baseDeDatos;
 
         public Curso Curso
@@ -22,9 +23,10 @@ namespace TPSysacad___Forms
             get { return _curso; }
         }
 
-        public formSeleccionarCurso(BaseDeDatos baseDeDatos)
+        public formSeleccionarCurso(Estudiante estudiante, BaseDeDatos baseDeDatos)
         {
             _curso = new Curso();
+            _estudiante = estudiante;
             _baseDeDatos = baseDeDatos;
             InitializeComponent();
         }
@@ -39,7 +41,7 @@ namespace TPSysacad___Forms
             if (lsbCursos.SelectedIndex == -1) { MessageBox.Show("Debe seleccionar un curso", "Error"); return; }
             else
             {
-                Curso curso = _baseDeDatos.ListaCursos[lsbCursos.SelectedIndex];
+                Curso curso = _baseDeDatos.ObtenerCursosDisponibles(_estudiante)[lsbCursos.SelectedIndex];
                 _curso = curso;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -62,8 +64,9 @@ namespace TPSysacad___Forms
 
         private void ActualizarListaCursos()
         {
+            List<Curso> cursosDisponibles = _baseDeDatos.ObtenerCursosDisponibles(_estudiante);
             lsbCursos.Items.Clear();
-            foreach (Curso curso in _baseDeDatos.ListaCursos)
+            foreach (Curso curso in cursosDisponibles)
             {
                 lsbCursos.Items.Add($"{_baseDeDatos.BuscarMateriaPorID(curso.IdMateria)?.ToString()} - {curso.ToString()}");
             }
