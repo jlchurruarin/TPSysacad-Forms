@@ -55,7 +55,7 @@ namespace TPSysacad___Forms
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                this.DialogResult = DialogResult.Abort;
+                //this.DialogResult = DialogResult.Abort;
             }
         }
 
