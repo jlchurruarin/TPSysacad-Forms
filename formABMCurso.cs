@@ -46,32 +46,78 @@ namespace TPSysacad___Forms
 
         private void btnAgregarHorario_Click(object sender, EventArgs e)
         {
-
+            formHorario formHorario = new formHorario();
+            DialogResult dialogResultFormHorario = formHorario.ShowDialog();
+            if (dialogResultFormHorario == DialogResult.OK)
+            {
+                _curso.Horario.Add(formHorario.Horario);
+                CargarListaDeHorarios();
+            }
         }
 
         private void btnEliminarHorario_Click(object sender, EventArgs e)
         {
-
+            if (lsbHorarios.SelectedIndex == -1) { MessageBox.Show("Selecione un horario a eliminar", "Error"); return; }
+            Horario horarioSeleccionado = _curso.Horario[lsbHorarios.SelectedIndex];
+            if (_curso.Horario.Remove(horarioSeleccionado))
+            {
+                CargarListaDeHorarios();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar el horario", "Error");
+            }
         }
 
         private void btnAgregarEstudianteInscripto_Click(object sender, EventArgs e)
         {
-
+            formSeleccionarEstudiante formSeleccionarEstudiante = new formSeleccionarEstudiante(_baseDeDatos);
+            DialogResult dialogResultformSeleccionarEstudiante = formSeleccionarEstudiante.ShowDialog();
+            if (dialogResultformSeleccionarEstudiante == DialogResult.OK)
+            {
+                Inscripcion nuevaInscripcion = new Inscripcion(formSeleccionarEstudiante.Estudiante, DateTime.Now);
+                _curso.ListaDeInscripciones.Add(nuevaInscripcion);
+                CargarListaEstudiantesInscriptos();
+            }
         }
 
         private void btnEliminarEstudianteInscripto_Click(object sender, EventArgs e)
         {
-
+            if (lsbEstudiantesInscriptos.SelectedIndex == -1) { MessageBox.Show("Selecione un estudiante a eliminar", "Error"); return; }
+            Inscripcion inscripcionSeleccionada = _curso.ListaDeInscripciones[lsbEstudiantesInscriptos.SelectedIndex];
+            if (_curso.ListaDeInscripciones.Remove(inscripcionSeleccionada))
+            {
+                CargarListaEstudiantesInscriptos();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar el estudiante", "Error");
+            }
         }
 
         private void btnAgregarEstudianteEspera_Click(object sender, EventArgs e)
         {
-
+            formSeleccionarEstudiante formSeleccionarEstudiante = new formSeleccionarEstudiante(_baseDeDatos);
+            DialogResult dialogResultformSeleccionarEstudiante = formSeleccionarEstudiante.ShowDialog();
+            if (dialogResultformSeleccionarEstudiante == DialogResult.OK)
+            {
+                _curso.ListaIdEstudiantesEnEspera.Add(formSeleccionarEstudiante.Estudiante.Id);
+                CargarListaEstudiantesEnEspera();
+            }
         }
 
         private void btnEliminarEstudianteEspera_Click(object sender, EventArgs e)
         {
-
+            if (lsbEstudiantesEnEspera.SelectedIndex == -1) { MessageBox.Show("Selecione un estudiante a eliminar", "Error"); return; }
+            string idEstudianteEnEsperaSeleccionado = _curso.ListaIdEstudiantesEnEspera[lsbEstudiantesEnEspera.SelectedIndex];
+            if (_curso.ListaIdEstudiantesEnEspera.Remove(idEstudianteEnEsperaSeleccionado))
+            {
+                CargarListaEstudiantesEnEspera();
+            }
+            else
+            {
+                MessageBox.Show("Error al eliminar el estudiante", "Error");
+            }
         }
 
         private void formABMCurso_FormClosing(object sender, FormClosingEventArgs e)
