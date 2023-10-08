@@ -89,13 +89,13 @@
             tlpEstudiante.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
             tlpEstudiante.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tlpEstudiante.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tlpEstudiante.Size = new Size(605, 375);
+            tlpEstudiante.Size = new Size(726, 535);
             tlpEstudiante.TabIndex = 0;
             // 
             // btnResetearContrasenia
             // 
             btnResetearContrasenia.Anchor = AnchorStyles.None;
-            btnResetearContrasenia.Location = new Point(486, 266);
+            btnResetearContrasenia.Location = new Point(607, 346);
             btnResetearContrasenia.Name = "btnResetearContrasenia";
             btnResetearContrasenia.Size = new Size(87, 42);
             btnResetearContrasenia.TabIndex = 17;
@@ -105,7 +105,7 @@
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.None;
-            btnCancelar.Location = new Point(492, 138);
+            btnCancelar.Location = new Point(613, 138);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 2;
@@ -123,7 +123,7 @@
             tacEstudiante.Name = "tacEstudiante";
             tlpEstudiante.SetRowSpan(tacEstudiante, 3);
             tacEstudiante.SelectedIndex = 0;
-            tacEstudiante.Size = new Size(449, 369);
+            tacEstudiante.Size = new Size(570, 529);
             tacEstudiante.TabIndex = 0;
             // 
             // tabDatosPersonales
@@ -132,7 +132,7 @@
             tabDatosPersonales.Location = new Point(4, 24);
             tabDatosPersonales.Name = "tabDatosPersonales";
             tabDatosPersonales.Padding = new Padding(3);
-            tabDatosPersonales.Size = new Size(441, 341);
+            tabDatosPersonales.Size = new Size(562, 501);
             tabDatosPersonales.TabIndex = 0;
             tabDatosPersonales.Text = "Datos Personales";
             tabDatosPersonales.UseVisualStyleBackColor = true;
@@ -171,7 +171,7 @@
             tlpDatosPersonales.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tlpDatosPersonales.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tlpDatosPersonales.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tlpDatosPersonales.Size = new Size(429, 329);
+            tlpDatosPersonales.Size = new Size(550, 489);
             tlpDatosPersonales.TabIndex = 0;
             // 
             // lblNombre
@@ -190,7 +190,7 @@
             txbNombre.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txbNombre.Location = new Point(153, 3);
             txbNombre.Name = "txbNombre";
-            txbNombre.Size = new Size(273, 23);
+            txbNombre.Size = new Size(394, 23);
             txbNombre.TabIndex = 1;
             // 
             // lblApellido
@@ -264,7 +264,7 @@
             txbApellido.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txbApellido.Location = new Point(153, 33);
             txbApellido.Name = "txbApellido";
-            txbApellido.Size = new Size(273, 23);
+            txbApellido.Size = new Size(394, 23);
             txbApellido.TabIndex = 9;
             // 
             // txbDNI
@@ -272,7 +272,7 @@
             txbDNI.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txbDNI.Location = new Point(153, 63);
             txbDNI.Name = "txbDNI";
-            txbDNI.Size = new Size(273, 23);
+            txbDNI.Size = new Size(394, 23);
             txbDNI.TabIndex = 10;
             // 
             // txbLegajo
@@ -280,7 +280,7 @@
             txbLegajo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txbLegajo.Location = new Point(153, 93);
             txbLegajo.Name = "txbLegajo";
-            txbLegajo.Size = new Size(273, 23);
+            txbLegajo.Size = new Size(394, 23);
             txbLegajo.TabIndex = 11;
             // 
             // txbNumeroDeTelefono
@@ -288,7 +288,7 @@
             txbNumeroDeTelefono.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txbNumeroDeTelefono.Location = new Point(153, 123);
             txbNumeroDeTelefono.Name = "txbNumeroDeTelefono";
-            txbNumeroDeTelefono.Size = new Size(273, 23);
+            txbNumeroDeTelefono.Size = new Size(394, 23);
             txbNumeroDeTelefono.TabIndex = 12;
             // 
             // txbDireccion
@@ -296,7 +296,7 @@
             txbDireccion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txbDireccion.Location = new Point(153, 153);
             txbDireccion.Name = "txbDireccion";
-            txbDireccion.Size = new Size(273, 23);
+            txbDireccion.Size = new Size(394, 23);
             txbDireccion.TabIndex = 13;
             // 
             // txbCorreoElectronico
@@ -304,14 +304,14 @@
             txbCorreoElectronico.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txbCorreoElectronico.Location = new Point(153, 183);
             txbCorreoElectronico.Name = "txbCorreoElectronico";
-            txbCorreoElectronico.Size = new Size(273, 23);
+            txbCorreoElectronico.Size = new Size(394, 23);
             txbCorreoElectronico.TabIndex = 14;
             // 
             // chkCambioContraseñaObligatorio
             // 
             chkCambioContraseñaObligatorio.Anchor = AnchorStyles.None;
             chkCambioContraseñaObligatorio.AutoSize = true;
-            chkCambioContraseñaObligatorio.Location = new Point(282, 218);
+            chkCambioContraseñaObligatorio.Location = new Point(342, 218);
             chkCambioContraseñaObligatorio.Name = "chkCambioContraseñaObligatorio";
             chkCambioContraseñaObligatorio.Size = new Size(15, 14);
             chkCambioContraseñaObligatorio.TabIndex = 16;
@@ -334,7 +334,7 @@
             tabCursosInscriptos.Location = new Point(4, 24);
             tabCursosInscriptos.Name = "tabCursosInscriptos";
             tabCursosInscriptos.Padding = new Padding(3);
-            tabCursosInscriptos.Size = new Size(441, 341);
+            tabCursosInscriptos.Size = new Size(562, 501);
             tabCursosInscriptos.TabIndex = 1;
             tabCursosInscriptos.Text = "Cursos Inscriptos";
             tabCursosInscriptos.UseVisualStyleBackColor = true;
@@ -354,7 +354,7 @@
             tlpCursosInscriptos.RowCount = 2;
             tlpCursosInscriptos.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tlpCursosInscriptos.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tlpCursosInscriptos.Size = new Size(524, 407);
+            tlpCursosInscriptos.Size = new Size(645, 567);
             tlpCursosInscriptos.TabIndex = 0;
             // 
             // lsbCursosInscriptos
@@ -365,13 +365,13 @@
             lsbCursosInscriptos.ItemHeight = 15;
             lsbCursosInscriptos.Location = new Point(3, 3);
             lsbCursosInscriptos.Name = "lsbCursosInscriptos";
-            lsbCursosInscriptos.Size = new Size(518, 364);
+            lsbCursosInscriptos.Size = new Size(639, 529);
             lsbCursosInscriptos.TabIndex = 0;
             // 
             // btnAgregarCurso
             // 
             btnAgregarCurso.Anchor = AnchorStyles.None;
-            btnAgregarCurso.Location = new Point(37, 380);
+            btnAgregarCurso.Location = new Point(57, 540);
             btnAgregarCurso.Name = "btnAgregarCurso";
             btnAgregarCurso.Size = new Size(99, 23);
             btnAgregarCurso.TabIndex = 3;
@@ -381,7 +381,7 @@
             // btnEliminarCurso
             // 
             btnEliminarCurso.Anchor = AnchorStyles.None;
-            btnEliminarCurso.Location = new Point(386, 380);
+            btnEliminarCurso.Location = new Point(487, 540);
             btnEliminarCurso.Name = "btnEliminarCurso";
             btnEliminarCurso.Size = new Size(99, 23);
             btnEliminarCurso.TabIndex = 4;
@@ -393,7 +393,7 @@
             tabPagos.Controls.Add(tableLayoutPanel1);
             tabPagos.Location = new Point(4, 24);
             tabPagos.Name = "tabPagos";
-            tabPagos.Size = new Size(441, 341);
+            tabPagos.Size = new Size(562, 501);
             tabPagos.TabIndex = 2;
             tabPagos.Text = "Pagos";
             tabPagos.UseVisualStyleBackColor = true;
@@ -414,13 +414,13 @@
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tableLayoutPanel1.Size = new Size(524, 407);
+            tableLayoutPanel1.Size = new Size(645, 567);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // btnAgregarPago
             // 
             btnAgregarPago.Anchor = AnchorStyles.None;
-            btnAgregarPago.Location = new Point(37, 380);
+            btnAgregarPago.Location = new Point(57, 540);
             btnAgregarPago.Name = "btnAgregarPago";
             btnAgregarPago.Size = new Size(99, 23);
             btnAgregarPago.TabIndex = 3;
@@ -430,7 +430,7 @@
             // btnEliminarPago
             // 
             btnEliminarPago.Anchor = AnchorStyles.None;
-            btnEliminarPago.Location = new Point(386, 380);
+            btnEliminarPago.Location = new Point(487, 540);
             btnEliminarPago.Name = "btnEliminarPago";
             btnEliminarPago.Size = new Size(99, 23);
             btnEliminarPago.TabIndex = 4;
@@ -445,13 +445,13 @@
             lsbPagos.ItemHeight = 15;
             lsbPagos.Location = new Point(3, 3);
             lsbPagos.Name = "lsbPagos";
-            lsbPagos.Size = new Size(518, 364);
+            lsbPagos.Size = new Size(639, 529);
             lsbPagos.TabIndex = 0;
             // 
             // btnEditarPago
             // 
             btnEditarPago.Anchor = AnchorStyles.None;
-            btnEditarPago.Location = new Point(211, 380);
+            btnEditarPago.Location = new Point(272, 540);
             btnEditarPago.Name = "btnEditarPago";
             btnEditarPago.Size = new Size(99, 23);
             btnEditarPago.TabIndex = 5;
@@ -461,7 +461,7 @@
             // btnGuardar
             // 
             btnGuardar.Anchor = AnchorStyles.None;
-            btnGuardar.Location = new Point(492, 38);
+            btnGuardar.Location = new Point(613, 38);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(75, 23);
             btnGuardar.TabIndex = 1;
@@ -473,7 +473,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(629, 399);
+            ClientSize = new Size(750, 559);
             Controls.Add(tlpEstudiante);
             MinimumSize = new Size(645, 438);
             Name = "formABMEstudiante";
