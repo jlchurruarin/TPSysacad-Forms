@@ -34,7 +34,7 @@ namespace TPSysacad___Forms
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             Dia dia = (Dia)cmbDia.SelectedIndex;
-            TimeOnly tiempo = new TimeOnly((int)nudHora.Value, (int)nudMinuto.Value);
+            DateTime tiempo = new DateTime(1900, 1, 1, (int)nudHora.Value, (int)nudMinuto.Value, 0);
             int cargaHoraria = (int)nudCargaHoraria.Value;
 
             _horario.Dia = dia;
@@ -55,7 +55,7 @@ namespace TPSysacad___Forms
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                this.DialogResult = DialogResult.Abort;
+                //this.DialogResult = DialogResult.Abort;
             }
         }
 
