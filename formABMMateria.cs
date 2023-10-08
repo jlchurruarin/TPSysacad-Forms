@@ -72,13 +72,13 @@ namespace TPSysacad___Forms
             DialogResult materiaDialogResult = formSeleccionarMateria.ShowDialog();
             if (materiaDialogResult == DialogResult.OK)
             {
-                if (_materia.Id == formSeleccionarMateria.IdMateria) { MessageBox.Show("No se puede agregar como materia requerida la misma materia"); }
+                if (_materia == formSeleccionarMateria.Materia) { MessageBox.Show("No se puede agregar como materia requerida la misma materia"); }
                 else
                 {
-                    if (_materia.ListaIdMateriasRequeridas.Contains(formSeleccionarMateria.IdMateria)) { MessageBox.Show("La materia ya se encuentra agregada"); }
+                    if (_materia.ListaIdMateriasRequeridas.Contains(formSeleccionarMateria.Materia.Id)) { MessageBox.Show("La materia ya se encuentra agregada"); }
                     else
                     {
-                        _materia.ListaIdMateriasRequeridas.Add(formSeleccionarMateria.IdMateria);
+                        _materia.ListaIdMateriasRequeridas.Add(formSeleccionarMateria.Materia.Id);
                     }
                 }
             }
