@@ -60,7 +60,7 @@
             tableLayoutPanel1.Controls.Add(btnCancelar, 4, 1);
             tableLayoutPanel1.Controls.Add(btnGuardar, 4, 0);
             tableLayoutPanel1.Controls.Add(cmbDia, 1, 0);
-            tableLayoutPanel1.Controls.Add(this.nudHora, 1, 1);
+            tableLayoutPanel1.Controls.Add(nudHora, 1, 1);
             tableLayoutPanel1.Controls.Add(lblDosPuntos, 2, 1);
             tableLayoutPanel1.Controls.Add(nudMinuto, 3, 1);
             tableLayoutPanel1.Controls.Add(nudCargaHoraria, 1, 2);
@@ -115,6 +115,7 @@
             btnCancelar.TabIndex = 3;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnGuardar
             // 
@@ -125,11 +126,12 @@
             btnGuardar.TabIndex = 2;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // cmbDia
             // 
             cmbDia.Anchor = AnchorStyles.None;
-            tableLayoutPanel1.SetColumnSpan(this.cmbDia, 3);
+            tableLayoutPanel1.SetColumnSpan(cmbDia, 3);
             cmbDia.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDia.FormattingEnabled = true;
             cmbDia.Location = new Point(116, 8);
@@ -190,6 +192,8 @@
             MinimumSize = new Size(403, 182);
             Name = "formHorario";
             Text = "Agregar Horario";
+            FormClosing += formHorario_FormClosing;
+            Load += formHorario_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nudHora).EndInit();
