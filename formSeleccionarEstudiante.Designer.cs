@@ -99,6 +99,7 @@
             btnAgregarEstudiante.TabIndex = 2;
             btnAgregarEstudiante.Text = "Agregar Estudiante";
             btnAgregarEstudiante.UseVisualStyleBackColor = true;
+            btnAgregarEstudiante.Click += btnAgregarEstudiante_Click;
             // 
             // btnCancelar
             // 
@@ -109,6 +110,7 @@
             btnCancelar.TabIndex = 6;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // formSeleccionarEstudiante
             // 
@@ -120,6 +122,7 @@
             Name = "formSeleccionarEstudiante";
             Text = "formSeleccionarEstudiante";
             FormClosing += formSeleccionarEstudiante_FormClosing;
+            Load += formSeleccionarEstudiante_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
