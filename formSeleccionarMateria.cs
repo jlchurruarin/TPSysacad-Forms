@@ -13,17 +13,17 @@ namespace TPSysacad___Forms
 {
     public partial class formSeleccionarMateria : Form
     {
-        private string _idMateria;
+        private Materia _materia;
         private BaseDeDatos _baseDeDatos;
 
-        public string IdMateria
+        public Materia Materia
         {
-            get { return _idMateria; }
+            get { return _materia; }
         }
 
         public formSeleccionarMateria(BaseDeDatos baseDeDatos)
         {
-            _idMateria = string.Empty;
+            _materia = new Materia();
             _baseDeDatos = baseDeDatos;
             InitializeComponent();
         }
@@ -33,25 +33,15 @@ namespace TPSysacad___Forms
             ActualizarListaMaterias();
         }
 
-        private void ActualizarListaMaterias()
-        {
-            lsbMateria.Items.Clear();
-            foreach (Materia materia in _baseDeDatos.ListaMaterias)
-            {
-                lsbMateria.Items.Add(materia.ToString());
-            }
-        }
-
         private void btnAgregarMateria_Click(object sender, EventArgs e)
         {
             if (lsbMateria.SelectedIndex == -1) { MessageBox.Show("Debe seleccionar una materia", "Error"); return; }
             else
             {
                 Materia materia = _baseDeDatos.ListaMaterias[lsbMateria.SelectedIndex];
-                _idMateria = materia.Id;
+                _materia = materia;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-                ActualizarListaMaterias();
             }
         }
 
@@ -65,7 +55,16 @@ namespace TPSysacad___Forms
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                this.DialogResult = DialogResult.Abort;
+                //this.DialogResult = DialogResult.Abort;
+            }
+        }
+
+        private void ActualizarListaMaterias()
+        {
+            lsbMateria.Items.Clear();
+            foreach (Materia materia in _baseDeDatos.ListaMaterias)
+            {
+                lsbMateria.Items.Add(materia.ToString());
             }
         }
     }
