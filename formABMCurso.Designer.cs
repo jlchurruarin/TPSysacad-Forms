@@ -321,6 +321,7 @@
             btnAgregarHorario.TabIndex = 3;
             btnAgregarHorario.Text = "Agregar Horario";
             btnAgregarHorario.UseVisualStyleBackColor = true;
+            btnAgregarHorario.Click += btnAgregarHorario_Click;
             // 
             // btnEliminarHorario
             // 
@@ -331,6 +332,7 @@
             btnEliminarHorario.TabIndex = 4;
             btnEliminarHorario.Text = "Eliminar Horario";
             btnEliminarHorario.UseVisualStyleBackColor = true;
+            btnEliminarHorario.Click += btnEliminarHorario_Click;
             // 
             // tabEstudiantesInscriptos
             // 
@@ -369,6 +371,7 @@
             btnAgregarEstudianteInscripto.TabIndex = 3;
             btnAgregarEstudianteInscripto.Text = "Agregar Estudiante";
             btnAgregarEstudianteInscripto.UseVisualStyleBackColor = true;
+            btnAgregarEstudianteInscripto.Click += btnAgregarEstudianteInscripto_Click;
             // 
             // lsbEstudiantesInscriptos
             // 
@@ -390,6 +393,7 @@
             btnEliminarEstudianteInscripto.TabIndex = 4;
             btnEliminarEstudianteInscripto.Text = "Eliminar Estudiante";
             btnEliminarEstudianteInscripto.UseVisualStyleBackColor = true;
+            btnEliminarEstudianteInscripto.Click += btnEliminarEstudianteInscripto_Click;
             // 
             // tabEstudiantesEnEspera
             // 
@@ -428,6 +432,7 @@
             btnAgregarEstudianteEspera.TabIndex = 5;
             btnAgregarEstudianteEspera.Text = "Agregar Estudiante";
             btnAgregarEstudianteEspera.UseVisualStyleBackColor = true;
+            btnAgregarEstudianteEspera.Click += btnAgregarEstudianteEspera_Click;
             // 
             // lsbEstudiantesEnEspera
             // 
@@ -449,6 +454,7 @@
             btnEliminarEstudianteEspera.TabIndex = 6;
             btnEliminarEstudianteEspera.Text = "Eliminar Estudiante";
             btnEliminarEstudianteEspera.UseVisualStyleBackColor = true;
+            btnEliminarEstudianteEspera.Click += btnEliminarEstudianteEspera_Click;
             // 
             // tlpCursosInscriptos
             // 
