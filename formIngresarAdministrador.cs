@@ -30,10 +30,22 @@ namespace TPSysacad___Forms
             if (administrador.ValidarContraseña(txbContraseña.Text) == false) { MessageBox.Show("Contraseña incorrecta", "Logueo invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             else
             {
-                Form formMenuAdministrador = new formMenuAdministrador(this, _baseDeDatos);
-                formMenuAdministrador.Show();
-                this.Hide();
+                if (administrador.CambioDeContraseñaObligatorio)
+                {
+                    formCambioDeContraseña formCambioDeContraseña = new formCambioDeContraseña(administrador);
+                    formCambioDeContraseña.ShowDialog();
+                    Sistema.GuardarJson(_baseDeDatos);
+                }
+                else
+                {
+                    formMenuAdministrador formMenuAdministrador = new formMenuAdministrador(this, _baseDeDatos);
+                    formMenuAdministrador.Show();
+                    this.Hide();
+                }
             }
+
+            txbCorreoElectronico.Text = "";
+            txbContraseña.Text = "";
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

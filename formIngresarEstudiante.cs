@@ -32,9 +32,18 @@ namespace TPSysacad___Forms
             if (estudiante.ValidarContraseña(txbContraseña.Text) == false) { MessageBox.Show("Contraseña incorrecta", "Logueo invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             else
             {
-                //formInicio formclonado = new formInicio(this);
-                //formclonado.Show();
-                //this.Hide();
+                if (estudiante.CambioDeContraseñaObligatorio)
+                {
+                    formCambioDeContraseña formCambioDeContraseña = new formCambioDeContraseña(estudiante);
+                    formCambioDeContraseña.ShowDialog();
+                    Sistema.GuardarJson(_baseDeDatos);
+                }
+                else
+                {
+                    /*formMenuEstudiante formMenuEstudiante = new formMenuEstudiante(this, _baseDeDatos);
+                    formMenuEstudiante.Show();
+                    this.Hide();*/
+                }
             }
         }
 
