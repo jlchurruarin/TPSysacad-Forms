@@ -81,7 +81,7 @@ namespace TPSysacad___Forms
             List<Curso> listaCursos = _baseDeDatos.BuscarCursos(_profesor);
             foreach (Curso curso in listaCursos)
             {
-                lsbCursos.Items.Add($"{curso.Nombre} - {curso.Descripcion}");
+                lsbCursos.Items.Add($"{_baseDeDatos.BuscarMateriaPorID(curso.IdMateria)?.ToString()} - {curso.ToString()}");
             }
         }
 
