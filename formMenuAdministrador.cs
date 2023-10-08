@@ -291,7 +291,7 @@ namespace TPSysacad___Forms
             lsbCursos.Items.Clear();
             foreach (Curso curso in _baseDeDatos.ListaCursos)
             {
-                lsbCursos.Items.Add(curso.ToString());
+                lsbCursos.Items.Add($"{curso.ToString()} [Materia: {_baseDeDatos.BuscarMateriaPorID(curso.IdMateria)?.ToString()}]");
             }
         }
 
