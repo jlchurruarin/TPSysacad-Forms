@@ -34,16 +34,16 @@
             tabCurso = new TabControl();
             tabDetalle = new TabPage();
             tlpDetalle = new TableLayoutPanel();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            comboBox2 = new ComboBox();
-            lblDenominacion = new Label();
-            txbNombre = new TextBox();
+            nudCupoMaximo = new NumericUpDown();
+            txbAula = new TextBox();
+            cbbProfesor = new ComboBox();
+            lblNombreCurso = new Label();
+            txbNombreCurso = new TextBox();
             lblMateria = new Label();
             lblProfesor = new Label();
             lblAula = new Label();
             lblCupoMaximo = new Label();
-            comboBox1 = new ComboBox();
+            cbbMateria = new ComboBox();
             tabHorarios = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
             lsbHorarios = new ListBox();
@@ -67,6 +67,7 @@
             tabCurso.SuspendLayout();
             tabDetalle.SuspendLayout();
             tlpDetalle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudCupoMaximo).BeginInit();
             tabHorarios.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tabEstudiantesInscriptos.SuspendLayout();
@@ -148,16 +149,16 @@
             tlpDetalle.ColumnCount = 2;
             tlpDetalle.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
             tlpDetalle.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlpDetalle.Controls.Add(textBox2, 1, 4);
-            tlpDetalle.Controls.Add(textBox1, 1, 3);
-            tlpDetalle.Controls.Add(comboBox2, 1, 2);
-            tlpDetalle.Controls.Add(lblDenominacion, 0, 1);
-            tlpDetalle.Controls.Add(txbNombre, 1, 1);
+            tlpDetalle.Controls.Add(nudCupoMaximo, 1, 4);
+            tlpDetalle.Controls.Add(txbAula, 1, 3);
+            tlpDetalle.Controls.Add(cbbProfesor, 1, 2);
+            tlpDetalle.Controls.Add(lblNombreCurso, 0, 1);
+            tlpDetalle.Controls.Add(txbNombreCurso, 1, 1);
             tlpDetalle.Controls.Add(lblMateria, 0, 0);
             tlpDetalle.Controls.Add(lblProfesor, 0, 2);
             tlpDetalle.Controls.Add(lblAula, 0, 3);
             tlpDetalle.Controls.Add(lblCupoMaximo, 0, 4);
-            tlpDetalle.Controls.Add(comboBox1, 1, 0);
+            tlpDetalle.Controls.Add(cbbMateria, 1, 0);
             tlpDetalle.Location = new Point(0, 0);
             tlpDetalle.Name = "tlpDetalle";
             tlpDetalle.RowCount = 6;
@@ -170,50 +171,52 @@
             tlpDetalle.Size = new Size(439, 327);
             tlpDetalle.TabIndex = 0;
             // 
-            // textBox2
+            // nudCupoMaximo
             // 
-            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox2.Location = new Point(153, 163);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(283, 23);
-            textBox2.TabIndex = 11;
+            nudCupoMaximo.Anchor = AnchorStyles.None;
+            nudCupoMaximo.Location = new Point(153, 168);
+            nudCupoMaximo.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            nudCupoMaximo.Name = "nudCupoMaximo";
+            nudCupoMaximo.Size = new Size(283, 23);
+            nudCupoMaximo.TabIndex = 15;
+            nudCupoMaximo.TextAlign = HorizontalAlignment.Right;
             // 
-            // textBox1
+            // txbAula
             // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Location = new Point(153, 123);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(283, 23);
-            textBox1.TabIndex = 10;
+            txbAula.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txbAula.Location = new Point(153, 123);
+            txbAula.Name = "txbAula";
+            txbAula.Size = new Size(283, 23);
+            txbAula.TabIndex = 10;
             // 
-            // comboBox2
+            // cbbProfesor
             // 
-            comboBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(153, 83);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(283, 23);
-            comboBox2.TabIndex = 9;
+            cbbProfesor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            cbbProfesor.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbbProfesor.FormattingEnabled = true;
+            cbbProfesor.Location = new Point(153, 83);
+            cbbProfesor.Name = "cbbProfesor";
+            cbbProfesor.Size = new Size(283, 23);
+            cbbProfesor.TabIndex = 9;
             // 
-            // lblDenominacion
+            // lblNombreCurso
             // 
-            lblDenominacion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lblDenominacion.AutoSize = true;
-            lblDenominacion.Location = new Point(3, 40);
-            lblDenominacion.Name = "lblDenominacion";
-            lblDenominacion.Size = new Size(144, 40);
-            lblDenominacion.TabIndex = 1;
-            lblDenominacion.Text = "Denominación:";
-            lblDenominacion.TextAlign = ContentAlignment.MiddleCenter;
+            lblNombreCurso.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblNombreCurso.AutoSize = true;
+            lblNombreCurso.Location = new Point(3, 40);
+            lblNombreCurso.Name = "lblNombreCurso";
+            lblNombreCurso.Size = new Size(144, 40);
+            lblNombreCurso.TabIndex = 1;
+            lblNombreCurso.Text = "Denominación:";
+            lblNombreCurso.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // txbNombre
+            // txbNombreCurso
             // 
-            txbNombre.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txbNombre.Location = new Point(153, 43);
-            txbNombre.Name = "txbNombre";
-            txbNombre.Size = new Size(283, 23);
-            txbNombre.TabIndex = 3;
+            txbNombreCurso.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txbNombreCurso.Location = new Point(153, 43);
+            txbNombreCurso.Name = "txbNombreCurso";
+            txbNombreCurso.Size = new Size(283, 23);
+            txbNombreCurso.TabIndex = 3;
             // 
             // lblMateria
             // 
@@ -259,15 +262,15 @@
             lblCupoMaximo.Text = "Cupo Máximo:";
             lblCupoMaximo.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
+            // cbbMateria
             // 
-            comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(153, 3);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(283, 23);
-            comboBox1.TabIndex = 8;
+            cbbMateria.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            cbbMateria.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbbMateria.FormattingEnabled = true;
+            cbbMateria.Location = new Point(153, 3);
+            cbbMateria.Name = "cbbMateria";
+            cbbMateria.Size = new Size(283, 23);
+            cbbMateria.TabIndex = 8;
             // 
             // tabHorarios
             // 
@@ -504,6 +507,7 @@
             tabDetalle.ResumeLayout(false);
             tlpDetalle.ResumeLayout(false);
             tlpDetalle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nudCupoMaximo).EndInit();
             tabHorarios.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tabEstudiantesInscriptos.ResumeLayout(false);
@@ -523,15 +527,14 @@
         private TabPage tabDetalle;
         private TableLayoutPanel tlpDetalle;
         private TabPage tabHorarios;
-        private Label lblDenominacion;
-        private TextBox txbNombre;
+        private Label lblNombreCurso;
+        private TextBox txbNombreCurso;
         private Label lblMateria;
         private Label lblProfesor;
         private Label lblAula;
-        private ComboBox comboBox1;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private ComboBox comboBox2;
+        private ComboBox cbbMateria;
+        private TextBox txbAula;
+        private ComboBox cbbProfesor;
         private Label lblCupoMaximo;
         private TableLayoutPanel tlpCursosInscriptos;
         private ListBox lsbCursosInscriptos;
@@ -551,5 +554,6 @@
         private Button btnEliminarEstudianteInscripto;
         private Button btnAgregarEstudianteEspera;
         private Button btnEliminarEstudianteEspera;
+        private NumericUpDown nudCupoMaximo;
     }
 }
