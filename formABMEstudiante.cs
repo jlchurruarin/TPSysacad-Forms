@@ -94,7 +94,7 @@ namespace TPSysacad___Forms
             List<Curso> listaCursosInscriptos = _baseDeDatos.BuscarCursosInscriptos(_estudiante);
             foreach (Curso cursoInscripto in listaCursosInscriptos)
             {
-                lsbCursosInscriptos.Items.Add($"{cursoInscripto.Nombre} - {cursoInscripto.Descripcion}");
+                lsbCursosInscriptos.Items.Add($"{_baseDeDatos.BuscarMateriaPorID(cursoInscripto.IdMateria)?.ToString()} - {cursoInscripto.ToString()}");
             }
         }
 
