@@ -99,6 +99,7 @@
             btnAgregarCurso.TabIndex = 2;
             btnAgregarCurso.Text = "Agregar Curso";
             btnAgregarCurso.UseVisualStyleBackColor = true;
+            btnAgregarCurso.Click += btnAgregarCurso_Click;
             // 
             // btnCancelar
             // 
@@ -109,6 +110,7 @@
             btnCancelar.TabIndex = 6;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // formSeleccionarCurso
             // 
@@ -120,6 +122,7 @@
             Name = "formSeleccionarCurso";
             Text = "formSeleccionarCurso";
             FormClosing += formSeleccionarCurso_FormClosing;
+            Load += formSeleccionarCurso_Load;
             tlpCurso.ResumeLayout(false);
             tlpCurso.PerformLayout();
             ResumeLayout(false);
