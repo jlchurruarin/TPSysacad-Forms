@@ -59,8 +59,6 @@ namespace TPSysacad___Forms
             _profesor.Cuit = int.Parse(txbCUIT.Text);
             _profesor.CorreoElectronico = txbCorreoElectronico.Text;
             _profesor.CambioDeContraseñaObligatorio = chkCambioContraseñaObligatorio.Checked;
-
-            //listas
         }
 
         private void CargarProfesorEnForm()
@@ -95,7 +93,7 @@ namespace TPSysacad___Forms
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                this.DialogResult = DialogResult.Abort;
+                //this.DialogResult = DialogResult.Abort;
             }
         }
 
@@ -110,7 +108,7 @@ namespace TPSysacad___Forms
             {
                 _profesor.ResetContraseña();
             }
-            
+
         }
     }
 }
