@@ -60,6 +60,7 @@
             btnRealizarPagos.TabIndex = 2;
             btnRealizarPagos.Text = "Realizar Pagos";
             btnRealizarPagos.UseVisualStyleBackColor = true;
+            btnRealizarPagos.Click += btnRealizarPagos_Click;
             // 
             // btnVerHorarios
             // 

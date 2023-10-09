@@ -56,5 +56,11 @@ namespace TPSysacad___Forms
             formVerCronograma formCronograma = new formVerCronograma(_estudiante, _baseDeDatos);
             formCronograma.ShowDialog();
         }
+
+        private void btnRealizarPagos_Click(object sender, EventArgs e)
+        {
+            formSeleccionarPagos formSeleccionarPagos = new formSeleccionarPagos(_estudiante.ListaPagos);
+            formSeleccionarPagos.ShowDialog();
+        }
     }
 }
