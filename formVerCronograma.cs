@@ -31,10 +31,10 @@ namespace TPSysacad___Forms
         private void formVerCronograma_Load(object sender, EventArgs e)
         {
             List<Curso> listaCursos = _baseDeDatos.BuscarCursosInscriptos(_estudiante);
-            string[] arr = new string[listaCursos.Count];
-            foreach (Curso curso in listaCursos)
+            List<string> calendario = Sistema.GenerarCalendario(_baseDeDatos.ListaCursos, _estudiante);
+            foreach (string linea in calendario)
             {
-                textBox1.Text += curso.ToString() + Environment.NewLine;
+                textBox1.Text += linea + Environment.NewLine;
             }
         }
     }
