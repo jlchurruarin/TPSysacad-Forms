@@ -12,7 +12,6 @@ namespace TPSysacad___Forms
             // see https://aka.ms/applicationconfiguration.
             
             ApplicationConfiguration.Initialize();
-            Application.SetDefaultFont(new Font(new FontFamily("Microsoft Sans Serif"), 8.25f));
             Application.Run(new formInicio());
         }
     }
