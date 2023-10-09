@@ -88,6 +88,7 @@
             txbContraseña.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txbContraseña.Location = new Point(3, 93);
             txbContraseña.Name = "txbContraseña";
+            txbContraseña.PasswordChar = '*';
             txbContraseña.Size = new Size(294, 23);
             txbContraseña.TabIndex = 3;
             // 

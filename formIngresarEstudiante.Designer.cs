@@ -33,6 +33,7 @@
             txbContraseña = new TextBox();
             label1 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
+            btnAutoCompletar = new Button();
             btnIngresar = new Button();
             btnSalir = new Button();
             tableLayoutPanel1.SuspendLayout();
@@ -53,7 +54,7 @@
             txbCorreoElectronico.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txbCorreoElectronico.Location = new Point(3, 33);
             txbCorreoElectronico.Name = "txbCorreoElectronico";
-            txbCorreoElectronico.Size = new Size(294, 23);
+            txbCorreoElectronico.Size = new Size(295, 23);
             txbCorreoElectronico.TabIndex = 1;
             // 
             // txbContraseña
@@ -61,7 +62,8 @@
             txbContraseña.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txbContraseña.Location = new Point(3, 93);
             txbContraseña.Name = "txbContraseña";
-            txbContraseña.Size = new Size(294, 23);
+            txbContraseña.PasswordChar = '*';
+            txbContraseña.Size = new Size(295, 23);
             txbContraseña.TabIndex = 3;
             // 
             // label1
@@ -80,6 +82,7 @@
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.Controls.Add(btnAutoCompletar, 0, 6);
             tableLayoutPanel1.Controls.Add(lblCorreoElectronico, 0, 0);
             tableLayoutPanel1.Controls.Add(label1, 0, 2);
             tableLayoutPanel1.Controls.Add(txbContraseña, 0, 3);
@@ -89,22 +92,34 @@
             tableLayoutPanel1.Location = new Point(12, 12);
             tableLayoutPanel1.MinimumSize = new Size(300, 250);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 6;
+            tableLayoutPanel1.RowCount = 7;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 65F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 65F));
-            tableLayoutPanel1.Size = new Size(300, 251);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(301, 310);
             tableLayoutPanel1.TabIndex = 4;
+            // 
+            // btnAutoCompletar
+            // 
+            btnAutoCompletar.Anchor = AnchorStyles.None;
+            btnAutoCompletar.Location = new Point(97, 265);
+            btnAutoCompletar.Name = "btnAutoCompletar";
+            btnAutoCompletar.Size = new Size(106, 30);
+            btnAutoCompletar.TabIndex = 6;
+            btnAutoCompletar.Text = "AutoCompletar";
+            btnAutoCompletar.UseVisualStyleBackColor = true;
+            btnAutoCompletar.Click += btnAutoCompletar_Click;
             // 
             // btnIngresar
             // 
             btnIngresar.Anchor = AnchorStyles.None;
-            btnIngresar.Location = new Point(112, 141);
+            btnIngresar.Location = new Point(103, 132);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(75, 23);
+            btnIngresar.Size = new Size(95, 41);
             btnIngresar.TabIndex = 4;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = true;
@@ -113,9 +128,9 @@
             // btnSalir
             // 
             btnSalir.Anchor = AnchorStyles.None;
-            btnSalir.Location = new Point(112, 206);
+            btnSalir.Location = new Point(103, 201);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(75, 23);
+            btnSalir.Size = new Size(95, 32);
             btnSalir.TabIndex = 5;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = true;
@@ -125,10 +140,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(323, 275);
+            ClientSize = new Size(324, 334);
             Controls.Add(tableLayoutPanel1);
-            MaximumSize = new Size(339, 314);
-            MinimumSize = new Size(339, 312);
+            MaximumSize = new Size(340, 373);
+            MinimumSize = new Size(340, 373);
             Name = "formIngresarEstudiante";
             Text = "formLogin";
             FormClosed += formIngresarEstudiante_FormClosed;
@@ -146,5 +161,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Button btnIngresar;
         private Button btnSalir;
+        private Button btnAutoCompletar;
     }
 }

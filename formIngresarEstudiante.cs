@@ -56,5 +56,11 @@ namespace TPSysacad___Forms
         {
             _formAnterior.Show();
         }
+
+        private void btnAutoCompletar_Click(object sender, EventArgs e)
+        {
+            txbCorreoElectronico.Text = "prueba@prueba.com";
+            txbContraseña.Text = "1234";
+        }
     }
 }

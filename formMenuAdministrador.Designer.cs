@@ -145,6 +145,7 @@
             lblBuscarEstudiante.Size = new Size(103, 15);
             lblBuscarEstudiante.TabIndex = 0;
             lblBuscarEstudiante.Text = "Buscar Estudiante:";
+            lblBuscarEstudiante.Visible = false;
             // 
             // txbBuscarEstudiante
             // 
@@ -153,6 +154,7 @@
             txbBuscarEstudiante.Name = "txbBuscarEstudiante";
             txbBuscarEstudiante.Size = new Size(194, 23);
             txbBuscarEstudiante.TabIndex = 1;
+            txbBuscarEstudiante.Visible = false;
             // 
             // btnAgregarEstudiante
             // 
@@ -243,6 +245,7 @@
             label2.Size = new Size(103, 15);
             label2.TabIndex = 0;
             label2.Text = "Buscar Estudiante:";
+            label2.Visible = false;
             // 
             // txbBuscarProfesor
             // 
@@ -251,6 +254,7 @@
             txbBuscarProfesor.Name = "txbBuscarProfesor";
             txbBuscarProfesor.Size = new Size(194, 23);
             txbBuscarProfesor.TabIndex = 1;
+            txbBuscarProfesor.Visible = false;
             // 
             // btnAgregarProfesor
             // 
@@ -340,6 +344,7 @@
             label3.Size = new Size(124, 15);
             label3.TabIndex = 0;
             label3.Text = "Buscar Administrador:";
+            label3.Visible = false;
             // 
             // txbBuscarAdministrador
             // 
@@ -348,6 +353,7 @@
             txbBuscarAdministrador.Name = "txbBuscarAdministrador";
             txbBuscarAdministrador.Size = new Size(194, 23);
             txbBuscarAdministrador.TabIndex = 1;
+            txbBuscarAdministrador.Visible = false;
             // 
             // btnAgregarAdministrador
             // 
@@ -437,6 +443,7 @@
             lblBuscarMateria.Size = new Size(88, 15);
             lblBuscarMateria.TabIndex = 0;
             lblBuscarMateria.Text = "Buscar Materia:";
+            lblBuscarMateria.Visible = false;
             // 
             // txbBuscarMateria
             // 
@@ -445,6 +452,7 @@
             txbBuscarMateria.Name = "txbBuscarMateria";
             txbBuscarMateria.Size = new Size(194, 23);
             txbBuscarMateria.TabIndex = 1;
+            txbBuscarMateria.Visible = false;
             // 
             // btnAgregarMateria
             // 
@@ -534,6 +542,7 @@
             lblBuscarCurso.Size = new Size(79, 15);
             lblBuscarCurso.TabIndex = 0;
             lblBuscarCurso.Text = "Buscar Curso:";
+            lblBuscarCurso.Visible = false;
             // 
             // txbBuscarCurso
             // 
@@ -542,6 +551,7 @@
             txbBuscarCurso.Name = "txbBuscarCurso";
             txbBuscarCurso.Size = new Size(194, 23);
             txbBuscarCurso.TabIndex = 1;
+            txbBuscarCurso.Visible = false;
             // 
             // btnAgregarCurso
             // 

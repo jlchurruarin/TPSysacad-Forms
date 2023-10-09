@@ -103,6 +103,7 @@
             txbContraseña.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txbContraseña.Location = new Point(3, 93);
             txbContraseña.Name = "txbContraseña";
+            txbContraseña.PasswordChar = '*';
             txbContraseña.Size = new Size(296, 23);
             txbContraseña.TabIndex = 3;
             // 
@@ -142,7 +143,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(324, 334);
             Controls.Add(tableLayoutPanel1);
-            MinimumSize = new Size(339, 314);
+            MinimumSize = new Size(340, 373);
             Name = "formIngresarAdministrador";
             Text = "formIngresarAdministrador";
             FormClosed += formIngresarAdministrador_FormClosed;
