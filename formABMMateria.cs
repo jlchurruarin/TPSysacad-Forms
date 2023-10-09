@@ -82,6 +82,7 @@ namespace TPSysacad___Forms
                     }
                 }
             }
+            ActualizarListaMateriasRequeridas();
 
         }
 
