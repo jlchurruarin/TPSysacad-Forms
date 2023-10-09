@@ -69,6 +69,7 @@
             lblBuscarEstudiante.Size = new Size(103, 15);
             lblBuscarEstudiante.TabIndex = 0;
             lblBuscarEstudiante.Text = "Buscar Estudiante:";
+            lblBuscarEstudiante.Visible = false;
             // 
             // txbBuscarEstudiante
             // 
@@ -77,6 +78,7 @@
             txbBuscarEstudiante.Name = "txbBuscarEstudiante";
             txbBuscarEstudiante.Size = new Size(194, 23);
             txbBuscarEstudiante.TabIndex = 1;
+            txbBuscarEstudiante.Visible = false;
             // 
             // lsbEstudiantes
             // 

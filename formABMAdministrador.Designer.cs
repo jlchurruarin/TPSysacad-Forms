@@ -209,6 +209,7 @@
             btnResetearContrasenia.TabIndex = 3;
             btnResetearContrasenia.Text = "Reestablecer contraseña";
             btnResetearContrasenia.UseVisualStyleBackColor = true;
+            btnResetearContrasenia.Click += btnResetearContrasenia_Click;
             // 
             // tlpDatosPersonales
             // 

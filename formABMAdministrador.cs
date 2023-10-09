@@ -84,5 +84,10 @@ namespace TPSysacad___Forms
                 this.DialogResult = DialogResult.Abort;
             }
         }
+
+        private void btnResetearContrasenia_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

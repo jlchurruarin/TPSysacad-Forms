@@ -219,5 +219,18 @@ namespace TPSysacad___Forms
                 //this.DialogResult = DialogResult.Abort;
             }
         }
+
+        private void btnResetearContrasenia_Click(object sender, EventArgs e)
+        {
+            DialogResult resultYesNo = MessageBox.Show("¿Desea enviar la contraseña al usuario?", "Envio de contraseña", MessageBoxButtons.YesNo);
+            if (resultYesNo == DialogResult.Yes)
+            {
+                _estudiante.ResetContraseña(true);
+            }
+            else
+            {
+                _estudiante.ResetContraseña();
+            }
+        }
     }
 }

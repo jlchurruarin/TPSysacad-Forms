@@ -69,6 +69,7 @@
             lblBuscarMateria.Size = new Size(88, 15);
             lblBuscarMateria.TabIndex = 0;
             lblBuscarMateria.Text = "Buscar Materia:";
+            lblBuscarMateria.Visible = false;
             // 
             // txbBuscarMateria
             // 
@@ -77,6 +78,7 @@
             txbBuscarMateria.Name = "txbBuscarMateria";
             txbBuscarMateria.Size = new Size(194, 23);
             txbBuscarMateria.TabIndex = 1;
+            txbBuscarMateria.Visible = false;
             // 
             // lsbMateria
             // 
