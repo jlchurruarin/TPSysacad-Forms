@@ -15,9 +15,9 @@ namespace TPSysacad___Forms
     {
         private Form _formAnterior;
         private Estudiante _estudiante;
-        private BaseDeDatos _baseDeDatos;
+        private FakeBaseDeDatos _baseDeDatos;
 
-        public formMenuEstudiante(Form formAnterior, Estudiante estudiante, BaseDeDatos baseDeDatos)
+        public formMenuEstudiante(Form formAnterior, Estudiante estudiante, FakeBaseDeDatos baseDeDatos)
         {
             _formAnterior = formAnterior;
             _estudiante = estudiante;

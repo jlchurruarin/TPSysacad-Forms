@@ -14,9 +14,9 @@ namespace TPSysacad___Forms
     public partial class formVerCronograma : Form
     {
         private Estudiante _estudiante;
-        private BaseDeDatos _baseDeDatos;
+        private FakeBaseDeDatos _baseDeDatos;
 
-        public formVerCronograma(Estudiante estudiante, BaseDeDatos baseDeDatos)
+        public formVerCronograma(Estudiante estudiante, FakeBaseDeDatos baseDeDatos)
         {
             _estudiante = estudiante;
             _baseDeDatos = baseDeDatos;

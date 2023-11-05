@@ -14,7 +14,7 @@ namespace TPSysacad___Forms
     public partial class formIngresarProfesor : Form
     {
 
-        private BaseDeDatos _baseDeDatos;
+        private FakeBaseDeDatos _baseDeDatos;
         private Form _formAnterior;
 
         public formIngresarProfesor(Form formAnterior)

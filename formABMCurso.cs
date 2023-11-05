@@ -15,9 +15,9 @@ namespace TPSysacad___Forms
     public partial class formABMCurso : Form
     {
         private Curso _curso;
-        private BaseDeDatos _baseDeDatos;
+        private FakeBaseDeDatos _baseDeDatos;
 
-        public formABMCurso(Curso curso, BaseDeDatos baseDeDatos)
+        public formABMCurso(Curso curso, FakeBaseDeDatos baseDeDatos)
         {
             _curso = curso;
             _baseDeDatos = baseDeDatos;

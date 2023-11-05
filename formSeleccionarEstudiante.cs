@@ -14,7 +14,7 @@ namespace TPSysacad___Forms
     public partial class formSeleccionarEstudiante : Form
     {
         private Estudiante _estudiante;
-        private BaseDeDatos _baseDeDatos;
+        private FakeBaseDeDatos _baseDeDatos;
 
 
         public Estudiante Estudiante
@@ -22,7 +22,7 @@ namespace TPSysacad___Forms
             get { return _estudiante; }
         }
 
-        public formSeleccionarEstudiante(BaseDeDatos baseDeDatos)
+        public formSeleccionarEstudiante(FakeBaseDeDatos baseDeDatos)
         {
             _estudiante = new Estudiante();
             _baseDeDatos = baseDeDatos;

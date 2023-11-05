@@ -13,7 +13,7 @@ namespace TPSysacad___Forms
 {
     public partial class formIngresarAdministrador : Form
     {
-        private BaseDeDatos _baseDeDatos;
+        private FakeBaseDeDatos _baseDeDatos;
         private Form _formAnterior;
 
         public formIngresarAdministrador(Form formAnterior)

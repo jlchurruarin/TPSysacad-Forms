@@ -16,14 +16,14 @@ namespace TPSysacad___Forms
 
         private Curso _curso;
         private Estudiante _estudiante;
-        private BaseDeDatos _baseDeDatos;
+        private FakeBaseDeDatos _baseDeDatos;
 
         public Curso Curso
         {
             get { return _curso; }
         }
 
-        public formSeleccionarCurso(Estudiante estudiante, BaseDeDatos baseDeDatos)
+        public formSeleccionarCurso(Estudiante estudiante, FakeBaseDeDatos baseDeDatos)
         {
             _curso = new Curso();
             _estudiante = estudiante;

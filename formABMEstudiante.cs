@@ -14,9 +14,9 @@ namespace TPSysacad___Forms
     public partial class formABMEstudiante : Form
     {
         private Estudiante _estudiante;
-        private BaseDeDatos _baseDeDatos;
+        private FakeBaseDeDatos _baseDeDatos;
 
-        public formABMEstudiante(Estudiante estudiante, BaseDeDatos baseDeDatos)
+        public formABMEstudiante(Estudiante estudiante, FakeBaseDeDatos baseDeDatos)
         {
             _estudiante = estudiante;
             _baseDeDatos = baseDeDatos;

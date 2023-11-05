@@ -15,9 +15,9 @@ namespace TPSysacad___Forms
     public partial class formABMProfesor : Form
     {
         private Profesor _profesor;
-        private BaseDeDatos _baseDeDatos;
+        private FakeBaseDeDatos _baseDeDatos;
 
-        public formABMProfesor(Profesor profesor, BaseDeDatos baseDeDatos)
+        public formABMProfesor(Profesor profesor, FakeBaseDeDatos baseDeDatos)
         {
             _profesor = profesor;
             _baseDeDatos = baseDeDatos;

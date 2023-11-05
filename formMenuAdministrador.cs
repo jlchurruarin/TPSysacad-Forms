@@ -15,9 +15,9 @@ namespace TPSysacad___Forms
     public partial class formMenuAdministrador : Form
     {
         private Form _formAnterior;
-        private BaseDeDatos _baseDeDatos;
+        private FakeBaseDeDatos _baseDeDatos;
 
-        public formMenuAdministrador(Form formAnterior, BaseDeDatos baseDeDatos)
+        public formMenuAdministrador(Form formAnterior, FakeBaseDeDatos baseDeDatos)
         {
             _formAnterior = formAnterior;
             _baseDeDatos = baseDeDatos;

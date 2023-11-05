@@ -15,9 +15,9 @@ namespace TPSysacad___Forms
     {
 
         private Materia _materia;
-        private BaseDeDatos _baseDeDatos;
+        private FakeBaseDeDatos _baseDeDatos;
 
-        public formABMMateria(Materia materia, BaseDeDatos baseDeDatos)
+        public formABMMateria(Materia materia, FakeBaseDeDatos baseDeDatos)
         {
             _materia = materia;
             _baseDeDatos = baseDeDatos;

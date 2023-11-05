@@ -14,14 +14,14 @@ namespace TPSysacad___Forms
     public partial class formSeleccionarMateria : Form
     {
         private Materia _materia;
-        private BaseDeDatos _baseDeDatos;
+        private FakeBaseDeDatos _baseDeDatos;
 
         public Materia Materia
         {
             get { return _materia; }
         }
 
-        public formSeleccionarMateria(BaseDeDatos baseDeDatos)
+        public formSeleccionarMateria(FakeBaseDeDatos baseDeDatos)
         {
             _materia = new Materia();
             _baseDeDatos = baseDeDatos;
