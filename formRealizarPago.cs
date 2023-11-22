@@ -45,7 +45,7 @@ namespace TPSysacad___Forms
 
         private void CargarMetodosDePago()
         {
-            cmbMetodoDePago.DataSource = Enum.GetValues(typeof(MetodoDePago));
+            cmbMetodoDePago.DataSource = Enum.GetValues(typeof(MetodoPago));
         }
 
         private void VaciarTextBoxs()
@@ -68,8 +68,8 @@ namespace TPSysacad___Forms
             Regex rgCVV = new Regex(patronCVV);
             Regex rgFecha = new Regex(patronFecha);
 
-            MetodoDePago metodoDePago = (MetodoDePago)cmbMetodoDePago.SelectedItem;
-            if (metodoDePago == MetodoDePago.Debito || metodoDePago == MetodoDePago.Credito)
+            MetodoPago metodoDePago = (MetodoPago)cmbMetodoDePago.SelectedItem;
+            if (metodoDePago == MetodoPago.Debito || metodoDePago == MetodoPago.Credito)
             {
                 if (!rgTarjeta.IsMatch(txbNumeroTarjeta.Text)) 
                 {
@@ -87,7 +87,7 @@ namespace TPSysacad___Forms
                 {
                     return true;
                 }
-            } else if (metodoDePago == MetodoDePago.Transferencia)
+            } else if (metodoDePago == MetodoPago.Transferencia)
             {
                 if (!rgCBU.IsMatch(txbCBU.Text))
                 {
@@ -107,7 +107,7 @@ namespace TPSysacad___Forms
 
         private void cmbMetodoDePago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MetodoDePago metodoDePago = (MetodoDePago)cmbMetodoDePago.SelectedItem;
+            MetodoPago metodoDePago = (MetodoPago)cmbMetodoDePago.SelectedItem;
 
             VaciarTextBoxs();
 
@@ -118,19 +118,19 @@ namespace TPSysacad___Forms
 
             switch (metodoDePago)
             {
-                case MetodoDePago.Transferencia:
+                case MetodoPago.Transferencia:
                     gbPagoTransferencia.Visible = true;
                     break;
-                case MetodoDePago.Efectivo:
+                case MetodoPago.Efectivo:
                     gbPagoEfectivo.Visible = true;
                     break;
-                case MetodoDePago.Debito:
+                case MetodoPago.Debito:
                     gbPagoConTarjeta.Visible = true;
                     break;
-                case MetodoDePago.Credito:
+                case MetodoPago.Credito:
                     gbPagoConTarjeta.Visible = true;
                     break;
-                case MetodoDePago.MercadoPago:
+                case MetodoPago.MercadoPago:
                     gbPagoConMP.Visible = true;
                     break;
                 default:

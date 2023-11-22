@@ -1,4 +1,5 @@
 ﻿using BibliotecaClases;
+using BibliotecaClases.BD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,10 @@ namespace TPSysacad___Forms
     public partial class formMenuEstudiante : Form
     {
         private Form _formAnterior;
-        private Estudiante _estudiante;
+        private Usuario _estudiante;
         private FakeBaseDeDatos _baseDeDatos;
 
-        public formMenuEstudiante(Form formAnterior, Estudiante estudiante, FakeBaseDeDatos baseDeDatos)
+        public formMenuEstudiante(Form formAnterior, Usuario estudiante, FakeBaseDeDatos baseDeDatos)
         {
             _formAnterior = formAnterior;
             _estudiante = estudiante;
@@ -27,22 +28,8 @@ namespace TPSysacad___Forms
 
         private void btnInscripcion_Click(object sender, EventArgs e)
         {
-            formSeleccionarCurso formSeleccionarCurso = new formSeleccionarCurso(_estudiante, _baseDeDatos);
+            formSeleccionarCurso formSeleccionarCurso = new formSeleccionarCurso();
             DialogResult dialogResultSeleccionarCurso = formSeleccionarCurso.ShowDialog();
-            if (dialogResultSeleccionarCurso == DialogResult.OK)
-            {
-                Inscripcion inscripcion = new Inscripcion(_estudiante, DateTime.Now);
-                try
-                {
-                    bool agregado = formSeleccionarCurso.Curso + inscripcion;
-                    if (agregado) { MessageBox.Show("Inscripto correctamente", "Inscripción"); }
-                    else { MessageBox.Show("Curso lleno, se agregó a lista de espera", "Inscripción"); }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
         }
 
         private void formMenuEstudiante_FormClosed(object sender, FormClosedEventArgs e)
@@ -59,7 +46,7 @@ namespace TPSysacad___Forms
 
         private void btnRealizarPagos_Click(object sender, EventArgs e)
         {
-            formSeleccionarPagos formSeleccionarPagos = new formSeleccionarPagos(_estudiante.ListaPagos);
+            formSeleccionarPagos formSeleccionarPagos = new formSeleccionarPagos();
             formSeleccionarPagos.ShowDialog();
         }
     }

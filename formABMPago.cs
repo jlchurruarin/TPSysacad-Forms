@@ -1,4 +1,5 @@
 ﻿using BibliotecaClases;
+using BibliotecaClases.BD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +17,8 @@ namespace TPSysacad___Forms
     {
         private Pago _pago;
 
-        public formABMPago(Pago pago)
+        public formABMPago()
         {
-            _pago = pago;
             InitializeComponent();
         }
 
@@ -60,7 +60,7 @@ namespace TPSysacad___Forms
 
         private void CargarEstadoDePago()
         {
-            cmbEstadoDePago.DataSource = Enum.GetValues(typeof(EstadoDePago));
+            cmbEstadoDePago.DataSource = Enum.GetValues(typeof(EstadoPago));
         }
 
         private void ValidarPago()
@@ -68,16 +68,16 @@ namespace TPSysacad___Forms
 
             if (Enum.TryParse(typeof(ConceptoPago), cmbConceptosDePago.Text, out object? conceptoPago) == false) { throw new Exception("Concepto de pago no valido"); }
             if (nudMonto.Value <= 0) { throw new Exception("Monto de pago no valido"); }
-            if (Enum.TryParse(typeof(EstadoDePago), cmbEstadoDePago.Text, out object? estadoPago) == false) { throw new Exception("Estado de pago no valido"); }
+            if (Enum.TryParse(typeof(EstadoPago), cmbEstadoDePago.Text, out object? estadoPago) == false) { throw new Exception("Estado de pago no valido"); }
         }
 
         private void GuardarPago()
         {
             Enum.TryParse(typeof(ConceptoPago), cmbConceptosDePago.Text, out object? conceptoPago);
-            Enum.TryParse(typeof(EstadoDePago), cmbEstadoDePago.Text, out object? estadoPago);
+            Enum.TryParse(typeof(EstadoPago), cmbEstadoDePago.Text, out object? estadoPago);
             _pago.Monto = nudMonto.Value;
             _pago.ConceptoDePago = (ConceptoPago) conceptoPago;
-            _pago.EstadoDePago = (EstadoDePago) estadoPago;
+            _pago.EstadoDePago = (EstadoPago) estadoPago;
         }
     }
 }

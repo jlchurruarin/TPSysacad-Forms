@@ -85,6 +85,7 @@
             Controls.Add(btnEstudiante);
             Name = "formInicio";
             Text = "Syscad";
+            Load += formInicio_Load;
             ResumeLayout(false);
         }
 

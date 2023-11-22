@@ -1,4 +1,5 @@
 ﻿using BibliotecaClases;
+using BibliotecaClases.BD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,16 +14,15 @@ namespace TPSysacad___Forms
 {
     public partial class formHorario : Form
     {
-        private Horario _horario;
+        private HorarioCurso _horario;
 
-        public Horario Horario
+        public HorarioCurso Horario
         {
             get { return _horario; }
         }
 
         public formHorario()
         {
-            _horario = new Horario();
             InitializeComponent();
         }
 
@@ -38,8 +38,8 @@ namespace TPSysacad___Forms
             int cargaHoraria = (int)nudCargaHoraria.Value;
 
             _horario.Dia = dia;
-            _horario.Hora = tiempo;
-            _horario.CargaHoraria = cargaHoraria;
+            //_horario.Hora = tiempo;
+            //_horario.CargaHoraria = cargaHoraria;
 
             this.DialogResult = DialogResult.OK;
             this.Close();

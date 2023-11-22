@@ -1,4 +1,5 @@
 ﻿using BibliotecaClases;
+using BibliotecaClases.BD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,7 @@ namespace TPSysacad___Forms
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            Estudiante? estudiante = _baseDeDatos.BuscarEstudiantePorCorreo(txbCorreoElectronico.Text);
+            Usuario? estudiante = _baseDeDatos.BuscarEstudiantePorCorreo(txbCorreoElectronico.Text);
             if (estudiante is null) { MessageBox.Show("Usuario no encontrado", "Logueo invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
             if (estudiante.ValidarContraseña(txbContraseña.Text) == false) { MessageBox.Show("Contraseña incorrecta", "Logueo invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             else

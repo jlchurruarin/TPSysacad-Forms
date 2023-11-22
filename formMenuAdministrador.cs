@@ -1,4 +1,7 @@
 ﻿using BibliotecaClases;
+using BibliotecaClases.BD;
+using BibliotecaClases.Interfaces;
+using BibliotecaClases.Logica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,286 +15,342 @@ using System.Windows.Forms;
 
 namespace TPSysacad___Forms
 {
-    public partial class formMenuAdministrador : Form
+    public partial class formMenuAdministrador : Form, ISQLRemoveVista, IMenuAdministrador
     {
-        private Form _formAnterior;
-        private FakeBaseDeDatos _baseDeDatos;
+        public event Action? AlSolicitarEstudiantes;
+        public event Action? AlSolicitarProfesores;
+        public event Action? AlSolicitarAdministradores;
+        public event Action? AlSolicitarMaterias;
+        public event Action? AlSolicitarCursos;
 
-        public formMenuAdministrador(Form formAnterior, FakeBaseDeDatos baseDeDatos)
+        private Form _formAnterior;
+        private Usuario _administrador;
+        private LogicaMenuAdministrador _logicaMenuAdministrador;
+
+        public formMenuAdministrador(Form formAnterior, Usuario administrador)
         {
             _formAnterior = formAnterior;
-            _baseDeDatos = baseDeDatos;
+            _administrador = administrador;
+            _logicaMenuAdministrador = new LogicaMenuAdministrador(this);
             InitializeComponent();
+            lsbEstudiantes.DisplayMember = "DisplayText";
+            lsbProfesores.DisplayMember = "DisplayText";
+            lsbAdministradores.DisplayMember = "DisplayText";
+            lsbMaterias.DisplayMember = "DisplayText";
+            lsbCursos.DisplayMember = "DisplayText";
         }
 
         private void formMenuAdministrador_Load(object sender, EventArgs e)
         {
-            ActualizarListaEstudiantes();
-            ActualizarListaProfesores();
-            ActualizarListaAdministradores();
-            ActualizarListaMaterias();
-            ActualizarListaCursos();
+
+            AlSolicitarEstudiantes?.Invoke();
+            AlSolicitarProfesores?.Invoke();
+            AlSolicitarAdministradores?.Invoke();
+            AlSolicitarMaterias?.Invoke();
+            AlSolicitarCursos?.Invoke();
+
+            btnGestionarCursosEstudiante.Enabled = false;
+            btnGestionarPagosEstudiante.Enabled = false;
         }
 
         private void formMenuAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Sistema.GuardarJson(_baseDeDatos);
             _formAnterior.Show();
         }
 
         private void btnAgregarEstudiante_Click(object sender, EventArgs e)
         {
-            Estudiante estudiante = new Estudiante();
-            formABMEstudiante formABMEstudiante = new formABMEstudiante(estudiante, _baseDeDatos);
-            DialogResult estudianteDialogResult = formABMEstudiante.ShowDialog();
+            formABMUsuario formABMEstudiante = new formABMUsuario(TipoDeUsuario.Estudiante);
+            formABMEstudiante.ShowDialog();
 
-            if (estudianteDialogResult == DialogResult.OK)
-            {
-                if (_baseDeDatos + estudiante == false)
-                {
-                    MessageBox.Show("Ya existe un estudiante con el legajo, correo o ID indicado");
-                }
-            }
-
-            ActualizarListaEstudiantes();
-
+            AlSolicitarEstudiantes?.Invoke();
         }
 
         private void btnEditarEstudiante_Click(object sender, EventArgs e)
         {
             if (lsbEstudiantes.SelectedIndex == -1) { MessageBox.Show("Selecione un estudiante a editar", "Error"); return; }
 
-            Estudiante estudianteSeleccionado = _baseDeDatos.ListaEstudiantes[lsbEstudiantes.SelectedIndex];
-            formABMEstudiante formABMEstudiante = new formABMEstudiante(estudianteSeleccionado, _baseDeDatos);
+            formABMUsuario formABMEstudiante = new formABMUsuario(TipoDeUsuario.Estudiante, lsbEstudiantes.SelectedItem);
             formABMEstudiante.ShowDialog();
-            ActualizarListaEstudiantes();
+
+            AlSolicitarEstudiantes?.Invoke();
         }
 
         private void btnEliminarEstudiante_Click(object sender, EventArgs e)
         {
             if (lsbEstudiantes.SelectedIndex == -1) { MessageBox.Show("Selecione un estudiante a eliminar", "Error"); return; }
 
-            if (_baseDeDatos - _baseDeDatos.ListaEstudiantes[lsbEstudiantes.SelectedIndex])
-            {
-                ActualizarListaEstudiantes();
-            }
-            else
-            {
-                MessageBox.Show("Error al eliminar el estudiante", "Error");
-            }
+            Usuario? usuarioSeleccionado = lsbEstudiantes.SelectedItem as Usuario;
+
+            if (usuarioSeleccionado is null) { MessageBox.Show("Error al eliminar el estudiante seleccionado."); }
+            else { _logicaMenuAdministrador.EliminarEstudiante(usuarioSeleccionado); }
+
+            AlSolicitarEstudiantes?.Invoke();
         }
 
         private void btnAgregarProfesor_Click(object sender, EventArgs e)
         {
-            Profesor profesor = new Profesor();
-            formABMProfesor formABMProfesor = new formABMProfesor(profesor, _baseDeDatos);
-            DialogResult ProfesorDialogResult = formABMProfesor.ShowDialog();
+            formABMUsuario formABMUsuario = new formABMUsuario(TipoDeUsuario.Profesor);
+            formABMUsuario.ShowDialog();
 
-            if (ProfesorDialogResult == DialogResult.OK)
-            {
-                if (_baseDeDatos + profesor == false)
-                {
-                    MessageBox.Show("Ya existe un profesor con el correo o ID indicado");
-                }
-            }
-
-            ActualizarListaProfesores();
+            AlSolicitarProfesores?.Invoke();
         }
 
         private void btnEditarProfesor_Click(object sender, EventArgs e)
         {
             if (lsbProfesores.SelectedIndex == -1) { MessageBox.Show("Selecione un profesor a editar", "Error"); return; }
 
-            Profesor profesorSelecionado = _baseDeDatos.ListaProfesores[lsbProfesores.SelectedIndex];
-            formABMProfesor formABMProfesor = new formABMProfesor(profesorSelecionado, _baseDeDatos);
-            formABMProfesor.ShowDialog();
-            ActualizarListaEstudiantes();
+            formABMUsuario formABMUsuario = new formABMUsuario(TipoDeUsuario.Profesor, lsbProfesores.SelectedItem);
+            formABMUsuario.ShowDialog();
+
+            AlSolicitarProfesores?.Invoke();
         }
 
         private void btnEliminarProfesor_Click(object sender, EventArgs e)
         {
-            if (lsbProfesores.SelectedIndex == -1) { MessageBox.Show("Selecione un estudiante a eliminar", "Error"); return; }
+            if (lsbProfesores.SelectedIndex == -1) { MessageBox.Show("Selecione un profesor a eliminar", "Error"); return; }
 
-            if (_baseDeDatos - _baseDeDatos.ListaProfesores[lsbProfesores.SelectedIndex])
-            {
-                ActualizarListaProfesores();
-            }
-            else
-            {
-                MessageBox.Show("Error al eliminar el estudiante", "Error");
-            }
+            Usuario? usuarioSeleccionado = lsbProfesores.SelectedItem as Usuario;
+
+            if (usuarioSeleccionado is null) { MessageBox.Show("Error al eliminar el profesor seleccionado."); }
+            else { _logicaMenuAdministrador.EliminarProfesor(usuarioSeleccionado); }
+
+            AlSolicitarProfesores?.Invoke();
         }
 
         private void btnAgregarAdministrador_Click(object sender, EventArgs e)
         {
-            Administrador administrador = new Administrador();
-            formABMAdministrador formABMProfesor = new formABMAdministrador(this, administrador);
-            DialogResult administradorDialogResult = formABMProfesor.ShowDialog();
+            formABMUsuario formABMUsuario = new formABMUsuario(TipoDeUsuario.Administrador);
+            formABMUsuario.ShowDialog();
 
-            if (administradorDialogResult == DialogResult.OK)
-            {
-                if (_baseDeDatos + administrador == false)
-                {
-                    MessageBox.Show("Ya existe un administrador con el correo o ID indicado");
-                }
-            }
-
-            ActualizarListaAdministradores();
+            AlSolicitarAdministradores?.Invoke();
         }
 
         private void btnEditarAdministrador_Click(object sender, EventArgs e)
         {
             if (lsbAdministradores.SelectedIndex == -1) { MessageBox.Show("Selecione un administrador a editar", "Error"); return; }
 
-            Administrador administradorSeleccionado = _baseDeDatos.ListaAdministradores[lsbAdministradores.SelectedIndex];
-            formABMAdministrador formABMAdministrador = new formABMAdministrador(this, administradorSeleccionado);
-            formABMAdministrador.ShowDialog();
-            ActualizarListaAdministradores();
+            formABMUsuario formABMUsuario = new formABMUsuario(TipoDeUsuario.Administrador, lsbAdministradores.SelectedItem);
+            formABMUsuario.ShowDialog();
+
+            AlSolicitarAdministradores?.Invoke();
         }
 
         private void btnEliminarAdministrador_Click(object sender, EventArgs e)
         {
             if (lsbAdministradores.SelectedIndex == -1) { MessageBox.Show("Selecione un administrador a eliminar", "Error"); return; }
 
-            if (_baseDeDatos - _baseDeDatos.ListaAdministradores[lsbAdministradores.SelectedIndex])
-            {
-                ActualizarListaAdministradores();
-            }
-            else
-            {
-                MessageBox.Show("Error al eliminar el administrador", "Error");
-            }
+            Usuario? usuarioSeleccionado = lsbAdministradores.SelectedItem as Usuario;
+
+            if (usuarioSeleccionado is null) { MessageBox.Show("Error al eliminar el administrador seleccionado."); }
+            else { _logicaMenuAdministrador.EliminarAdministrador(usuarioSeleccionado); }
+
+            AlSolicitarAdministradores?.Invoke();
         }
 
         private void btnAgregarMateria_Click(object sender, EventArgs e)
         {
-            Materia materia = new Materia();
-            if (_baseDeDatos + materia)
-            {
-                formABMMateria formABMMateria = new formABMMateria(materia, _baseDeDatos);
-                DialogResult materiaDialogResult = formABMMateria.ShowDialog();
-
-                if (materiaDialogResult == DialogResult.Abort)
-                {
-                    _ = _baseDeDatos - materia;
-                }
-
-                ActualizarListaMaterias();
-
-            }
+            formABMMateria formABMMateria = new formABMMateria();
+            formABMMateria.ShowDialog();
+            AlSolicitarMaterias?.Invoke();
         }
 
         private void btnEditarMateria_Click(object sender, EventArgs e)
         {
             if (lsbMaterias.SelectedIndex == -1) { MessageBox.Show("Selecione una materia a editar", "Error"); return; }
 
-            Materia materiaSeleccionada = _baseDeDatos.ListaMaterias[lsbMaterias.SelectedIndex];
-            formABMMateria formABMMateria = new formABMMateria(materiaSeleccionada, _baseDeDatos);
+            formABMMateria formABMMateria = new formABMMateria(lsbMaterias.SelectedItem);
             formABMMateria.ShowDialog();
-            ActualizarListaMaterias();
+            AlSolicitarMaterias?.Invoke();
         }
 
         private void btnEliminarMateria_Click(object sender, EventArgs e)
         {
             if (lsbMaterias.SelectedIndex == -1) { MessageBox.Show("Selecione una materia a eliminar", "Error"); return; }
 
-            if (_baseDeDatos - _baseDeDatos.ListaMaterias[lsbMaterias.SelectedIndex])
-            {
-                ActualizarListaMaterias();
-            }
-            else
-            {
-                MessageBox.Show("Error al eliminar la materia", "Error");
-            }
+            Materia? materiaSeleccionada = lsbMaterias.SelectedItem as Materia;
+
+            if (materiaSeleccionada is null) { MessageBox.Show("Error al eliminar la materia seleccionada."); }
+            else { _logicaMenuAdministrador.EliminarMateria(materiaSeleccionada); }
+
+            AlSolicitarMaterias?.Invoke();
         }
 
         private void btnAgregarCurso_Click(object sender, EventArgs e)
         {
-            Curso curso = new Curso();
-            if (_baseDeDatos + curso)
-            {
-                formABMCurso formABMCurso = new formABMCurso(curso, _baseDeDatos);
-                DialogResult cursoDialogResult = formABMCurso.ShowDialog();
+            formABMCurso formABMCurso = new formABMCurso();
+            formABMCurso.ShowDialog();
 
-                if (cursoDialogResult == DialogResult.Abort)
-                {
-                    _ = _baseDeDatos - curso;
-                }
-
-                ActualizarListaCursos();
-
-            }
+            AlSolicitarCursos?.Invoke();
         }
 
         private void btnEditarCurso_Click(object sender, EventArgs e)
         {
             if (lsbCursos.SelectedIndex == -1) { MessageBox.Show("Selecione una curso a editar", "Error"); return; }
 
-            Curso cursoSeleccionada = _baseDeDatos.ListaCursos[lsbCursos.SelectedIndex];
-            formABMCurso formABMCurso = new formABMCurso(cursoSeleccionada, _baseDeDatos);
+            formABMCurso formABMCurso = new formABMCurso(lsbCursos.SelectedItem);
             formABMCurso.ShowDialog();
-            ActualizarListaCursos();
+
+            AlSolicitarCursos?.Invoke();
         }
 
         private void btnEliminarCurso_Click(object sender, EventArgs e)
         {
             if (lsbCursos.SelectedIndex == -1) { MessageBox.Show("Selecione un curso a eliminar", "Error"); return; }
 
-            if (_baseDeDatos - _baseDeDatos.ListaCursos[lsbCursos.SelectedIndex])
+            Curso? cursoSeleccionado = lsbCursos.SelectedItem as Curso;
+
+            if (cursoSeleccionado is null) { MessageBox.Show("Error al eliminar la materia seleccionada."); }
+            else { _logicaMenuAdministrador.EliminarCurso(cursoSeleccionado); }
+
+            AlSolicitarCursos?.Invoke();
+        }
+
+        private void btnGestionarPagosEstudiante_Click(object sender, EventArgs e)
+        {
+            if (lsbEstudiantes.SelectedIndex == -1) { return; }
+            formGestionarPagosEstudiante formPago = new formGestionarPagosEstudiante(lsbEstudiantes.SelectedItem);
+            formPago.ShowDialog();
+        }
+
+        private void btnGestionarCursosEstudiante_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGestionarCursosProfesor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGestionarMateriasRequeridas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGestionarHorariosCurso_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGestionarInscriptosCurso_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGestionarListaEsperaCurso_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lsbEstudiantes_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (lsbEstudiantes.SelectedIndex != -1)
             {
-                ActualizarListaCursos();
+                btnGestionarCursosEstudiante.Enabled = true;
+                btnGestionarPagosEstudiante.Enabled = true;
             }
             else
             {
-                MessageBox.Show("Error al eliminar el curso", "Error");
+                btnGestionarCursosEstudiante.Enabled = false;
+                btnGestionarPagosEstudiante.Enabled = false;
             }
         }
 
-        private void ActualizarListaProfesores()
+        private void lsbProfesores_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lsbProfesores.Items.Clear();
-            foreach (Profesor profesor in _baseDeDatos.ListaProfesores)
+            if (lsbProfesores.SelectedIndex != -1)
             {
-                lsbProfesores.Items.Add(profesor.ToString());
+                btnGestionarCursosProfesor.Enabled = true;
+            }
+            else
+            {
+                btnGestionarCursosProfesor.Enabled = false;
             }
         }
 
-        private void ActualizarListaEstudiantes()
+        private void lsbMaterias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lsbMaterias.SelectedIndex != -1)
+            {
+                btnGestionarMateriasRequeridas.Enabled = true;
+            }
+            else
+            {
+                btnGestionarMateriasRequeridas.Enabled = false;
+            }
+        }
+
+        private void lsbCursos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lsbCursos.SelectedIndex != -1)
+            {
+                btnGestionarHorariosCurso.Enabled = true;
+                btnGestionarInscriptosCurso.Enabled = true;
+                btnGestionarListaEsperaCurso.Enabled = true;
+            }
+            else
+            {
+                btnGestionarHorariosCurso.Enabled = false;
+                btnGestionarInscriptosCurso.Enabled = false;
+                btnGestionarListaEsperaCurso.Enabled = false;
+            }
+        }
+
+        public void MostrarListaEstudiantes(List<Usuario> listaEstudiantes)
         {
             lsbEstudiantes.Items.Clear();
-            foreach (Estudiante estudiante in _baseDeDatos.ListaEstudiantes)
+            foreach (Usuario estudiante in listaEstudiantes)
             {
-                lsbEstudiantes.Items.Add(estudiante.ToString());
+                lsbEstudiantes.Items.Add(estudiante);
             }
         }
 
-        private void ActualizarListaAdministradores()
+        public void MostrarListaProfesores(List<Usuario> listaProfesores)
+        {
+            lsbProfesores.Items.Clear();
+            foreach (Usuario profesor in listaProfesores)
+            {
+                lsbProfesores.Items.Add(profesor);
+            }
+        }
+
+        public void MostrarListaAdministradores(List<Usuario> listaAdministradores)
         {
             lsbAdministradores.Items.Clear();
-            foreach (Administrador administrador in _baseDeDatos.ListaAdministradores)
+            foreach (Usuario administrador in listaAdministradores)
             {
-                lsbAdministradores.Items.Add(administrador.ToString());
+                lsbAdministradores.Items.Add(administrador);
             }
         }
 
-        private void ActualizarListaMaterias()
+        public void MostrarListaMaterias(List<Materia> listaMaterias)
         {
             lsbMaterias.Items.Clear();
-            foreach (Materia materia in _baseDeDatos.ListaMaterias)
+            foreach (Materia materia in listaMaterias)
             {
-                lsbMaterias.Items.Add(materia.ToString());
+                lsbMaterias.Items.Add(materia);
             }
         }
 
-        private void ActualizarListaCursos()
+        public void MostrarListaCursos(List<Curso> listaCursos)
         {
             lsbCursos.Items.Clear();
-            foreach (Curso curso in _baseDeDatos.ListaCursos)
+            foreach (Curso curso in listaCursos)
             {
-                lsbCursos.Items.Add($"{curso.ToString()} [Materia: {_baseDeDatos.BuscarMateriaPorID(curso.IdMateria)?.ToString()}]");
+                lsbCursos.Items.Add(curso);
             }
         }
 
+        public void OnRemoveOk()
+        {
+            MessageBox.Show("Eliminado con exito");
+        }
+
+        public void OnRemoveError(string errorMessage)
+        {
+            MessageBox.Show(errorMessage);
+        }
 
     }
 }

@@ -33,10 +33,12 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             lblBuscarEstudiante = new Label();
             txbBuscarEstudiante = new TextBox();
-            btnAgregarEstudiante = new Button();
             btnEditarEstudiante = new Button();
             btnEliminarEstudiante = new Button();
             lsbEstudiantes = new ListBox();
+            btnAgregarEstudiante = new Button();
+            btnGestionarCursosEstudiante = new Button();
+            btnGestionarPagosEstudiante = new Button();
             tabProfesores = new TabPage();
             tableLayoutPanel3 = new TableLayoutPanel();
             label2 = new Label();
@@ -45,6 +47,7 @@
             btnEditarProfesor = new Button();
             btnEliminarProfesor = new Button();
             lsbProfesores = new ListBox();
+            btnGestionarCursosProfesor = new Button();
             tabAdministradores = new TabPage();
             tableLayoutPanel4 = new TableLayoutPanel();
             label3 = new Label();
@@ -61,6 +64,7 @@
             btnEditarMateria = new Button();
             btnEliminarMateria = new Button();
             lsbMaterias = new ListBox();
+            btnGestionarMateriasRequeridas = new Button();
             tabCursos = new TabPage();
             tableLayoutPanel6 = new TableLayoutPanel();
             lblBuscarCurso = new Label();
@@ -69,6 +73,9 @@
             btnEditarCurso = new Button();
             btnEliminarCurso = new Button();
             lsbCursos = new ListBox();
+            btnGestionarHorariosCurso = new Button();
+            btnGestionarInscriptosCurso = new Button();
+            btnGestionarListaEsperaCurso = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             label1 = new Label();
             textBox1 = new TextBox();
@@ -121,15 +128,20 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel1.Controls.Add(lblBuscarEstudiante, 0, 0);
             tableLayoutPanel1.Controls.Add(txbBuscarEstudiante, 0, 1);
-            tableLayoutPanel1.Controls.Add(btnAgregarEstudiante, 2, 2);
             tableLayoutPanel1.Controls.Add(btnEditarEstudiante, 2, 3);
             tableLayoutPanel1.Controls.Add(btnEliminarEstudiante, 2, 4);
             tableLayoutPanel1.Controls.Add(lsbEstudiantes, 0, 2);
+            tableLayoutPanel1.Controls.Add(btnAgregarEstudiante, 2, 2);
+            tableLayoutPanel1.Controls.Add(btnGestionarCursosEstudiante, 2, 7);
+            tableLayoutPanel1.Controls.Add(btnGestionarPagosEstudiante, 2, 6);
             tableLayoutPanel1.Location = new Point(6, 6);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 6;
+            tableLayoutPanel1.RowCount = 9;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
@@ -155,17 +167,6 @@
             txbBuscarEstudiante.Size = new Size(194, 23);
             txbBuscarEstudiante.TabIndex = 1;
             txbBuscarEstudiante.Visible = false;
-            // 
-            // btnAgregarEstudiante
-            // 
-            btnAgregarEstudiante.Anchor = AnchorStyles.None;
-            btnAgregarEstudiante.Location = new Point(546, 53);
-            btnAgregarEstudiante.Name = "btnAgregarEstudiante";
-            btnAgregarEstudiante.Size = new Size(133, 34);
-            btnAgregarEstudiante.TabIndex = 2;
-            btnAgregarEstudiante.Text = "Agregar Estudiante";
-            btnAgregarEstudiante.UseVisualStyleBackColor = true;
-            btnAgregarEstudiante.Click += btnAgregarEstudiante_Click;
             // 
             // btnEditarEstudiante
             // 
@@ -197,9 +198,43 @@
             lsbEstudiantes.ItemHeight = 15;
             lsbEstudiantes.Location = new Point(3, 53);
             lsbEstudiantes.Name = "lsbEstudiantes";
-            tableLayoutPanel1.SetRowSpan(lsbEstudiantes, 4);
+            tableLayoutPanel1.SetRowSpan(lsbEstudiantes, 7);
             lsbEstudiantes.Size = new Size(507, 484);
             lsbEstudiantes.TabIndex = 5;
+            lsbEstudiantes.SelectedValueChanged += lsbEstudiantes_SelectedValueChanged;
+            // 
+            // btnAgregarEstudiante
+            // 
+            btnAgregarEstudiante.Anchor = AnchorStyles.None;
+            btnAgregarEstudiante.Location = new Point(546, 53);
+            btnAgregarEstudiante.Name = "btnAgregarEstudiante";
+            btnAgregarEstudiante.Size = new Size(133, 34);
+            btnAgregarEstudiante.TabIndex = 2;
+            btnAgregarEstudiante.Text = "Agregar Estudiante";
+            btnAgregarEstudiante.UseVisualStyleBackColor = true;
+            btnAgregarEstudiante.Click += btnAgregarEstudiante_Click;
+            // 
+            // btnGestionarCursosEstudiante
+            // 
+            btnGestionarCursosEstudiante.Anchor = AnchorStyles.None;
+            btnGestionarCursosEstudiante.Location = new Point(546, 253);
+            btnGestionarCursosEstudiante.Name = "btnGestionarCursosEstudiante";
+            btnGestionarCursosEstudiante.Size = new Size(133, 34);
+            btnGestionarCursosEstudiante.TabIndex = 7;
+            btnGestionarCursosEstudiante.Text = "Gestionar Cursos";
+            btnGestionarCursosEstudiante.UseVisualStyleBackColor = true;
+            btnGestionarCursosEstudiante.Click += btnGestionarCursosEstudiante_Click;
+            // 
+            // btnGestionarPagosEstudiante
+            // 
+            btnGestionarPagosEstudiante.Anchor = AnchorStyles.None;
+            btnGestionarPagosEstudiante.Location = new Point(546, 213);
+            btnGestionarPagosEstudiante.Name = "btnGestionarPagosEstudiante";
+            btnGestionarPagosEstudiante.Size = new Size(133, 34);
+            btnGestionarPagosEstudiante.TabIndex = 6;
+            btnGestionarPagosEstudiante.Text = "Gestionar Pagos";
+            btnGestionarPagosEstudiante.UseVisualStyleBackColor = true;
+            btnGestionarPagosEstudiante.Click += btnGestionarPagosEstudiante_Click;
             // 
             // tabProfesores
             // 
@@ -225,11 +260,14 @@
             tableLayoutPanel3.Controls.Add(btnEditarProfesor, 2, 3);
             tableLayoutPanel3.Controls.Add(btnEliminarProfesor, 2, 4);
             tableLayoutPanel3.Controls.Add(lsbProfesores, 0, 2);
+            tableLayoutPanel3.Controls.Add(btnGestionarCursosProfesor, 2, 6);
             tableLayoutPanel3.Location = new Point(6, 6);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 6;
+            tableLayoutPanel3.RowCount = 8;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
@@ -297,9 +335,21 @@
             lsbProfesores.ItemHeight = 15;
             lsbProfesores.Location = new Point(3, 53);
             lsbProfesores.Name = "lsbProfesores";
-            tableLayoutPanel3.SetRowSpan(lsbProfesores, 4);
+            tableLayoutPanel3.SetRowSpan(lsbProfesores, 6);
             lsbProfesores.Size = new Size(507, 484);
             lsbProfesores.TabIndex = 5;
+            lsbProfesores.SelectedIndexChanged += lsbProfesores_SelectedIndexChanged;
+            // 
+            // btnGestionarCursosProfesor
+            // 
+            btnGestionarCursosProfesor.Anchor = AnchorStyles.None;
+            btnGestionarCursosProfesor.Location = new Point(546, 213);
+            btnGestionarCursosProfesor.Name = "btnGestionarCursosProfesor";
+            btnGestionarCursosProfesor.Size = new Size(133, 34);
+            btnGestionarCursosProfesor.TabIndex = 6;
+            btnGestionarCursosProfesor.Text = "Gestionar Cursos";
+            btnGestionarCursosProfesor.UseVisualStyleBackColor = true;
+            btnGestionarCursosProfesor.Click += btnGestionarCursosProfesor_Click;
             // 
             // tabAdministradores
             // 
@@ -423,11 +473,14 @@
             tableLayoutPanel5.Controls.Add(btnEditarMateria, 2, 3);
             tableLayoutPanel5.Controls.Add(btnEliminarMateria, 2, 4);
             tableLayoutPanel5.Controls.Add(lsbMaterias, 0, 2);
+            tableLayoutPanel5.Controls.Add(btnGestionarMateriasRequeridas, 2, 6);
             tableLayoutPanel5.Location = new Point(6, 6);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 6;
+            tableLayoutPanel5.RowCount = 8;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
@@ -495,9 +548,21 @@
             lsbMaterias.ItemHeight = 15;
             lsbMaterias.Location = new Point(3, 53);
             lsbMaterias.Name = "lsbMaterias";
-            tableLayoutPanel5.SetRowSpan(lsbMaterias, 4);
+            tableLayoutPanel5.SetRowSpan(lsbMaterias, 6);
             lsbMaterias.Size = new Size(507, 484);
             lsbMaterias.TabIndex = 5;
+            lsbMaterias.SelectedIndexChanged += lsbMaterias_SelectedIndexChanged;
+            // 
+            // btnGestionarMateriasRequeridas
+            // 
+            btnGestionarMateriasRequeridas.Anchor = AnchorStyles.None;
+            btnGestionarMateriasRequeridas.Location = new Point(521, 213);
+            btnGestionarMateriasRequeridas.Name = "btnGestionarMateriasRequeridas";
+            btnGestionarMateriasRequeridas.Size = new Size(184, 34);
+            btnGestionarMateriasRequeridas.TabIndex = 6;
+            btnGestionarMateriasRequeridas.Text = "Gestionar Materias Requeridas";
+            btnGestionarMateriasRequeridas.UseVisualStyleBackColor = true;
+            btnGestionarMateriasRequeridas.Click += btnGestionarMateriasRequeridas_Click;
             // 
             // tabCursos
             // 
@@ -522,11 +587,18 @@
             tableLayoutPanel6.Controls.Add(btnEditarCurso, 2, 3);
             tableLayoutPanel6.Controls.Add(btnEliminarCurso, 2, 4);
             tableLayoutPanel6.Controls.Add(lsbCursos, 0, 2);
+            tableLayoutPanel6.Controls.Add(btnGestionarHorariosCurso, 2, 6);
+            tableLayoutPanel6.Controls.Add(btnGestionarInscriptosCurso, 2, 7);
+            tableLayoutPanel6.Controls.Add(btnGestionarListaEsperaCurso, 2, 8);
             tableLayoutPanel6.Location = new Point(6, 6);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
-            tableLayoutPanel6.RowCount = 6;
+            tableLayoutPanel6.RowCount = 10;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
@@ -594,9 +666,43 @@
             lsbCursos.ItemHeight = 15;
             lsbCursos.Location = new Point(3, 53);
             lsbCursos.Name = "lsbCursos";
-            tableLayoutPanel6.SetRowSpan(lsbCursos, 4);
+            tableLayoutPanel6.SetRowSpan(lsbCursos, 8);
             lsbCursos.Size = new Size(507, 484);
             lsbCursos.TabIndex = 5;
+            lsbCursos.SelectedIndexChanged += lsbCursos_SelectedIndexChanged;
+            // 
+            // btnGestionarHorariosCurso
+            // 
+            btnGestionarHorariosCurso.Anchor = AnchorStyles.None;
+            btnGestionarHorariosCurso.Location = new Point(529, 213);
+            btnGestionarHorariosCurso.Name = "btnGestionarHorariosCurso";
+            btnGestionarHorariosCurso.Size = new Size(167, 34);
+            btnGestionarHorariosCurso.TabIndex = 6;
+            btnGestionarHorariosCurso.Text = "Gestionar Horarios";
+            btnGestionarHorariosCurso.UseVisualStyleBackColor = true;
+            btnGestionarHorariosCurso.Click += btnGestionarHorariosCurso_Click;
+            // 
+            // btnGestionarInscriptosCurso
+            // 
+            btnGestionarInscriptosCurso.Anchor = AnchorStyles.None;
+            btnGestionarInscriptosCurso.Location = new Point(529, 253);
+            btnGestionarInscriptosCurso.Name = "btnGestionarInscriptosCurso";
+            btnGestionarInscriptosCurso.Size = new Size(167, 34);
+            btnGestionarInscriptosCurso.TabIndex = 7;
+            btnGestionarInscriptosCurso.Text = "Gestionar Inscriptos";
+            btnGestionarInscriptosCurso.UseVisualStyleBackColor = true;
+            btnGestionarInscriptosCurso.Click += btnGestionarInscriptosCurso_Click;
+            // 
+            // btnGestionarListaEsperaCurso
+            // 
+            btnGestionarListaEsperaCurso.Anchor = AnchorStyles.None;
+            btnGestionarListaEsperaCurso.Location = new Point(529, 293);
+            btnGestionarListaEsperaCurso.Name = "btnGestionarListaEsperaCurso";
+            btnGestionarListaEsperaCurso.Size = new Size(167, 34);
+            btnGestionarListaEsperaCurso.TabIndex = 8;
+            btnGestionarListaEsperaCurso.Text = "Gestionar Lista de Espera";
+            btnGestionarListaEsperaCurso.UseVisualStyleBackColor = true;
+            btnGestionarListaEsperaCurso.Click += btnGestionarListaEsperaCurso_Click;
             // 
             // tableLayoutPanel2
             // 
@@ -714,5 +820,12 @@
         private Label label1;
         private TextBox textBox1;
         private TabPage tabPage1;
+        private Button btnGestionarCursosEstudiante;
+        private Button btnGestionarPagosEstudiante;
+        private Button btnGestionarCursosProfesor;
+        private Button btnGestionarMateriasRequeridas;
+        private Button btnGestionarHorariosCurso;
+        private Button btnGestionarInscriptosCurso;
+        private Button btnGestionarListaEsperaCurso;
     }
 }

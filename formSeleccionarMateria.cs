@@ -1,4 +1,5 @@
 ﻿using BibliotecaClases;
+using BibliotecaClases.BD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,10 +22,9 @@ namespace TPSysacad___Forms
             get { return _materia; }
         }
 
-        public formSeleccionarMateria(FakeBaseDeDatos baseDeDatos)
+        public formSeleccionarMateria()
         {
             _materia = new Materia();
-            _baseDeDatos = baseDeDatos;
             InitializeComponent();
         }
 

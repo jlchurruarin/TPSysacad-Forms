@@ -35,5 +35,10 @@ namespace TPSysacad___Forms
         {
             this.Close();
         }
+
+        private void formInicio_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

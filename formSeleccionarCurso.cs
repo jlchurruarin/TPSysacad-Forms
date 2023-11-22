@@ -1,4 +1,5 @@
 ﻿using BibliotecaClases;
+using BibliotecaClases.BD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,21 +15,16 @@ namespace TPSysacad___Forms
     public partial class formSeleccionarCurso : Form
     {
 
-        private Curso _curso;
-        private Estudiante _estudiante;
-        private FakeBaseDeDatos _baseDeDatos;
+        private Usuario? _estudiante;
 
-        public Curso Curso
+        public formSeleccionarCurso()
         {
-            get { return _curso; }
+            InitializeComponent();
         }
 
-        public formSeleccionarCurso(Estudiante estudiante, FakeBaseDeDatos baseDeDatos)
+        public formSeleccionarCurso(Usuario estudiante) : this()
         {
-            _curso = new Curso();
             _estudiante = estudiante;
-            _baseDeDatos = baseDeDatos;
-            InitializeComponent();
         }
 
         private void formSeleccionarCurso_Load(object sender, EventArgs e)
@@ -41,34 +37,22 @@ namespace TPSysacad___Forms
             if (lsbCursos.SelectedIndex == -1) { MessageBox.Show("Debe seleccionar un curso", "Error"); return; }
             else
             {
-                Curso curso = _baseDeDatos.ObtenerCursosDisponibles(_estudiante)[lsbCursos.SelectedIndex];
-                _curso = curso;
-                this.DialogResult = DialogResult.OK;
-                this.Close();
             }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
-        private void formSeleccionarCurso_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                //this.DialogResult = DialogResult.Abort;
-            }
-        }
 
         private void ActualizarListaCursos()
         {
-            List<Curso> cursosDisponibles = _baseDeDatos.ObtenerCursosDisponibles(_estudiante);
+            List<Curso> cursosDisponibles = new List<Curso>();
             lsbCursos.Items.Clear();
             foreach (Curso curso in cursosDisponibles)
             {
-                lsbCursos.Items.Add($"{_baseDeDatos.BuscarMateriaPorID(curso.IdMateria)?.ToString()} - {curso.ToString()}");
+                lsbCursos.Items.Add($"{curso}");
             }
         }
 

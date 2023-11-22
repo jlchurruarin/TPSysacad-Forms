@@ -1,4 +1,6 @@
 ﻿using BibliotecaClases;
+using BibliotecaClases.BD;
+using BibliotecaClases.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,41 +13,19 @@ using System.Windows.Forms;
 
 namespace TPSysacad___Forms
 {
-    public partial class formIngresarAdministrador : Form
+    public partial class formIngresarAdministrador : Form, ILoginVista
     {
-        private FakeBaseDeDatos _baseDeDatos;
         private Form _formAnterior;
 
         public formIngresarAdministrador(Form formAnterior)
         {
             InitializeComponent();
-            _baseDeDatos = Sistema.LeerJson();
             _formAnterior = formAnterior;
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            Administrador? administrador = _baseDeDatos.BuscarAdministradorPorCorreo(txbCorreoElectronico.Text);
-            if (administrador is null) { MessageBox.Show("Usuario no encontrado", "Logueo invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
-            if (administrador.ValidarContraseña(txbContraseña.Text) == false) { MessageBox.Show("Contraseña incorrecta", "Logueo invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-            else
-            {
-                if (administrador.CambioDeContraseñaObligatorio)
-                {
-                    formCambioDeContraseña formCambioDeContraseña = new formCambioDeContraseña(administrador);
-                    formCambioDeContraseña.ShowDialog();
-                    Sistema.GuardarJson(_baseDeDatos);
-                }
-                else
-                {
-                    formMenuAdministrador formMenuAdministrador = new formMenuAdministrador(this, _baseDeDatos);
-                    formMenuAdministrador.Show();
-                    this.Hide();
-                }
-            }
-
-            txbCorreoElectronico.Text = "";
-            txbContraseña.Text = "";
+            Sistema.ValidarLogin(this, TipoDeUsuario.Administrador, txbCorreoElectronico.Text, txbContraseña.Text);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -62,6 +42,26 @@ namespace TPSysacad___Forms
         {
             txbCorreoElectronico.Text = "Admin@admin.com";
             txbContraseña.Text = "1234";
+        }
+
+        public void OnLoginOk()
+        {
+            Usuario? admin = Usuario.ObtenerUsuario(TipoDeUsuario.Administrador, txbCorreoElectronico.Text, txbContraseña.Text);
+            formMenuAdministrador formMenuAdministrador = new formMenuAdministrador(this, admin);
+            formMenuAdministrador.Show();
+            this.Hide();
+        }
+
+        public void OnLoginFail()
+        {
+            MessageBox.Show("Usuario o contraseña incorrectos", "Error alingresar");
+        }
+
+        public void OnLoginCambioDeContraseñaObligatorio()
+        {
+            Usuario? admin = Usuario.ObtenerUsuario(TipoDeUsuario.Administrador, txbCorreoElectronico.Text, txbContraseña.Text);
+            formCambioDeContraseña formCambioDeContraseña = new formCambioDeContraseña(admin);
+            formCambioDeContraseña.ShowDialog();
         }
     }
 }

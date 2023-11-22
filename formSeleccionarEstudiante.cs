@@ -1,4 +1,5 @@
 ﻿using BibliotecaClases;
+using BibliotecaClases.BD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,19 +14,17 @@ namespace TPSysacad___Forms
 {
     public partial class formSeleccionarEstudiante : Form
     {
-        private Estudiante _estudiante;
+        private Usuario _estudiante;
         private FakeBaseDeDatos _baseDeDatos;
 
 
-        public Estudiante Estudiante
+        public Usuario Estudiante
         {
             get { return _estudiante; }
         }
 
-        public formSeleccionarEstudiante(FakeBaseDeDatos baseDeDatos)
+        public formSeleccionarEstudiante()
         {
-            _estudiante = new Estudiante();
-            _baseDeDatos = baseDeDatos;
             InitializeComponent();
         }
         private void formSeleccionarEstudiante_Load(object sender, EventArgs e)
@@ -38,7 +37,7 @@ namespace TPSysacad___Forms
             if (lsbEstudiantes.SelectedIndex == -1) { MessageBox.Show("Debe seleccionar un estudiante", "Error"); return; }
             else
             {
-                Estudiante estudiante = _baseDeDatos.ListaEstudiantes[lsbEstudiantes.SelectedIndex];
+                Usuario estudiante = _baseDeDatos.ListaEstudiantes[lsbEstudiantes.SelectedIndex];
                 _estudiante = estudiante;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -62,7 +61,7 @@ namespace TPSysacad___Forms
         private void ActualizarListaEstudiantes()
         {
             lsbEstudiantes.Items.Clear();
-            foreach (Estudiante estudiante in _baseDeDatos.ListaEstudiantes)
+            foreach (Usuario estudiante in _baseDeDatos.ListaEstudiantes)
             {
                 lsbEstudiantes.Items.Add(estudiante.ToString());
             }

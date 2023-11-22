@@ -1,4 +1,5 @@
 ﻿using BibliotecaClases;
+using BibliotecaClases.BD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,16 +18,15 @@ namespace TPSysacad___Forms
 
         private BindingSource bindingSource = new BindingSource();
 
-        public formSeleccionarPagos(List<Pago> pagos)
+        public formSeleccionarPagos()
         {
-            _listaPagos = pagos;
 
             InitializeComponent();
         }
 
         private void formSeleccionarPagos_Load(object sender, EventArgs e)
         {
-            List<Pago> _listaPagosPendientes = _listaPagos.Where(p => p.EstadoDePago != EstadoDePago.Pagado).ToList();
+            List<Pago> _listaPagosPendientes = _listaPagos.Where(p => p.EstadoDePago != EstadoPago.Pagado).ToList();
 
             bindingSource.DataSource = _listaPagosPendientes;
 
@@ -87,7 +87,7 @@ namespace TPSysacad___Forms
                     if (value != null && (bool)row.Cells[0].Value)
                     {
                         row.Cells["Monto"].Value = 0m;
-                        row.Cells["Estado de Pago"].Value = EstadoDePago.Pagado;
+                        row.Cells["Estado de Pago"].Value = EstadoPago.Pagado;
                     }
                 }
                 MessageBox.Show("Pago realizado con exito", "Pagos");
