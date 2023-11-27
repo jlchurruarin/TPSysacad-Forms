@@ -44,9 +44,9 @@ namespace TPSysacad___Forms
             txbContraseña.Text = "1234";
         }
 
-        public void OnLoginOk()
+        public async void OnLoginOk()
         {
-            Usuario? admin = Usuario.ObtenerUsuario(TipoDeUsuario.Administrador, txbCorreoElectronico.Text, txbContraseña.Text);
+            Usuario? admin = await Usuario.ObtenerUsuario(TipoDeUsuario.Administrador, txbCorreoElectronico.Text, txbContraseña.Text);
             formMenuAdministrador formMenuAdministrador = new formMenuAdministrador(this, admin);
             formMenuAdministrador.Show();
             this.Hide();
@@ -57,9 +57,9 @@ namespace TPSysacad___Forms
             MessageBox.Show("Usuario o contraseña incorrectos", "Error alingresar");
         }
 
-        public void OnLoginCambioDeContraseñaObligatorio()
+        public async void OnLoginCambioDeContraseñaObligatorio()
         {
-            Usuario? admin = Usuario.ObtenerUsuario(TipoDeUsuario.Administrador, txbCorreoElectronico.Text, txbContraseña.Text);
+            Usuario? admin = await Usuario.ObtenerUsuario(TipoDeUsuario.Administrador, txbCorreoElectronico.Text, txbContraseña.Text);
             formCambioDeContraseña formCambioDeContraseña = new formCambioDeContraseña(admin);
             formCambioDeContraseña.ShowDialog();
         }

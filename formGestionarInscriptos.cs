@@ -19,7 +19,7 @@ namespace TPSysacad___Forms
     {
         private Curso _curso;
         private LogicaGestionInscripciones _logicaGestionDeInscripciones;
-        public event Func<Curso, EstadoDeInscripcion?, List<Usuario>>? AlSolicitarEstudiantes;
+        public event Func<Curso, EstadoDeInscripcion?, Task<List<Usuario>>>? AlSolicitarEstudiantes;
 
 
         public formGestionarInscriptos(object curso)
@@ -29,15 +29,15 @@ namespace TPSysacad___Forms
             InitializeComponent();
         }
 
-        private void formGestionarInscriptos_Load(object sender, EventArgs e)
+        private async void formGestionarInscriptos_Load(object sender, EventArgs e)
         {
             if (AlSolicitarEstudiantes is not null)
             {
-                MostrarListaEnEspera(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.EnListaDeEspera));
-                MostrarListaCursando(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Cursando));
-                MostrarListaLibre(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Libre));
-                MostrarListaCursadaAprobada(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.CursadaAprobada));
-                MostrarListaFinalAprobado(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.FinalAprobado));
+                MostrarListaEnEspera(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.EnListaDeEspera));
+                MostrarListaCursando(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Cursando));
+                MostrarListaLibre(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Libre));
+                MostrarListaCursadaAprobada(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.CursadaAprobada));
+                MostrarListaFinalAprobado(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.FinalAprobado));
             }
         }
 
@@ -71,17 +71,17 @@ namespace TPSysacad___Forms
             MessageBox.Show($"Error al eliminar la inscripción: {errorMessage}");
         }
 
-        public void OnRemoveOK()
+        public async void OnRemoveOK()
         {
             MessageBox.Show($"Inscripción eliminada con exito");
 
             if (AlSolicitarEstudiantes is not null)
             {
-                MostrarListaEnEspera(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.EnListaDeEspera));
-                MostrarListaCursando(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Cursando));
-                MostrarListaLibre(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Libre));
-                MostrarListaCursadaAprobada(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.CursadaAprobada));
-                MostrarListaFinalAprobado(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.FinalAprobado));
+                MostrarListaEnEspera(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.EnListaDeEspera));
+                MostrarListaCursando(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Cursando));
+                MostrarListaLibre(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Libre));
+                MostrarListaCursadaAprobada(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.CursadaAprobada));
+                MostrarListaFinalAprobado(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.FinalAprobado));
             }
         }
 
@@ -110,7 +110,7 @@ namespace TPSysacad___Forms
             EliminarEstudiante(lsbEnListaDeEspera);
         }
 
-        private void EliminarEstudiante(ListBox lsb)
+        private async void EliminarEstudiante(ListBox lsb)
         {
             if (lsb.SelectedIndex == -1) { MessageBox.Show("Debe selecionar un estudiante"); return; }
             Usuario estudiante = (Usuario)lsb.SelectedItem;
@@ -119,11 +119,11 @@ namespace TPSysacad___Forms
 
             if (AlSolicitarEstudiantes is not null)
             {
-                MostrarListaEnEspera(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.EnListaDeEspera));
-                MostrarListaCursando(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Cursando));
-                MostrarListaLibre(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Libre));
-                MostrarListaCursadaAprobada(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.CursadaAprobada));
-                MostrarListaFinalAprobado(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.FinalAprobado));
+                MostrarListaEnEspera(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.EnListaDeEspera));
+                MostrarListaCursando(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Cursando));
+                MostrarListaLibre(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Libre));
+                MostrarListaCursadaAprobada(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.CursadaAprobada));
+                MostrarListaFinalAprobado(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.FinalAprobado));
             }
         }
 
@@ -152,7 +152,7 @@ namespace TPSysacad___Forms
             ModificarInscripcion(lsbEnListaDeEspera);
         }
 
-        private void ModificarInscripcion(ListBox lsb)
+        private async void ModificarInscripcion(ListBox lsb)
         {
             if (lsb.SelectedIndex == -1) { MessageBox.Show("Debe selecionar un estudiante de la lista"); return; }
 
@@ -162,26 +162,26 @@ namespace TPSysacad___Forms
 
             if (AlSolicitarEstudiantes is not null)
             {
-                MostrarListaEnEspera(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.EnListaDeEspera));
-                MostrarListaCursando(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Cursando));
-                MostrarListaLibre(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Libre));
-                MostrarListaCursadaAprobada(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.CursadaAprobada));
-                MostrarListaFinalAprobado(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.FinalAprobado));
+                MostrarListaEnEspera(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.EnListaDeEspera));
+                MostrarListaCursando(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Cursando));
+                MostrarListaLibre(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Libre));
+                MostrarListaCursadaAprobada(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.CursadaAprobada));
+                MostrarListaFinalAprobado(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.FinalAprobado));
             }
         }
 
-        private void btnAgregarInscripción_Click(object sender, EventArgs e)
+        private async void btnAgregarInscripción_Click(object sender, EventArgs e)
         {
             formABMInscripcion formInscripcion = new formABMInscripcion(_curso, null);
             formInscripcion.ShowDialog();
 
             if (AlSolicitarEstudiantes is not null)
             {
-                MostrarListaEnEspera(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.EnListaDeEspera));
-                MostrarListaCursando(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Cursando));
-                MostrarListaLibre(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Libre));
-                MostrarListaCursadaAprobada(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.CursadaAprobada));
-                MostrarListaFinalAprobado(AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.FinalAprobado));
+                MostrarListaEnEspera(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.EnListaDeEspera));
+                MostrarListaCursando(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Cursando));
+                MostrarListaLibre(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.Libre));
+                MostrarListaCursadaAprobada(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.CursadaAprobada));
+                MostrarListaFinalAprobado(await AlSolicitarEstudiantes.Invoke(_curso, EstadoDeInscripcion.FinalAprobado));
             }
         }
     }

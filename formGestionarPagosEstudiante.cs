@@ -17,7 +17,7 @@ namespace TPSysacad___Forms
     {
         private Usuario _estudiante;
         private LogicaGestionPagoEstudiante _logicaGestionPagoEstudiante;
-        public event Func<Usuario, List<Pago>>? AlSolicitarPagos;
+        public event Func<Usuario, Task<List<Pago>>>? AlSolicitarPagos;
 
         public formGestionarPagosEstudiante(object estudiante)
         {
@@ -27,9 +27,9 @@ namespace TPSysacad___Forms
             _logicaGestionPagoEstudiante = new LogicaGestionPagoEstudiante(this);
         }
 
-        private void formGestionarPagosEstudiante_Load(object sender, EventArgs e)
+        private async void formGestionarPagosEstudiante_Load(object sender, EventArgs e)
         {
-            MostrarListaPagos(AlSolicitarPagos?.Invoke(_estudiante));
+            MostrarListaPagos(await AlSolicitarPagos?.Invoke(_estudiante));
         }
 
         public void MostrarListaPagos(List<Pago>? listaPagos)
@@ -42,17 +42,17 @@ namespace TPSysacad___Forms
             MessageBox.Show($"Error al borrar el pago: {errorMessage}");
         }
 
-        public void OnRemoveOk()
+        public async void OnRemoveOk()
         {
             MessageBox.Show($"Pago borrado con exito");
-            MostrarListaPagos(AlSolicitarPagos?.Invoke(_estudiante));
+            MostrarListaPagos(await AlSolicitarPagos?.Invoke(_estudiante));
         }
 
-        private void btnAgregarPago_Click(object sender, EventArgs e)
+        private async void btnAgregarPago_Click(object sender, EventArgs e)
         {
             formABMPago formABMPago = new formABMPago(_estudiante);
             formABMPago.ShowDialog();
-            MostrarListaPagos(AlSolicitarPagos?.Invoke(_estudiante));
+            MostrarListaPagos(await AlSolicitarPagos?.Invoke(_estudiante));
         }
 
         private void btnEliminarPago_Click(object sender, EventArgs e)

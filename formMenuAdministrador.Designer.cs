@@ -75,11 +75,17 @@
             btnGestionarHorariosCurso = new Button();
             btnGestionarInscriptosCurso = new Button();
             tabReportes = new TabPage();
+            tableLayoutPanel7 = new TableLayoutPanel();
+            dpFechaFinal = new DateTimePicker();
+            label4 = new Label();
+            label5 = new Label();
+            dpFechaInicial = new DateTimePicker();
+            btnInformeInscripciones = new Button();
+            btnInformePagos = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             label1 = new Label();
             textBox1 = new TextBox();
             tabPage1 = new TabPage();
-            tableLayoutPanel7 = new TableLayoutPanel();
             tabControl1.SuspendLayout();
             tabEstudiantes.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -92,6 +98,7 @@
             tabCursos.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
             tabReportes.SuspendLayout();
+            tableLayoutPanel7.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -691,6 +698,89 @@
             tabReportes.Text = "Reportes";
             tabReportes.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel7
+            // 
+            tableLayoutPanel7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel7.ColumnCount = 2;
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.Controls.Add(dpFechaFinal, 1, 1);
+            tableLayoutPanel7.Controls.Add(label4, 0, 0);
+            tableLayoutPanel7.Controls.Add(label5, 0, 1);
+            tableLayoutPanel7.Controls.Add(dpFechaInicial, 1, 0);
+            tableLayoutPanel7.Controls.Add(btnInformeInscripciones, 0, 3);
+            tableLayoutPanel7.Controls.Add(btnInformePagos, 1, 3);
+            tableLayoutPanel7.Location = new Point(3, 3);
+            tableLayoutPanel7.Name = "tableLayoutPanel7";
+            tableLayoutPanel7.RowCount = 5;
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle());
+            tableLayoutPanel7.Size = new Size(719, 557);
+            tableLayoutPanel7.TabIndex = 0;
+            // 
+            // dpFechaFinal
+            // 
+            dpFechaFinal.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            dpFechaFinal.Format = DateTimePickerFormat.Short;
+            dpFechaFinal.Location = new Point(362, 63);
+            dpFechaFinal.Name = "dpFechaFinal";
+            dpFechaFinal.Size = new Size(354, 23);
+            dpFechaFinal.TabIndex = 3;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label4.AutoSize = true;
+            label4.Location = new Point(3, 17);
+            label4.Name = "label4";
+            label4.Size = new Size(353, 15);
+            label4.TabIndex = 0;
+            label4.Text = "Fecha Inicial";
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.Location = new Point(3, 67);
+            label5.Name = "label5";
+            label5.Size = new Size(353, 15);
+            label5.TabIndex = 1;
+            label5.Text = "Fecha final";
+            // 
+            // dpFechaInicial
+            // 
+            dpFechaInicial.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            dpFechaInicial.Format = DateTimePickerFormat.Short;
+            dpFechaInicial.Location = new Point(362, 13);
+            dpFechaInicial.Name = "dpFechaInicial";
+            dpFechaInicial.Size = new Size(354, 23);
+            dpFechaInicial.TabIndex = 2;
+            // 
+            // btnInformeInscripciones
+            // 
+            btnInformeInscripciones.Anchor = AnchorStyles.None;
+            btnInformeInscripciones.Location = new Point(101, 199);
+            btnInformeInscripciones.Name = "btnInformeInscripciones";
+            btnInformeInscripciones.Size = new Size(156, 42);
+            btnInformeInscripciones.TabIndex = 4;
+            btnInformeInscripciones.Text = "Reporte de Inscripciones";
+            btnInformeInscripciones.UseVisualStyleBackColor = true;
+            btnInformeInscripciones.Click += btnInformeInscripciones_Click;
+            // 
+            // btnInformePagos
+            // 
+            btnInformePagos.Anchor = AnchorStyles.None;
+            btnInformePagos.Location = new Point(461, 199);
+            btnInformePagos.Name = "btnInformePagos";
+            btnInformePagos.Size = new Size(156, 42);
+            btnInformePagos.TabIndex = 5;
+            btnInformePagos.Text = "Reporte de Pagos";
+            btnInformePagos.UseVisualStyleBackColor = true;
+            btnInformePagos.Click += btnInformePagos_Click;
+            // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -729,20 +819,6 @@
             tabPage1.Size = new Size(200, 100);
             tabPage1.TabIndex = 0;
             // 
-            // tableLayoutPanel7
-            // 
-            tableLayoutPanel7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel7.ColumnCount = 2;
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel7.Location = new Point(3, 3);
-            tableLayoutPanel7.Name = "tableLayoutPanel7";
-            tableLayoutPanel7.RowCount = 2;
-            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel7.Size = new Size(719, 557);
-            tableLayoutPanel7.TabIndex = 0;
-            // 
             // formMenuAdministrador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -770,6 +846,8 @@
             tableLayoutPanel6.ResumeLayout(false);
             tableLayoutPanel6.PerformLayout();
             tabReportes.ResumeLayout(false);
+            tableLayoutPanel7.ResumeLayout(false);
+            tableLayoutPanel7.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             ResumeLayout(false);
@@ -829,5 +907,11 @@
         private Button btnGestionarInscriptosCurso;
         private TabPage tabReportes;
         private TableLayoutPanel tableLayoutPanel7;
+        private DateTimePicker dpFechaFinal;
+        private Label label4;
+        private Label label5;
+        private DateTimePicker dpFechaInicial;
+        private Button btnInformeInscripciones;
+        private Button btnInformePagos;
     }
 }

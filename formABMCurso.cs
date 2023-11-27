@@ -34,10 +34,10 @@ namespace TPSysacad___Forms
             _curso = selectedItem as Curso;
         }
 
-        private void formABMCurso_Load(object sender, EventArgs e)
+        private async void formABMCurso_Load(object sender, EventArgs e)
         {
-            List<Usuario> profesores = Usuario.GetAll(TipoDeUsuario.Profesor);
-            List<Materia> materias = Materia.GetAll();
+            List<Usuario> profesores = await Usuario.GetAll(TipoDeUsuario.Profesor);
+            List<Materia> materias = await Materia.GetAll();
 
             cbbProfesor.DataSource = profesores;
             cbbProfesor.DisplayMember = "DisplayText";
@@ -61,7 +61,7 @@ namespace TPSysacad___Forms
 
                 try
                 {
-                    Materia materia = Materia.ObtenerMateriaPorCursoID(_curso.Id);
+                    Materia materia = await Materia.ObtenerMateriaPorCursoID(_curso.Id);
                     Materia materiaSelecionada = materias.First(item => item.Id == materia.Id);
                     cbbMateria.SelectedItem = materiaSelecionada;
                     cbbMateria.Enabled = false;

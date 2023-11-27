@@ -28,21 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
             btnAceptar = new Button();
+            dgvCronograma = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvCronograma).BeginInit();
             SuspendLayout();
-            // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Location = new Point(0, 0);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.ScrollBars = ScrollBars.Vertical;
-            textBox1.Size = new Size(578, 369);
-            textBox1.TabIndex = 0;
-            textBox1.TabStop = false;
             // 
             // btnAceptar
             // 
@@ -55,24 +44,35 @@
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
             // 
+            // dgvCronograma
+            // 
+            dgvCronograma.AllowUserToAddRows = false;
+            dgvCronograma.AllowUserToDeleteRows = false;
+            dgvCronograma.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCronograma.Location = new Point(12, 12);
+            dgvCronograma.Name = "dgvCronograma";
+            dgvCronograma.ReadOnly = true;
+            dgvCronograma.RowTemplate.Height = 25;
+            dgvCronograma.Size = new Size(553, 360);
+            dgvCronograma.TabIndex = 2;
+            // 
             // formVerCronograma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(577, 426);
+            Controls.Add(dgvCronograma);
             Controls.Add(btnAceptar);
-            Controls.Add(textBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "formVerCronograma";
             Text = "formVerCronograma";
             Load += formVerCronograma_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvCronograma).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private TextBox textBox1;
         private Button btnAceptar;
+        private DataGridView dgvCronograma;
     }
 }

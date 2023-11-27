@@ -43,9 +43,9 @@ namespace TPSysacad___Forms
             this.Close();
         }
 
-        private void ActualizarListaEstudiantes()
+        private async void ActualizarListaEstudiantes()
         {
-            lsbEstudiantes.DataSource = _recibidorDeEstudiante.ItemsAMostrar();
+            lsbEstudiantes.DataSource = await _recibidorDeEstudiante.ItemsAMostrar();
         }
     }
 }

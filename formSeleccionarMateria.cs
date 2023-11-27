@@ -45,9 +45,9 @@ namespace TPSysacad___Forms
             this.Close();
         }
 
-        private void ActualizarListaMaterias()
+        private async void ActualizarListaMaterias()
         {
-            lsbMateria.DataSource = _recibidorDeMateria.ItemsAMostrar();
+            lsbMateria.DataSource = await _recibidorDeMateria.ItemsAMostrar();
         }
     }
 }

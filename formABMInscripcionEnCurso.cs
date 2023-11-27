@@ -1,16 +1,6 @@
-﻿using BibliotecaClases;
-using BibliotecaClases.BD;
+﻿using BibliotecaClases.BD;
 using BibliotecaClases.Interfaces;
 using BibliotecaClases.Logica;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace TPSysacad___Forms
 {
@@ -27,18 +17,18 @@ namespace TPSysacad___Forms
             lsbCursos.DisplayMember = "DisplayText";
         }
 
-        public event Func<Usuario, List<Curso>>? AlSolicitarCursosDisponibles;
+        public event Func<Usuario, Task<List<Curso>>>? AlSolicitarCursosDisponibles;
 
         public void MostrarListaCursosDisponibles(List<Curso> listaCursos)
         {
             lsbCursos.DataSource = listaCursos;
         }
 
-        private void formABMInscripcion_Load(object sender, EventArgs e)
+        private async void formABMInscripcion_Load(object sender, EventArgs e)
         {
             if (AlSolicitarCursosDisponibles != null)
             {
-                MostrarListaCursosDisponibles(AlSolicitarCursosDisponibles.Invoke(_usuario));
+                MostrarListaCursosDisponibles(await AlSolicitarCursosDisponibles.Invoke(_usuario));
             }
         }
 

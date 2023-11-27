@@ -15,12 +15,10 @@ namespace TPSysacad___Forms
     public partial class formVerCronograma : Form
     {
         private Usuario _estudiante;
-        private FakeBaseDeDatos _baseDeDatos;
 
-        public formVerCronograma(Usuario estudiante, FakeBaseDeDatos baseDeDatos)
+        public formVerCronograma(Usuario estudiante)
         {
             _estudiante = estudiante;
-            _baseDeDatos = baseDeDatos;
             InitializeComponent();
         }
 
@@ -29,15 +27,10 @@ namespace TPSysacad___Forms
             this.Close();
         }
 
-        private void formVerCronograma_Load(object sender, EventArgs e)
+        private async void formVerCronograma_Load(object sender, EventArgs e)
         {
-            List<Curso> listaCursos = _baseDeDatos.BuscarCursosInscriptos(_estudiante);
-            //List<string> calendario = Sistema.GenerarCalendario(_baseDeDatos.ListaCursos, _estudiante);
-            List<string> calendario = new List<string>();
-            foreach (string linea in calendario)
-            {
-                textBox1.Text += linea + Environment.NewLine;
-            }
+            List<object> cronograma = await HorarioCurso.GetCalendarioEstudiante(_estudiante);
+            dgvCronograma.DataSource = cronograma;
         }
     }
 }

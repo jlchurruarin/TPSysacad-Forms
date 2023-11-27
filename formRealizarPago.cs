@@ -16,11 +16,13 @@ namespace TPSysacad___Forms
     {
         private decimal _montoAPagar;
         private List<string> _conceptos;
+        private formSeleccionarPagos _formAnterior;
 
-        public formRealizarPago(decimal montoAPagar, List<string> conceptos)
+        public formRealizarPago(formSeleccionarPagos formAnterior, decimal montoAPagar, List<string> conceptos)
         {
             _montoAPagar = montoAPagar;
             _conceptos = conceptos;
+            _formAnterior = formAnterior;
             InitializeComponent();
         }
 
@@ -28,7 +30,7 @@ namespace TPSysacad___Forms
         {
             if (ValidarTextBoxs())
             {
-                DialogResult = DialogResult.OK;
+                _formAnterior.GuardarPagos((MetodoPago)cmbMetodoDePago.SelectedItem);
                 this.Close();
             }
             else

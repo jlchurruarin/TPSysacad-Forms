@@ -33,11 +33,12 @@ namespace TPSysacad___Forms
         {
             CargarConceptosDePago();
             CargarEstadoDePago();
+            CargarMetodoDePago();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            _logicaABMPago.AddPago(_estudiante.Id, cmbConceptosDePago.Text, nudMonto.Value);
+            _logicaABMPago.AddPago(_estudiante.Id, cmbConceptosDePago.Text, nudMonto.Value, cmbEstadoDePago.Text, cbbMetodoDePago.Text, dpFechaPago.Value);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -55,11 +56,19 @@ namespace TPSysacad___Forms
             cmbEstadoDePago.DataSource = Enum.GetValues(typeof(EstadoPago));
         }
 
+        private void CargarMetodoDePago()
+        {
+            cbbMetodoDePago.DataSource = Enum.GetValues(typeof(MetodoPago));
+        }
+
         public void MostrarPago(Pago? pago)
         {
             nudMonto.Value = pago.Monto;
             cmbConceptosDePago.Text = Enum.GetName(pago.ConceptoDePago);
             cmbEstadoDePago.Text = Enum.GetName(pago.EstadoDePago);
+
+            if (pago.MetodoDePago is not null) { cbbMetodoDePago.Text = Enum.GetName((MetodoPago)pago.MetodoDePago); }
+            if (pago.FechaDePago is not null) { dpFechaPago.Value = (DateTime) pago.FechaDePago;  }
         }
 
         public void OnAddOk()
@@ -82,6 +91,23 @@ namespace TPSysacad___Forms
         public void OnUpdateError(string errorMessage)
         {
             MessageBox.Show($"Error al modificar el pago: {errorMessage}");
+        }
+
+        private void cmbEstadoDePago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EstadoPago? estadoDePagoSeleccionado = (EstadoPago)cmbEstadoDePago.SelectedItem;
+            if (estadoDePagoSeleccionado == EstadoPago.Pagado)
+            {
+                cbbMetodoDePago.Enabled = true;
+                cbbMetodoDePago.SelectedIndex = 0;
+                dpFechaPago.Enabled = true;
+            }
+            else
+            {
+                cbbMetodoDePago.Enabled = false;
+                cbbMetodoDePago.SelectedIndex = -1;
+                dpFechaPago.Enabled = false;
+            }
         }
     }
 }

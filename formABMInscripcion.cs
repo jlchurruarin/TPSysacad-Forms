@@ -41,9 +41,9 @@ namespace TPSysacad___Forms
             }
         }
 
-        public List<Usuario> ItemsAMostrar()
+        public async Task<List<Usuario>> ItemsAMostrar()
         {
-            return Usuario.GetAll(TipoDeUsuario.Estudiante);
+            return await Usuario.GetAll(TipoDeUsuario.Estudiante);
         }
 
         public void OnAddError(string errorMessage)

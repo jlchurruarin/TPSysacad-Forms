@@ -1,5 +1,6 @@
 ﻿using BibliotecaClases;
 using BibliotecaClases.BD;
+using BibliotecaClases.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,38 +15,19 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TPSysacad___Forms
 {
-    public partial class formIngresarEstudiante : Form
+    public partial class formIngresarEstudiante : Form, ILoginVista
     {
-        private FakeBaseDeDatos _baseDeDatos;
         private Form _formAnterior;
 
         public formIngresarEstudiante(Form formAnterior)
         {
             InitializeComponent();
-            _baseDeDatos = Sistema.LeerJson();
             _formAnterior = formAnterior;
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            Usuario? estudiante = _baseDeDatos.BuscarEstudiantePorCorreo(txbCorreoElectronico.Text);
-            if (estudiante is null) { MessageBox.Show("Usuario no encontrado", "Logueo invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
-            if (estudiante.ValidarContraseña(txbContraseña.Text) == false) { MessageBox.Show("Contraseña incorrecta", "Logueo invalido", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-            else
-            {
-                if (estudiante.CambioDeContraseñaObligatorio)
-                {
-                    formCambioDeContraseña formCambioDeContraseña = new formCambioDeContraseña(estudiante);
-                    formCambioDeContraseña.ShowDialog();
-                    Sistema.GuardarJson(_baseDeDatos);
-                }
-                else
-                {
-                    formMenuEstudiante formMenuEstudiante = new formMenuEstudiante(this, estudiante, _baseDeDatos);
-                    formMenuEstudiante.Show();
-                    this.Hide();
-                }
-            }
+            Sistema.ValidarLogin(this, TipoDeUsuario.Estudiante, txbCorreoElectronico.Text, txbContraseña.Text);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -60,8 +42,28 @@ namespace TPSysacad___Forms
 
         private void btnAutoCompletar_Click(object sender, EventArgs e)
         {
-            txbCorreoElectronico.Text = "prueba@prueba.com";
-            txbContraseña.Text = "1234";
+            txbCorreoElectronico.Text = "jlchurruarin@gmail.com";
+            txbContraseña.Text = "Hola";
+        }
+
+        public async void OnLoginOk()
+        {
+            Usuario? estudiante = await Usuario.ObtenerUsuario(TipoDeUsuario.Estudiante, txbCorreoElectronico.Text, txbContraseña.Text);
+            formMenuEstudiante formMenuEstudiante = new formMenuEstudiante(this, estudiante);
+            formMenuEstudiante.Show();
+            this.Hide();
+        }
+
+        public void OnLoginFail()
+        {
+            MessageBox.Show("Usuario o contraseña incorrectos", "Error alingresar");
+        }
+
+        public async void OnLoginCambioDeContraseñaObligatorio()
+        {
+            Usuario? estudiante = await Usuario.ObtenerUsuario(TipoDeUsuario.Estudiante, txbCorreoElectronico.Text, txbContraseña.Text);
+            formCambioDeContraseña formCambioDeContraseña = new formCambioDeContraseña(estudiante);
+            formCambioDeContraseña.ShowDialog();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace TPSysacad___Forms
     {
         private Materia _materia;
         private LogicaGestionMateriasRequeridas _logicaGestionMateriasRequeridas;
-        public event Func<Materia, List<Materia>>? AlSolicitarMateria;
+        public event Func<Materia, Task<List<Materia>>>? AlSolicitarMateria;
 
         public formGestionarMateriasRequeridas(object materia)
         {
@@ -27,10 +27,10 @@ namespace TPSysacad___Forms
             lsbMateriasRequeridas.DisplayMember = "DisplayText";
         }
 
-        public List<Materia> ItemsAMostrar()
+        public async Task<List<Materia>> ItemsAMostrar()
         {
             // Seleccionador de item nos solicita las materias a mostrar
-            return _logicaGestionMateriasRequeridas.ObtenerMateriasRequeridasPosibles(_materia);
+            return await _logicaGestionMateriasRequeridas.ObtenerMateriasRequeridasPosibles(_materia);
         }
 
         public void MostrarListaMaterias(List<Materia> listaMateriasRequeridas)
@@ -45,26 +45,26 @@ namespace TPSysacad___Forms
             _logicaGestionMateriasRequeridas.AgregarMateriaRequerida(_materia, materiaSelecionada);
         }
 
-        private void formGestionarMateriasRequeridas_Load(object sender, EventArgs e)
+        private async void formGestionarMateriasRequeridas_Load(object sender, EventArgs e)
         {
             if (_materia is not null && AlSolicitarMateria is not null)
             {
-                MostrarListaMaterias(AlSolicitarMateria.Invoke(_materia));
+                MostrarListaMaterias(await AlSolicitarMateria.Invoke(_materia));
             }
         }
 
-        private void btnAgregarMateriaRequerida_Click(object sender, EventArgs e)
+        private async void btnAgregarMateriaRequerida_Click(object sender, EventArgs e)
         {
             formSeleccionarMateria formSeleccionarMateria = new formSeleccionarMateria(this);
             formSeleccionarMateria.ShowDialog();
 
             if (_materia is not null && AlSolicitarMateria is not null)
             {
-                MostrarListaMaterias(AlSolicitarMateria.Invoke(_materia));
+                MostrarListaMaterias(await AlSolicitarMateria.Invoke(_materia));
             }
         }
 
-        private void btnEliminarCurso_Click(object sender, EventArgs e)
+        private async void btnEliminarCurso_Click(object sender, EventArgs e)
         {
             Materia materiaSeleccionada = (Materia)lsbMateriasRequeridas.SelectedItem;
 
@@ -73,7 +73,7 @@ namespace TPSysacad___Forms
                 _logicaGestionMateriasRequeridas.EliminarMateriaRequerida(_materia, materiaSeleccionada);
                 if (_materia is not null && AlSolicitarMateria is not null)
                 {
-                    MostrarListaMaterias(AlSolicitarMateria.Invoke(_materia));
+                    MostrarListaMaterias(await AlSolicitarMateria.Invoke(_materia));
                 }
             }
             else

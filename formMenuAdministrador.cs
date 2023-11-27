@@ -17,11 +17,11 @@ namespace TPSysacad___Forms
 {
     public partial class formMenuAdministrador : Form, ISQLRemoveVista, IMenuAdministrador
     {
-        public event Action? AlSolicitarEstudiantes;
-        public event Action? AlSolicitarProfesores;
-        public event Action? AlSolicitarAdministradores;
-        public event Action? AlSolicitarMaterias;
-        public event Action? AlSolicitarCursos;
+        public event Func<Task>? AlSolicitarEstudiantes;
+        public event Func<Task>? AlSolicitarProfesores;
+        public event Func<Task>? AlSolicitarAdministradores;
+        public event Func<Task>? AlSolicitarMaterias;
+        public event Func<Task>? AlSolicitarCursos;
 
         private Form _formAnterior;
         private Usuario _administrador;
@@ -49,13 +49,13 @@ namespace TPSysacad___Forms
             btnGestionarPagosEstudiante.Enabled = false;
         }
 
-        private void ActualizarListas()
+        private async void ActualizarListas()
         {
-            AlSolicitarEstudiantes?.Invoke();
-            AlSolicitarProfesores?.Invoke();
-            AlSolicitarAdministradores?.Invoke();
-            AlSolicitarMaterias?.Invoke();
-            AlSolicitarCursos?.Invoke();
+            await AlSolicitarEstudiantes?.Invoke();
+            await AlSolicitarProfesores?.Invoke();
+            await AlSolicitarAdministradores?.Invoke();
+            await AlSolicitarMaterias?.Invoke();
+            await AlSolicitarCursos?.Invoke();
         }
 
         private void formMenuAdministrador_FormClosed(object sender, FormClosedEventArgs e)
@@ -256,6 +256,20 @@ namespace TPSysacad___Forms
             formGestionarInscriptos.ShowDialog();
 
             ActualizarListas();
+        }
+
+        private async void btnInformeInscripciones_Click(object sender, EventArgs e)
+        {
+            List<object> inscripciones = await _logicaMenuAdministrador.ObtenerInformeInscripciones(dpFechaInicial.Value, dpFechaFinal.Value);
+            formReportViewer formReportViewer = new formReportViewer("Reporte de inscripciones", dpFechaInicial.Value, dpFechaFinal.Value, inscripciones);
+            formReportViewer.ShowDialog();
+        }
+
+        private async void btnInformePagos_Click(object sender, EventArgs e)
+        {
+            List<object> pagos = await _logicaMenuAdministrador.ObtenerInformePagos(dpFechaInicial.Value, dpFechaFinal.Value);
+            formReportViewer formReportViewer = new formReportViewer("Reporte de pagos", dpFechaInicial.Value, dpFechaFinal.Value, pagos);
+            formReportViewer.ShowDialog();
         }
 
         private void lsbEstudiantes_SelectedValueChanged(object sender, EventArgs e)

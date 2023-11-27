@@ -1,5 +1,6 @@
 ﻿using BibliotecaClases;
 using BibliotecaClases.BD;
+using BibliotecaClases.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,16 +16,18 @@ namespace TPSysacad___Forms
     public partial class formSeleccionarCurso : Form
     {
 
-        private Usuario? _estudiante;
+        private Usuario _estudiante;
+        private IRecibidorDeItemSeleccionado<Curso> _recibidorDeCurso;
 
-        public formSeleccionarCurso()
+        private formSeleccionarCurso()
         {
             InitializeComponent();
         }
 
-        public formSeleccionarCurso(Usuario estudiante) : this()
+        public formSeleccionarCurso(IRecibidorDeItemSeleccionado<Curso> recibidorDeCurso, Usuario estudiante) : this()
         {
             _estudiante = estudiante;
+            _recibidorDeCurso = recibidorDeCurso;
         }
 
         private void formSeleccionarCurso_Load(object sender, EventArgs e)
@@ -37,6 +40,8 @@ namespace TPSysacad___Forms
             if (lsbCursos.SelectedIndex == -1) { MessageBox.Show("Debe seleccionar un curso", "Error"); return; }
             else
             {
+                _recibidorDeCurso.RecibirItemSeleccionada(lsbCursos.SelectedItem);
+                this.Close();
             }
         }
 
@@ -45,15 +50,9 @@ namespace TPSysacad___Forms
             this.Close();
         }
 
-
-        private void ActualizarListaCursos()
+        private async void ActualizarListaCursos()
         {
-            List<Curso> cursosDisponibles = new List<Curso>();
-            lsbCursos.Items.Clear();
-            foreach (Curso curso in cursosDisponibles)
-            {
-                lsbCursos.Items.Add($"{curso}");
-            }
+            lsbCursos.DataSource = await _recibidorDeCurso.ItemsAMostrar();
         }
 
     }

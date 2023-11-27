@@ -1,16 +1,6 @@
 ﻿using BibliotecaClases.BD;
 using BibliotecaClases.Interfaces;
 using BibliotecaClases.Logica;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace TPSysacad___Forms
 {
@@ -19,7 +9,7 @@ namespace TPSysacad___Forms
         private Usuario _usuario;
         private LogicaGestionCursoEstudiante _logicaGestionCursoEstudiante;
 
-        public event Func<Usuario, List<Curso>>? AlSolicitarCursos;
+        public event Func<Usuario, Task<List<Curso>>>? AlSolicitarCursos;
 
         public formGestionarCursosEstudiante(object estudiante)
         {
@@ -29,33 +19,33 @@ namespace TPSysacad___Forms
             lsbCursos.DisplayMember = "DisplayText";
         }
 
-        private void formGestionarCursosEstudiante_Load(object sender, EventArgs e)
+        private async void formGestionarCursosEstudiante_Load(object sender, EventArgs e)
         {
             if (_usuario is not null && AlSolicitarCursos is not null)
             {
-                MostrarListaCursos(AlSolicitarCursos.Invoke(_usuario));
+                MostrarListaCursos(await AlSolicitarCursos.Invoke(_usuario));
             }
         }
 
-        private void btnAgregarCurso_Click(object sender, EventArgs e)
+        private async void btnAgregarCurso_Click(object sender, EventArgs e)
         {
             formABMInscripcionEnCurso formABMInscripcion = new formABMInscripcionEnCurso(_usuario);
             formABMInscripcion.ShowDialog();
 
             if (_usuario is not null && AlSolicitarCursos is not null)
             {
-                MostrarListaCursos(AlSolicitarCursos.Invoke(_usuario));
+                MostrarListaCursos(await AlSolicitarCursos.Invoke(_usuario));
             }
         }
 
-        private void btnEliminarCurso_Click(object sender, EventArgs e)
+        private async void btnEliminarCurso_Click(object sender, EventArgs e)
         {
             if (lsbCursos.SelectedIndex == -1) { MessageBox.Show("Debe selecionar una inscripción a eliminar"); }
-            _logicaGestionCursoEstudiante.EliminarCurso(lsbCursos.SelectedItem, _usuario);
+            await _logicaGestionCursoEstudiante.EliminarCurso(lsbCursos.SelectedItem, _usuario);
 
             if (_usuario is not null && AlSolicitarCursos is not null)
             {
-                MostrarListaCursos(AlSolicitarCursos.Invoke(_usuario));
+                MostrarListaCursos(await AlSolicitarCursos.Invoke(_usuario));
             }
         }
 

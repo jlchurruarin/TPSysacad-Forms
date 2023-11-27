@@ -14,19 +14,20 @@ namespace TPSysacad___Forms
 {
     public partial class formSeleccionarPagos : Form
     {
-        private List<Pago> _listaPagos;
+        private Usuario _estudiante;
+        private List<Pago> _listaPagosPendientes;
 
         private BindingSource bindingSource = new BindingSource();
 
-        public formSeleccionarPagos()
+        public formSeleccionarPagos(Usuario estudiante)
         {
-
+            _estudiante = estudiante;
             InitializeComponent();
         }
 
-        private void formSeleccionarPagos_Load(object sender, EventArgs e)
+        private async void formSeleccionarPagos_Load(object sender, EventArgs e)
         {
-            List<Pago> _listaPagosPendientes = _listaPagos.Where(p => p.EstadoDePago != EstadoPago.Pagado).ToList();
+            _listaPagosPendientes = await Pago.ObtenerPagoPorEstudiante(_estudiante.Id);
 
             bindingSource.DataSource = _listaPagosPendientes;
 
@@ -76,28 +77,30 @@ namespace TPSysacad___Forms
                 }
             }
 
-            formRealizarPago formRealizarPago = new formRealizarPago(totalAPagar, conceptos);
-            DialogResult dialogResultRealizarPago = formRealizarPago.ShowDialog();
+            if (totalAPagar == 0) { MessageBox.Show("Debe seleccionar al menos un pago", "Aviso"); return; }
 
-            if (dialogResultRealizarPago == DialogResult.OK) 
+            formRealizarPago formRealizarPago = new formRealizarPago(this, totalAPagar, conceptos);
+            formRealizarPago.ShowDialog();
+
+        }
+
+        public async void GuardarPagos(MetodoPago metodoDePago)
+        {
+            int contador = 0;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                object value = row.Cells[0].Value;
+                if (value != null && (bool)row.Cells[0].Value)
                 {
-                    object value = row.Cells[0].Value;
-                    if (value != null && (bool)row.Cells[0].Value)
-                    {
-                        row.Cells["Monto"].Value = 0m;
-                        row.Cells["Estado de Pago"].Value = EstadoPago.Pagado;
-                    }
+                    row.Cells["Estado de Pago"].Value = EstadoPago.Pagado;
+                    _listaPagosPendientes[contador].MetodoDePago = metodoDePago;
+                    _listaPagosPendientes[contador].FechaDePago = DateTime.Now;
+                    await _listaPagosPendientes[contador].Update();
+
                 }
-                MessageBox.Show("Pago realizado con exito", "Pagos");
+                contador++;
             }
-            else
-            {
-                MessageBox.Show("No se realizó el pago correctamente", "Pagos");
-            }
-
-
+            MessageBox.Show("Pago realizado con exito", "Pagos");
         }
     }
 }
