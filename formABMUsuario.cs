@@ -72,11 +72,18 @@ namespace TPSysacad___Forms
             DialogResult resultYesNo = MessageBox.Show("¿Desea enviar la contraseña al usuario?", "Envio de contraseña", MessageBoxButtons.YesNo);
             if (resultYesNo == DialogResult.Yes)
             {
-                //_estudiante.ResetContraseña(true);
+                try
+                {
+                    Usuario?.ResetContraseña(true);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al enviar el correo electronico: {ex.Message}");
+                }
             }
             else
             {
-                //_estudiante.ResetContraseña();
+                Usuario?.ResetContraseña();
             }
         }
 
