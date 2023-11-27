@@ -1,5 +1,7 @@
 ﻿using BibliotecaClases;
 using BibliotecaClases.BD;
+using BibliotecaClases.Interfaces;
+using BibliotecaClases.Logica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +15,17 @@ using System.Windows.Forms;
 
 namespace TPSysacad___Forms
 {
-    public partial class formABMPago : Form
+    public partial class formABMPago : Form, ISQLAddUpdateVista
     {
-        private Pago _pago;
+        private Usuario _estudiante;
+        private LogicaABMPago _logicaABMPago;
 
-        public formABMPago()
+        public event Action<string>? AlSolicitarPago;
+
+        public formABMPago(Usuario estudiante)
         {
+            _logicaABMPago = new LogicaABMPago(this);
+            _estudiante = estudiante;
             InitializeComponent();
         }
 
@@ -26,30 +33,15 @@ namespace TPSysacad___Forms
         {
             CargarConceptosDePago();
             CargarEstadoDePago();
-
-            nudMonto.Value = _pago.Monto;
-            cmbConceptosDePago.Text = Enum.GetName(_pago.ConceptoDePago);
-            cmbEstadoDePago.Text = Enum.GetName(_pago.EstadoDePago);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ValidarPago();
-                GuardarPago();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-            }
+            _logicaABMPago.AddPago(_estudiante.Id, cmbConceptosDePago.Text, nudMonto.Value);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -63,21 +55,33 @@ namespace TPSysacad___Forms
             cmbEstadoDePago.DataSource = Enum.GetValues(typeof(EstadoPago));
         }
 
-        private void ValidarPago()
+        public void MostrarPago(Pago? pago)
         {
-
-            if (Enum.TryParse(typeof(ConceptoPago), cmbConceptosDePago.Text, out object? conceptoPago) == false) { throw new Exception("Concepto de pago no valido"); }
-            if (nudMonto.Value <= 0) { throw new Exception("Monto de pago no valido"); }
-            if (Enum.TryParse(typeof(EstadoPago), cmbEstadoDePago.Text, out object? estadoPago) == false) { throw new Exception("Estado de pago no valido"); }
+            nudMonto.Value = pago.Monto;
+            cmbConceptosDePago.Text = Enum.GetName(pago.ConceptoDePago);
+            cmbEstadoDePago.Text = Enum.GetName(pago.EstadoDePago);
         }
 
-        private void GuardarPago()
+        public void OnAddOk()
         {
-            Enum.TryParse(typeof(ConceptoPago), cmbConceptosDePago.Text, out object? conceptoPago);
-            Enum.TryParse(typeof(EstadoPago), cmbEstadoDePago.Text, out object? estadoPago);
-            _pago.Monto = nudMonto.Value;
-            _pago.ConceptoDePago = (ConceptoPago) conceptoPago;
-            _pago.EstadoDePago = (EstadoPago) estadoPago;
+            MessageBox.Show("Se agrego el pago con exito");
+            this.Close();
+        }
+
+        public void OnUpdateOk()
+        {
+            MessageBox.Show("Se modifico el pago con exito");
+            this.Close();
+        }
+
+        public void OnAddError(string errorMessage)
+        {
+            MessageBox.Show($"Error al agregar el pago: {errorMessage}");
+        }
+
+        public void OnUpdateError(string errorMessage)
+        {
+            MessageBox.Show($"Error al modificar el pago: {errorMessage}");
         }
     }
 }

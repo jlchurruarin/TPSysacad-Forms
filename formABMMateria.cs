@@ -26,6 +26,9 @@ namespace TPSysacad___Forms
         {
             _logicaABMMateria = new LogicaABMMateria(this);
             InitializeComponent();
+
+            nudCreditosBrindados.Maximum = int.MaxValue;
+            nudCreditosNecesarios.Maximum = int.MaxValue;
         }
 
         public formABMMateria(object selectedItem) : this()
@@ -39,6 +42,7 @@ namespace TPSysacad___Forms
             {
                 AlSolicitarMateria?.Invoke();
             }
+
         }
 
 
@@ -46,11 +50,11 @@ namespace TPSysacad___Forms
         {
             if (Materia is not null)
             {
-                _logicaABMMateria.UpdateMateria(Materia.Id, txbNombre.Text, txbDescripcion.Text);
+                _logicaABMMateria.UpdateMateria(Materia.Id, txbNombre.Text, txbDescripcion.Text, nudCreditosBrindados.Value.ToString(), nudCreditosNecesarios.Value.ToString());
             }
             else
             {
-                _logicaABMMateria.AddMateria(txbNombre.Text, txbDescripcion.Text);
+                _logicaABMMateria.AddMateria(txbNombre.Text, txbDescripcion.Text, nudCreditosBrindados.Value.ToString(), nudCreditosNecesarios.Value.ToString());
             }
 
         }
@@ -66,6 +70,8 @@ namespace TPSysacad___Forms
 
             txbNombre.Text = materia.Nombre;
             txbDescripcion.Text = materia.Descripcion;
+            nudCreditosBrindados.Value = materia.CreditosBrindados;
+            nudCreditosNecesarios.Value = materia.CreditosNecesarios;
         }
 
         public void OnAddOk()

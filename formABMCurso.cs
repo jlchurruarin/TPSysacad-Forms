@@ -19,9 +19,9 @@ namespace TPSysacad___Forms
     public partial class formABMCurso : Form, IABMCurso
     {
         private LogicaABMCurso _logicaABMCurso;
-        public Curso? Curso { get; }
+        private Curso _curso;
 
-        public event Action? AlSolicitarCurso;
+        public event Action<string>? AlSolicitarCurso;
 
         public formABMCurso()
         {
@@ -31,26 +31,67 @@ namespace TPSysacad___Forms
 
         public formABMCurso(object selectedItem) : this()
         {
-            Curso = selectedItem as Curso;
+            _curso = selectedItem as Curso;
         }
 
         private void formABMCurso_Load(object sender, EventArgs e)
         {
-            if (Curso is not null)
+            List<Usuario> profesores = Usuario.GetAll(TipoDeUsuario.Profesor);
+            List<Materia> materias = Materia.GetAll();
+
+            cbbProfesor.DataSource = profesores;
+            cbbProfesor.DisplayMember = "DisplayText";
+
+            cbbMateria.DataSource = materias;
+            cbbMateria.DisplayMember = "DisplayText";
+
+            if (_curso is not null)
             {
-                AlSolicitarCurso?.Invoke();
+                AlSolicitarCurso?.Invoke(_curso.Id);
+                try
+                {
+                    Usuario profesorSeleccionado = profesores.First(item => item.Id == _curso.ProfesorId);
+                    cbbProfesor.SelectedItem = profesorSeleccionado;
+                }
+                catch (InvalidOperationException ex)
+                {
+                    cbbProfesor.SelectedIndex = -1;
+                }
+
+
+                try
+                {
+                    Materia materia = Materia.ObtenerMateriaPorCursoID(_curso.Id);
+                    Materia materiaSelecionada = materias.First(item => item.Id == materia.Id);
+                    cbbMateria.SelectedItem = materiaSelecionada;
+                    cbbMateria.Enabled = false;
+                    System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
+                    toolTip.ShowAlways = true;
+                    lblMateria.Text = lblMateria.Text + " ?";
+                    toolTip.SetToolTip(lblMateria, "No es posible modificar la materia una vez creado el curso");
+                    toolTip.Active = true;
+
+                }
+                catch (InvalidOperationException ex)
+                {
+                    cbbMateria.SelectedIndex = -1;
+                }
             }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (Curso is not null)
+            if (_curso is not null)
             {
-                _logicaABMCurso.UpdateCurso(Curso.Id, txbNombreCurso.Text, txbAula.Text, nudCupoMaximo.Value.ToString());
+                Usuario? profesor = cbbProfesor.SelectedItem as Usuario;
+                Materia? materia = cbbMateria.SelectedItem as Materia;
+                _logicaABMCurso.UpdateCurso(_curso.Id, txbNombreCurso.Text, txbAula.Text, nudCupoMaximo.Value.ToString(), materia?.Id, profesor?.Id);
             }
             else
             {
-                _logicaABMCurso.AddCurso(txbNombreCurso.Text, txbAula.Text, nudCupoMaximo.Value.ToString());
+                Usuario? profesor = cbbProfesor.SelectedItem as Usuario;
+                Materia? materia = cbbMateria.SelectedItem as Materia;
+                _logicaABMCurso.AddCurso(txbNombreCurso.Text, txbAula.Text, nudCupoMaximo.Value.ToString(), materia?.Id, profesor?.Id);
             }
         }
 
@@ -61,7 +102,8 @@ namespace TPSysacad___Forms
             txbNombreCurso.Text = curso.Nombre;
             txbAula.Text = curso.Aula;
             nudCupoMaximo.Value = curso.CupoMaximo;
-
+            cbbProfesor.SelectedItem = Usuario.ObtenerUsuarioPorID(TipoDeUsuario.Profesor, curso.ProfesorId);
+            cbbMateria.SelectedItem = Materia.ObtenerMateriaPorCursoID(curso.Id);
         }
 
         public void OnAddOk()

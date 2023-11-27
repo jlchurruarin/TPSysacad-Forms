@@ -99,7 +99,7 @@
             btnAgregarEstudiante.Name = "btnAgregarEstudiante";
             btnAgregarEstudiante.Size = new Size(133, 34);
             btnAgregarEstudiante.TabIndex = 2;
-            btnAgregarEstudiante.Text = "Agregar Estudiante";
+            btnAgregarEstudiante.Text = "Selecionar Estudiante";
             btnAgregarEstudiante.UseVisualStyleBackColor = true;
             btnAgregarEstudiante.Click += btnAgregarEstudiante_Click;
             // 
@@ -123,7 +123,6 @@
             MinimumSize = new Size(441, 481);
             Name = "formSeleccionarEstudiante";
             Text = "formSeleccionarEstudiante";
-            FormClosing += formSeleccionarEstudiante_FormClosing;
             Load += formSeleccionarEstudiante_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

@@ -1,5 +1,6 @@
 ﻿using BibliotecaClases;
 using BibliotecaClases.BD;
+using BibliotecaClases.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,18 +15,13 @@ namespace TPSysacad___Forms
 {
     public partial class formSeleccionarEstudiante : Form
     {
-        private Usuario _estudiante;
-        private FakeBaseDeDatos _baseDeDatos;
+        private IRecibidorDeItemSeleccionado<Usuario> _recibidorDeEstudiante;
 
-
-        public Usuario Estudiante
+        public formSeleccionarEstudiante(IRecibidorDeItemSeleccionado<Usuario> recibidorDeUsuario)
         {
-            get { return _estudiante; }
-        }
-
-        public formSeleccionarEstudiante()
-        {
+            _recibidorDeEstudiante = recibidorDeUsuario;
             InitializeComponent();
+            lsbEstudiantes.DisplayMember = "DisplayText";
         }
         private void formSeleccionarEstudiante_Load(object sender, EventArgs e)
         {
@@ -34,37 +30,22 @@ namespace TPSysacad___Forms
 
         private void btnAgregarEstudiante_Click(object sender, EventArgs e)
         {
-            if (lsbEstudiantes.SelectedIndex == -1) { MessageBox.Show("Debe seleccionar un estudiante", "Error"); return; }
+            if (lsbEstudiantes.SelectedIndex == -1) { MessageBox.Show("Debe seleccionar una materia", "Error"); return; }
             else
             {
-                Usuario estudiante = _baseDeDatos.ListaEstudiantes[lsbEstudiantes.SelectedIndex];
-                _estudiante = estudiante;
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                _recibidorDeEstudiante.RecibirItemSeleccionada(lsbEstudiantes.SelectedItem);
             }
+            this.Close();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
             this.Close();
-        }
-
-        private void formSeleccionarEstudiante_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                //this.DialogResult = DialogResult.Abort;
-            }
         }
 
         private void ActualizarListaEstudiantes()
         {
-            lsbEstudiantes.Items.Clear();
-            foreach (Usuario estudiante in _baseDeDatos.ListaEstudiantes)
-            {
-                lsbEstudiantes.Items.Add(estudiante.ToString());
-            }
+            lsbEstudiantes.DataSource = _recibidorDeEstudiante.ItemsAMostrar();
         }
     }
 }

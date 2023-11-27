@@ -47,7 +47,6 @@
             btnEditarProfesor = new Button();
             btnEliminarProfesor = new Button();
             lsbProfesores = new ListBox();
-            btnGestionarCursosProfesor = new Button();
             tabAdministradores = new TabPage();
             tableLayoutPanel4 = new TableLayoutPanel();
             label3 = new Label();
@@ -75,11 +74,12 @@
             lsbCursos = new ListBox();
             btnGestionarHorariosCurso = new Button();
             btnGestionarInscriptosCurso = new Button();
-            btnGestionarListaEsperaCurso = new Button();
+            tabReportes = new TabPage();
             tableLayoutPanel2 = new TableLayoutPanel();
             label1 = new Label();
             textBox1 = new TextBox();
             tabPage1 = new TabPage();
+            tableLayoutPanel7 = new TableLayoutPanel();
             tabControl1.SuspendLayout();
             tabEstudiantes.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -91,6 +91,7 @@
             tableLayoutPanel5.SuspendLayout();
             tabCursos.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
+            tabReportes.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -102,6 +103,7 @@
             tabControl1.Controls.Add(tabAdministradores);
             tabControl1.Controls.Add(tabMaterias);
             tabControl1.Controls.Add(tabCursos);
+            tabControl1.Controls.Add(tabReportes);
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -260,7 +262,6 @@
             tableLayoutPanel3.Controls.Add(btnEditarProfesor, 2, 3);
             tableLayoutPanel3.Controls.Add(btnEliminarProfesor, 2, 4);
             tableLayoutPanel3.Controls.Add(lsbProfesores, 0, 2);
-            tableLayoutPanel3.Controls.Add(btnGestionarCursosProfesor, 2, 6);
             tableLayoutPanel3.Location = new Point(6, 6);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 8;
@@ -280,9 +281,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(3, 0);
             label2.Name = "label2";
-            label2.Size = new Size(103, 15);
+            label2.Size = new Size(92, 15);
             label2.TabIndex = 0;
-            label2.Text = "Buscar Estudiante:";
+            label2.Text = "Buscar Profesor:";
             label2.Visible = false;
             // 
             // txbBuscarProfesor
@@ -338,18 +339,6 @@
             tableLayoutPanel3.SetRowSpan(lsbProfesores, 6);
             lsbProfesores.Size = new Size(507, 484);
             lsbProfesores.TabIndex = 5;
-            lsbProfesores.SelectedIndexChanged += lsbProfesores_SelectedIndexChanged;
-            // 
-            // btnGestionarCursosProfesor
-            // 
-            btnGestionarCursosProfesor.Anchor = AnchorStyles.None;
-            btnGestionarCursosProfesor.Location = new Point(546, 213);
-            btnGestionarCursosProfesor.Name = "btnGestionarCursosProfesor";
-            btnGestionarCursosProfesor.Size = new Size(133, 34);
-            btnGestionarCursosProfesor.TabIndex = 6;
-            btnGestionarCursosProfesor.Text = "Gestionar Cursos";
-            btnGestionarCursosProfesor.UseVisualStyleBackColor = true;
-            btnGestionarCursosProfesor.Click += btnGestionarCursosProfesor_Click;
             // 
             // tabAdministradores
             // 
@@ -589,7 +578,6 @@
             tableLayoutPanel6.Controls.Add(lsbCursos, 0, 2);
             tableLayoutPanel6.Controls.Add(btnGestionarHorariosCurso, 2, 6);
             tableLayoutPanel6.Controls.Add(btnGestionarInscriptosCurso, 2, 7);
-            tableLayoutPanel6.Controls.Add(btnGestionarListaEsperaCurso, 2, 8);
             tableLayoutPanel6.Location = new Point(6, 6);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 10;
@@ -689,20 +677,19 @@
             btnGestionarInscriptosCurso.Name = "btnGestionarInscriptosCurso";
             btnGestionarInscriptosCurso.Size = new Size(167, 34);
             btnGestionarInscriptosCurso.TabIndex = 7;
-            btnGestionarInscriptosCurso.Text = "Gestionar Inscriptos";
+            btnGestionarInscriptosCurso.Text = "Gestionar Inscripciones";
             btnGestionarInscriptosCurso.UseVisualStyleBackColor = true;
             btnGestionarInscriptosCurso.Click += btnGestionarInscriptosCurso_Click;
             // 
-            // btnGestionarListaEsperaCurso
+            // tabReportes
             // 
-            btnGestionarListaEsperaCurso.Anchor = AnchorStyles.None;
-            btnGestionarListaEsperaCurso.Location = new Point(529, 293);
-            btnGestionarListaEsperaCurso.Name = "btnGestionarListaEsperaCurso";
-            btnGestionarListaEsperaCurso.Size = new Size(167, 34);
-            btnGestionarListaEsperaCurso.TabIndex = 8;
-            btnGestionarListaEsperaCurso.Text = "Gestionar Lista de Espera";
-            btnGestionarListaEsperaCurso.UseVisualStyleBackColor = true;
-            btnGestionarListaEsperaCurso.Click += btnGestionarListaEsperaCurso_Click;
+            tabReportes.Controls.Add(tableLayoutPanel7);
+            tabReportes.Location = new Point(4, 24);
+            tabReportes.Name = "tabReportes";
+            tabReportes.Size = new Size(725, 563);
+            tabReportes.TabIndex = 6;
+            tabReportes.Text = "Reportes";
+            tabReportes.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -742,6 +729,20 @@
             tabPage1.Size = new Size(200, 100);
             tabPage1.TabIndex = 0;
             // 
+            // tableLayoutPanel7
+            // 
+            tableLayoutPanel7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel7.ColumnCount = 2;
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.Location = new Point(3, 3);
+            tableLayoutPanel7.Name = "tableLayoutPanel7";
+            tableLayoutPanel7.RowCount = 2;
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.Size = new Size(719, 557);
+            tableLayoutPanel7.TabIndex = 0;
+            // 
             // formMenuAdministrador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -768,6 +769,7 @@
             tabCursos.ResumeLayout(false);
             tableLayoutPanel6.ResumeLayout(false);
             tableLayoutPanel6.PerformLayout();
+            tabReportes.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             ResumeLayout(false);
@@ -822,10 +824,10 @@
         private TabPage tabPage1;
         private Button btnGestionarCursosEstudiante;
         private Button btnGestionarPagosEstudiante;
-        private Button btnGestionarCursosProfesor;
         private Button btnGestionarMateriasRequeridas;
         private Button btnGestionarHorariosCurso;
         private Button btnGestionarInscriptosCurso;
-        private Button btnGestionarListaEsperaCurso;
+        private TabPage tabReportes;
+        private TableLayoutPanel tableLayoutPanel7;
     }
 }

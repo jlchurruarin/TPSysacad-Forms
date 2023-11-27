@@ -43,14 +43,19 @@ namespace TPSysacad___Forms
         private void formMenuAdministrador_Load(object sender, EventArgs e)
         {
 
+            ActualizarListas();
+
+            btnGestionarCursosEstudiante.Enabled = false;
+            btnGestionarPagosEstudiante.Enabled = false;
+        }
+
+        private void ActualizarListas()
+        {
             AlSolicitarEstudiantes?.Invoke();
             AlSolicitarProfesores?.Invoke();
             AlSolicitarAdministradores?.Invoke();
             AlSolicitarMaterias?.Invoke();
             AlSolicitarCursos?.Invoke();
-
-            btnGestionarCursosEstudiante.Enabled = false;
-            btnGestionarPagosEstudiante.Enabled = false;
         }
 
         private void formMenuAdministrador_FormClosed(object sender, FormClosedEventArgs e)
@@ -63,7 +68,7 @@ namespace TPSysacad___Forms
             formABMUsuario formABMEstudiante = new formABMUsuario(TipoDeUsuario.Estudiante);
             formABMEstudiante.ShowDialog();
 
-            AlSolicitarEstudiantes?.Invoke();
+            ActualizarListas();
         }
 
         private void btnEditarEstudiante_Click(object sender, EventArgs e)
@@ -73,7 +78,7 @@ namespace TPSysacad___Forms
             formABMUsuario formABMEstudiante = new formABMUsuario(TipoDeUsuario.Estudiante, lsbEstudiantes.SelectedItem);
             formABMEstudiante.ShowDialog();
 
-            AlSolicitarEstudiantes?.Invoke();
+            ActualizarListas();
         }
 
         private void btnEliminarEstudiante_Click(object sender, EventArgs e)
@@ -85,7 +90,7 @@ namespace TPSysacad___Forms
             if (usuarioSeleccionado is null) { MessageBox.Show("Error al eliminar el estudiante seleccionado."); }
             else { _logicaMenuAdministrador.EliminarEstudiante(usuarioSeleccionado); }
 
-            AlSolicitarEstudiantes?.Invoke();
+            ActualizarListas();
         }
 
         private void btnAgregarProfesor_Click(object sender, EventArgs e)
@@ -93,7 +98,7 @@ namespace TPSysacad___Forms
             formABMUsuario formABMUsuario = new formABMUsuario(TipoDeUsuario.Profesor);
             formABMUsuario.ShowDialog();
 
-            AlSolicitarProfesores?.Invoke();
+            ActualizarListas();
         }
 
         private void btnEditarProfesor_Click(object sender, EventArgs e)
@@ -103,7 +108,7 @@ namespace TPSysacad___Forms
             formABMUsuario formABMUsuario = new formABMUsuario(TipoDeUsuario.Profesor, lsbProfesores.SelectedItem);
             formABMUsuario.ShowDialog();
 
-            AlSolicitarProfesores?.Invoke();
+            ActualizarListas();
         }
 
         private void btnEliminarProfesor_Click(object sender, EventArgs e)
@@ -115,7 +120,7 @@ namespace TPSysacad___Forms
             if (usuarioSeleccionado is null) { MessageBox.Show("Error al eliminar el profesor seleccionado."); }
             else { _logicaMenuAdministrador.EliminarProfesor(usuarioSeleccionado); }
 
-            AlSolicitarProfesores?.Invoke();
+            ActualizarListas();
         }
 
         private void btnAgregarAdministrador_Click(object sender, EventArgs e)
@@ -123,7 +128,7 @@ namespace TPSysacad___Forms
             formABMUsuario formABMUsuario = new formABMUsuario(TipoDeUsuario.Administrador);
             formABMUsuario.ShowDialog();
 
-            AlSolicitarAdministradores?.Invoke();
+            ActualizarListas();
         }
 
         private void btnEditarAdministrador_Click(object sender, EventArgs e)
@@ -133,7 +138,7 @@ namespace TPSysacad___Forms
             formABMUsuario formABMUsuario = new formABMUsuario(TipoDeUsuario.Administrador, lsbAdministradores.SelectedItem);
             formABMUsuario.ShowDialog();
 
-            AlSolicitarAdministradores?.Invoke();
+            ActualizarListas();
         }
 
         private void btnEliminarAdministrador_Click(object sender, EventArgs e)
@@ -145,14 +150,15 @@ namespace TPSysacad___Forms
             if (usuarioSeleccionado is null) { MessageBox.Show("Error al eliminar el administrador seleccionado."); }
             else { _logicaMenuAdministrador.EliminarAdministrador(usuarioSeleccionado); }
 
-            AlSolicitarAdministradores?.Invoke();
+            ActualizarListas();
         }
 
         private void btnAgregarMateria_Click(object sender, EventArgs e)
         {
             formABMMateria formABMMateria = new formABMMateria();
             formABMMateria.ShowDialog();
-            AlSolicitarMaterias?.Invoke();
+
+            ActualizarListas();
         }
 
         private void btnEditarMateria_Click(object sender, EventArgs e)
@@ -161,7 +167,8 @@ namespace TPSysacad___Forms
 
             formABMMateria formABMMateria = new formABMMateria(lsbMaterias.SelectedItem);
             formABMMateria.ShowDialog();
-            AlSolicitarMaterias?.Invoke();
+
+            ActualizarListas();
         }
 
         private void btnEliminarMateria_Click(object sender, EventArgs e)
@@ -173,7 +180,7 @@ namespace TPSysacad___Forms
             if (materiaSeleccionada is null) { MessageBox.Show("Error al eliminar la materia seleccionada."); }
             else { _logicaMenuAdministrador.EliminarMateria(materiaSeleccionada); }
 
-            AlSolicitarMaterias?.Invoke();
+            ActualizarListas();
         }
 
         private void btnAgregarCurso_Click(object sender, EventArgs e)
@@ -181,7 +188,7 @@ namespace TPSysacad___Forms
             formABMCurso formABMCurso = new formABMCurso();
             formABMCurso.ShowDialog();
 
-            AlSolicitarCursos?.Invoke();
+            ActualizarListas();
         }
 
         private void btnEditarCurso_Click(object sender, EventArgs e)
@@ -191,7 +198,7 @@ namespace TPSysacad___Forms
             formABMCurso formABMCurso = new formABMCurso(lsbCursos.SelectedItem);
             formABMCurso.ShowDialog();
 
-            AlSolicitarCursos?.Invoke();
+            ActualizarListas();
         }
 
         private void btnEliminarCurso_Click(object sender, EventArgs e)
@@ -203,7 +210,7 @@ namespace TPSysacad___Forms
             if (cursoSeleccionado is null) { MessageBox.Show("Error al eliminar la materia seleccionada."); }
             else { _logicaMenuAdministrador.EliminarCurso(cursoSeleccionado); }
 
-            AlSolicitarCursos?.Invoke();
+            ActualizarListas();
         }
 
         private void btnGestionarPagosEstudiante_Click(object sender, EventArgs e)
@@ -211,36 +218,44 @@ namespace TPSysacad___Forms
             if (lsbEstudiantes.SelectedIndex == -1) { return; }
             formGestionarPagosEstudiante formPago = new formGestionarPagosEstudiante(lsbEstudiantes.SelectedItem);
             formPago.ShowDialog();
+
+            ActualizarListas();
         }
 
         private void btnGestionarCursosEstudiante_Click(object sender, EventArgs e)
         {
+            if (lsbEstudiantes.SelectedIndex == -1) { return; }
+            formGestionarCursosEstudiante formCurso = new formGestionarCursosEstudiante(lsbEstudiantes.SelectedItem);
+            formCurso.ShowDialog();
 
-        }
-
-        private void btnGestionarCursosProfesor_Click(object sender, EventArgs e)
-        {
-
+            ActualizarListas();
         }
 
         private void btnGestionarMateriasRequeridas_Click(object sender, EventArgs e)
         {
+            if (lsbMaterias.SelectedIndex == -1) { return; }
+            formGestionarMateriasRequeridas formCurso = new formGestionarMateriasRequeridas(lsbMaterias.SelectedItem);
+            formCurso.ShowDialog();
 
+            ActualizarListas();
         }
 
         private void btnGestionarHorariosCurso_Click(object sender, EventArgs e)
         {
+            if (lsbCursos.SelectedIndex == -1) { return; }
+            formGestionarHorarios formGestionarHorarios = new formGestionarHorarios(lsbCursos.SelectedItem);
+            formGestionarHorarios.ShowDialog();
 
+            ActualizarListas();
         }
 
         private void btnGestionarInscriptosCurso_Click(object sender, EventArgs e)
         {
+            if (lsbCursos.SelectedIndex == -1) { return; }
+            formGestionarInscriptos formGestionarInscriptos = new formGestionarInscriptos(lsbCursos.SelectedItem);
+            formGestionarInscriptos.ShowDialog();
 
-        }
-
-        private void btnGestionarListaEsperaCurso_Click(object sender, EventArgs e)
-        {
-
+            ActualizarListas();
         }
 
         private void lsbEstudiantes_SelectedValueChanged(object sender, EventArgs e)
@@ -254,18 +269,6 @@ namespace TPSysacad___Forms
             {
                 btnGestionarCursosEstudiante.Enabled = false;
                 btnGestionarPagosEstudiante.Enabled = false;
-            }
-        }
-
-        private void lsbProfesores_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lsbProfesores.SelectedIndex != -1)
-            {
-                btnGestionarCursosProfesor.Enabled = true;
-            }
-            else
-            {
-                btnGestionarCursosProfesor.Enabled = false;
             }
         }
 
@@ -287,13 +290,11 @@ namespace TPSysacad___Forms
             {
                 btnGestionarHorariosCurso.Enabled = true;
                 btnGestionarInscriptosCurso.Enabled = true;
-                btnGestionarListaEsperaCurso.Enabled = true;
             }
             else
             {
                 btnGestionarHorariosCurso.Enabled = false;
                 btnGestionarInscriptosCurso.Enabled = false;
-                btnGestionarListaEsperaCurso.Enabled = false;
             }
         }
 

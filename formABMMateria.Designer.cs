@@ -36,8 +36,14 @@
             lblNombre = new Label();
             lblDescripcion = new Label();
             txbNombre = new TextBox();
+            lblCreditosBrindados = new Label();
+            lblCreditosNecesarios = new Label();
+            nudCreditosBrindados = new NumericUpDown();
+            nudCreditosNecesarios = new NumericUpDown();
             tlpEstudiante.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudCreditosBrindados).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCreditosNecesarios).BeginInit();
             SuspendLayout();
             // 
             // tlpEstudiante
@@ -91,10 +97,16 @@
             tableLayoutPanel1.Controls.Add(lblNombre, 0, 0);
             tableLayoutPanel1.Controls.Add(lblDescripcion, 0, 1);
             tableLayoutPanel1.Controls.Add(txbNombre, 1, 0);
+            tableLayoutPanel1.Controls.Add(lblCreditosBrindados, 0, 2);
+            tableLayoutPanel1.Controls.Add(lblCreditosNecesarios, 0, 3);
+            tableLayoutPanel1.Controls.Add(nudCreditosBrindados, 1, 2);
+            tableLayoutPanel1.Controls.Add(nudCreditosNecesarios, 1, 3);
             tableLayoutPanel1.Location = new Point(3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowCount = 5;
             tlpEstudiante.SetRowSpan(tableLayoutPanel1, 3);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
@@ -139,6 +151,48 @@
             txbNombre.Size = new Size(285, 23);
             txbNombre.TabIndex = 2;
             // 
+            // lblCreditosBrindados
+            // 
+            lblCreditosBrindados.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblCreditosBrindados.AutoSize = true;
+            lblCreditosBrindados.Location = new Point(3, 100);
+            lblCreditosBrindados.Name = "lblCreditosBrindados";
+            lblCreditosBrindados.Size = new Size(144, 50);
+            lblCreditosBrindados.TabIndex = 4;
+            lblCreditosBrindados.Text = "Creditos Brindados:";
+            lblCreditosBrindados.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblCreditosNecesarios
+            // 
+            lblCreditosNecesarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblCreditosNecesarios.AutoSize = true;
+            lblCreditosNecesarios.Location = new Point(3, 150);
+            lblCreditosNecesarios.Name = "lblCreditosNecesarios";
+            lblCreditosNecesarios.Size = new Size(144, 50);
+            lblCreditosNecesarios.TabIndex = 5;
+            lblCreditosNecesarios.Text = "Creditos Necesarios:";
+            lblCreditosNecesarios.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // nudCreditosBrindados
+            // 
+            nudCreditosBrindados.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            nudCreditosBrindados.Location = new Point(153, 113);
+            nudCreditosBrindados.Maximum = new decimal(new int[] { 0, 0, 0, 0 });
+            nudCreditosBrindados.Name = "nudCreditosBrindados";
+            nudCreditosBrindados.Size = new Size(285, 23);
+            nudCreditosBrindados.TabIndex = 18;
+            nudCreditosBrindados.TextAlign = HorizontalAlignment.Right;
+            // 
+            // nudCreditosNecesarios
+            // 
+            nudCreditosNecesarios.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            nudCreditosNecesarios.Location = new Point(153, 163);
+            nudCreditosNecesarios.Maximum = new decimal(new int[] { 0, 0, 0, 0 });
+            nudCreditosNecesarios.Name = "nudCreditosNecesarios";
+            nudCreditosNecesarios.Size = new Size(285, 23);
+            nudCreditosNecesarios.TabIndex = 19;
+            nudCreditosNecesarios.TextAlign = HorizontalAlignment.Right;
+            // 
             // formABMMateria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -151,6 +205,8 @@
             tlpEstudiante.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nudCreditosBrindados).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCreditosNecesarios).EndInit();
             ResumeLayout(false);
         }
 
@@ -164,5 +220,9 @@
         private Label lblNombre;
         private Label lblDescripcion;
         private TextBox txbNombre;
+        private Label lblCreditosBrindados;
+        private Label lblCreditosNecesarios;
+        private NumericUpDown nudCreditosBrindados;
+        private NumericUpDown nudCreditosNecesarios;
     }
 }

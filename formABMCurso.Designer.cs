@@ -31,10 +31,6 @@
             tlpEstudiante = new TableLayoutPanel();
             btnCancelar = new Button();
             btnGuardar = new Button();
-            tlpCursosInscriptos = new TableLayoutPanel();
-            lsbCursosInscriptos = new ListBox();
-            btnAgregarCurso = new Button();
-            tabCursosInscriptos = new TabPage();
             tlpDetalle = new TableLayoutPanel();
             nudCupoMaximo = new NumericUpDown();
             txbAula = new TextBox();
@@ -46,10 +42,14 @@
             lblAula = new Label();
             lblCupoMaximo = new Label();
             cbbMateria = new ComboBox();
+            tlpCursosInscriptos = new TableLayoutPanel();
+            lsbCursosInscriptos = new ListBox();
+            btnAgregarCurso = new Button();
+            tabCursosInscriptos = new TabPage();
             tlpEstudiante.SuspendLayout();
-            tlpCursosInscriptos.SuspendLayout();
             tlpDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudCupoMaximo).BeginInit();
+            tlpCursosInscriptos.SuspendLayout();
             SuspendLayout();
             // 
             // tlpEstudiante
@@ -92,48 +92,6 @@
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
-            // tlpCursosInscriptos
-            // 
-            tlpCursosInscriptos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tlpCursosInscriptos.ColumnCount = 3;
-            tlpCursosInscriptos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tlpCursosInscriptos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
-            tlpCursosInscriptos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
-            tlpCursosInscriptos.Controls.Add(lsbCursosInscriptos, 0, 0);
-            tlpCursosInscriptos.Location = new Point(0, 0);
-            tlpCursosInscriptos.Name = "tlpCursosInscriptos";
-            tlpCursosInscriptos.RowCount = 1;
-            tlpCursosInscriptos.Size = new Size(200, 100);
-            tlpCursosInscriptos.TabIndex = 0;
-            // 
-            // lsbCursosInscriptos
-            // 
-            lsbCursosInscriptos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tlpCursosInscriptos.SetColumnSpan(lsbCursosInscriptos, 3);
-            lsbCursosInscriptos.FormattingEnabled = true;
-            lsbCursosInscriptos.ItemHeight = 15;
-            lsbCursosInscriptos.Location = new Point(3, 3);
-            lsbCursosInscriptos.Name = "lsbCursosInscriptos";
-            lsbCursosInscriptos.Size = new Size(194, 364);
-            lsbCursosInscriptos.TabIndex = 0;
-            // 
-            // btnAgregarCurso
-            // 
-            btnAgregarCurso.Anchor = AnchorStyles.None;
-            btnAgregarCurso.Location = new Point(3, 373);
-            btnAgregarCurso.Name = "btnAgregarCurso";
-            btnAgregarCurso.Size = new Size(60, 23);
-            btnAgregarCurso.TabIndex = 3;
-            btnAgregarCurso.Text = "Agregar Curso";
-            btnAgregarCurso.UseVisualStyleBackColor = true;
-            // 
-            // tabCursosInscriptos
-            // 
-            tabCursosInscriptos.Location = new Point(0, 0);
-            tabCursosInscriptos.Name = "tabCursosInscriptos";
-            tabCursosInscriptos.Size = new Size(200, 100);
-            tabCursosInscriptos.TabIndex = 0;
-            // 
             // tlpDetalle
             // 
             tlpDetalle.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -160,6 +118,7 @@
             tlpDetalle.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tlpDetalle.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tlpDetalle.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpDetalle.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tlpDetalle.Size = new Size(447, 355);
             tlpDetalle.TabIndex = 4;
             // 
@@ -264,6 +223,48 @@
             cbbMateria.Size = new Size(291, 23);
             cbbMateria.TabIndex = 8;
             // 
+            // tlpCursosInscriptos
+            // 
+            tlpCursosInscriptos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tlpCursosInscriptos.ColumnCount = 3;
+            tlpCursosInscriptos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tlpCursosInscriptos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
+            tlpCursosInscriptos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
+            tlpCursosInscriptos.Controls.Add(lsbCursosInscriptos, 0, 0);
+            tlpCursosInscriptos.Location = new Point(0, 0);
+            tlpCursosInscriptos.Name = "tlpCursosInscriptos";
+            tlpCursosInscriptos.RowCount = 1;
+            tlpCursosInscriptos.Size = new Size(200, 100);
+            tlpCursosInscriptos.TabIndex = 0;
+            // 
+            // lsbCursosInscriptos
+            // 
+            lsbCursosInscriptos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tlpCursosInscriptos.SetColumnSpan(lsbCursosInscriptos, 3);
+            lsbCursosInscriptos.FormattingEnabled = true;
+            lsbCursosInscriptos.ItemHeight = 15;
+            lsbCursosInscriptos.Location = new Point(3, 3);
+            lsbCursosInscriptos.Name = "lsbCursosInscriptos";
+            lsbCursosInscriptos.Size = new Size(194, 364);
+            lsbCursosInscriptos.TabIndex = 0;
+            // 
+            // btnAgregarCurso
+            // 
+            btnAgregarCurso.Anchor = AnchorStyles.None;
+            btnAgregarCurso.Location = new Point(3, 373);
+            btnAgregarCurso.Name = "btnAgregarCurso";
+            btnAgregarCurso.Size = new Size(60, 23);
+            btnAgregarCurso.TabIndex = 3;
+            btnAgregarCurso.Text = "Agregar Curso";
+            btnAgregarCurso.UseVisualStyleBackColor = true;
+            // 
+            // tabCursosInscriptos
+            // 
+            tabCursosInscriptos.Location = new Point(0, 0);
+            tabCursosInscriptos.Name = "tabCursosInscriptos";
+            tabCursosInscriptos.Size = new Size(200, 100);
+            tabCursosInscriptos.TabIndex = 0;
+            // 
             // formABMCurso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -274,10 +275,10 @@
             Text = "formABMCurso";
             Load += formABMCurso_Load;
             tlpEstudiante.ResumeLayout(false);
-            tlpCursosInscriptos.ResumeLayout(false);
             tlpDetalle.ResumeLayout(false);
             tlpDetalle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nudCupoMaximo).EndInit();
+            tlpCursosInscriptos.ResumeLayout(false);
             ResumeLayout(false);
         }
 

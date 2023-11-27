@@ -34,9 +34,6 @@ namespace TPSysacad___Forms
 
         public void MostrarListaPagos(List<Pago>? listaPagos)
         {
-            if (listaPagos == null) { return; }
-
-            lsbPagos.Items.Clear();
             lsbPagos.DataSource = listaPagos;
         }
 
@@ -53,8 +50,9 @@ namespace TPSysacad___Forms
 
         private void btnAgregarPago_Click(object sender, EventArgs e)
         {
-            formABMPago formABMPago = new formABMPago();
+            formABMPago formABMPago = new formABMPago(_estudiante);
             formABMPago.ShowDialog();
+            MostrarListaPagos(AlSolicitarPagos?.Invoke(_estudiante));
         }
 
         private void btnEliminarPago_Click(object sender, EventArgs e)

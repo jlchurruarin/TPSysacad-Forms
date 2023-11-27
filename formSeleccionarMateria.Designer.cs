@@ -99,7 +99,7 @@
             btnAgregarMateria.Name = "btnAgregarMateria";
             btnAgregarMateria.Size = new Size(133, 34);
             btnAgregarMateria.TabIndex = 2;
-            btnAgregarMateria.Text = "Agregar Materia";
+            btnAgregarMateria.Text = "Seleccionar Materia";
             btnAgregarMateria.UseVisualStyleBackColor = true;
             btnAgregarMateria.Click += btnAgregarMateria_Click;
             // 
@@ -123,7 +123,6 @@
             MinimumSize = new Size(441, 481);
             Name = "formSeleccionarMateria";
             Text = "formSeleccionarMateria";
-            FormClosing += formSeleccionarMateria_FormClosing;
             Load += formSeleccionarMateria_Load;
             tlpCurso.ResumeLayout(false);
             tlpCurso.PerformLayout();
